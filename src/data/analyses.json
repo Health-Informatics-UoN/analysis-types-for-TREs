@@ -1,0 +1,755 @@
+[
+  {
+    "name": "Count",
+    "description": "Counting the subjects that meet some criterion",
+    "output": {
+      "description": "Aggregate count",
+      "data_type": "scalar",
+      "disclosure_risk": "Low for large counts, high for small cells",
+      "disclosure_mitigation": ["low number suppression", "rounding"]
+   },
+    "algorithms": [
+      {
+        "name": "Data sharing",
+        "description": "Sending all the data required to count subjects in one place.",
+        "mathjax": "Total = \\sum{rows}",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Row-level count data"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on output",
+          "encryption": ["none"]
+        }
+      },
+      {
+        "name": "Sum of counts",
+        "description": "Sending the counts from each node to be added together. ",
+        "mathjax": "Total = \\sum{counts}",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Count"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on local counts or output",
+          "encryption": ["HE-compatible", "MPC-compatible"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Mean",
+    "description": "Calculating the mean of some value for a population",
+    "output": {
+      "description": "Aggregate Mean",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "Data sharing",
+        "description": "Sending all the data required to calculate the mean of subjects in one place. $Mean = \\frac{\\sum{values}}{n}$",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Row-level value data"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on output",
+          "encryption": ["none"]
+        }
+      },
+      {
+        "name": "Basic decomposition",
+        "description": "Sending the local sums of the value and the counts to an aggregator to calculate the aggregate mean $Mean = \\frac{\\sum{sum \\times count}}{\\sum{counts}}$",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Sum", "Mean"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on local statistics or output",
+          "encryption": ["HE-compatible", "MPC-compatible"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Variance",
+    "description": "Calculating the variance of some value for a population",
+    "output": {
+      "description": "Aggregate variance",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "Data sharing",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Row-level value data"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on output",
+          "encryption": ["none"]
+        }
+      },
+      {
+        "name": "Basic decomposition",
+        "description": "Using sufficient statistics to compute variance: sum, sum of squares, and count",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Count", "Mean", "Sum"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "privacy_methods": {
+          "differential_privacy": "optional on local statistics or output",
+          "encryption": ["HE-compatible", "MPC-compatible"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Covariances",
+    "description": "Analysis: Covariances",
+    "output": {
+      "description": "Result of Covariances",
+      "data_type": "matrix"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Sums of products, means, counts"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Datetime difference",
+    "description": "Computing differences between datetime values",
+    "output": {
+      "description": "Result of Datetime difference",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Sample sizes",
+    "description": "Counting samples in each group or dataset",
+    "output": {
+      "description": "Sample size counts",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "Basic pooling",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Local sample sizes"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Fisher's Z",
+    "description": "Fisher Z transformation of correlation coefficient",
+    "output": {
+      "description": "Fisher's Z statistic",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Variance of Fisher's Z",
+    "description": "Variance of Fisher's Z transformation",
+    "output": {
+      "description": "Variance of Fisher's Z",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Z test",
+    "description": "Statistical test using Z statistic",
+    "output": {
+      "description": "Z test result",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Histogram",
+    "description": "Frequency distribution across bins",
+    "output": {
+      "description": "Histogram bins and frequencies",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "Basic pooling",
+        "description": "Each TRE bins data locally, aggregator sums frequencies per bin",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Bin counts per TRE"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        },
+        "practical_notes": [
+          "Requires agreement on bin boundaries across TREs"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Box Plot",
+    "description": "Five-number summary visualization",
+    "output": {
+      "description": "Quartiles, min, max",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Chi-squared test",
+    "mathjax": "\\chi^2\\ test",
+    "description": "Test of independence in contingency tables",
+    "output": {
+      "description": "Chi-squared statistic and p-value",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Fisher's exact test",
+    "description": "Exact test for independence in 2x2 contingency tables",
+    "output": {
+      "description": "Exact p-value",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Linear regression",
+    "description": "Fitting a linear model to data",
+    "output": {
+      "description": "Regression coefficients and statistics",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Kaplan-Meier estimator",
+    "description": "Non-parametric estimator of survival function",
+    "output": {
+      "description": "Survival curve",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "Data sharing",
+        "description": "",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": [],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Analysis of variance",
+    "aliases": ["ANOVA"],
+    "description": "Testing differences between group means",
+    "output": {
+      "description": "F-statistic and p-value",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Variant calling",
+    "description": "Identifying genetic variants from sequence data",
+    "output": {
+      "description": "List of variants",
+      "data_type": "table"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Minimum",
+    "description": "Finding the minimum value",
+    "output": {
+      "description": "Minimum value across all TREs",
+      "data_type": "scalar",
+      "disclosure_risk": "High - can identify individual subjects",
+      "disclosure_mitigation": ["differential privacy", "binning"]
+    },
+    "algorithms": [
+      {
+        "name": "Basic pooling",
+        "description": "Each TRE finds local minimum, aggregator takes minimum of minimums",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Local minimum per TRE"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Maximum",
+    "description": "Finding the maximum value",
+    "output": {
+      "description": "Maximum value across all TREs",
+      "data_type": "scalar",
+      "disclosure_risk": "High - can identify individual subjects",
+      "disclosure_mitigation": ["differential privacy", "binning"]
+    },
+    "algorithms": [
+      {
+        "name": "Basic pooling",
+        "description": "Each TRE finds local maximum, aggregator takes maximum of maximums",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Local maximum per TRE"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Hotelling's T2 statistic",
+    "mathjax": "Hotelling's\\ T^2 statistic",
+    "description": "Multivariate generalization of Student's t-statistic",
+    "output": {
+      "description": "T-squared statistic",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Proportions",
+    "description": "Calculating proportions or percentages",
+    "output": {
+      "description": "Proportion values",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "Basic pooling",
+        "description": "Each TRE sends counts, aggregator calculates proportions",
+        "decomposability": "fully-decomposable",
+        "trust_requirements": {
+          "aggregator": ["Counts per category per TRE"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "t-test",
+    "description": "Testing difference between means",
+    "output": {
+      "description": "t-statistic and p-value",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Percentiles",
+    "description": "Values below which a percentage of data falls",
+    "output": {
+      "description": "Percentile values",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Spearman's rank correlation coefficient",
+    "aliases": ["Spearman's rho"],
+    "mathjax": "Spearman's\\ \\rho",
+    "description": "Non-parametric measure of rank correlation",
+    "output": {
+      "description": "Correlation coefficient",
+      "data_type": "scalar"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "Mann-Whitney U test",
+    "aliases": [
+      "Mann–Whitney–Wilcoxon",
+      "Wilcoxon rank-sum test",
+      "Wilcoxon–Mann–Whitney test"
+    ],
+    "description": "Non-parametric test for comparing two groups",
+    "output":{
+      "description": "U statistic and p-value",
+      "data_type": "vector"
+    },
+    "algorithms": [
+      {
+        "name": "To be defined",
+        "decomposability": "non-decomposable",
+        "trust_requirements": {
+          "aggregator": ["To be defined"],
+          "other_clients": []
+        },
+        "communication": {
+          "rounds": 1,
+          "direction": "client-to-server"
+        },
+        "computation": {
+          "execution_model": "linear",
+          "persistent_executors": false
+        }
+      }
+    ]
+  }
+]

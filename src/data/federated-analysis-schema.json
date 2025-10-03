@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Federated Analysis Specification",
+  "description": "Schema for describing statistical analyses in federated TRE networks",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["name", "description", "output", "algorithms"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the analysis",
+        "minLength": 1
+      },
+      "description": {
+        "type": "string",
+        "description": "Brief description of what this analysis computes"
+      },
+      "aliases": {
+        "type": "array",
+        "description": "Alternative names for this analysis",
+        "items": {
+          "type": "string"
+        }
+      },
+      "mathjax": {
+        "type": "string",
+        "description": "Mathematical notation for the analysis name (LaTeX format)"
+      },
+      "tags": {
+        "type": "array",
+        "description": "Categories or keywords for filtering",
+        "items": {
+          "type": "string"
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": ["description", "data_type"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description of the output that leaves the TRE network"
+          },
+          "data_type": {
+            "type": "string",
+            "enum": ["scalar", "vector", "matrix", "higher-order", "text", "graphic", "table"],
+            "description": "Type of data output"
+          },
+          "disclosure_risk": {
+            "type": "string",
+            "description": "Assessment of statistical disclosure risk"
+          },
+          "disclosure_mitigation": {
+            "type": "array",
+            "description": "Methods that can reduce disclosure risk",
+            "items": {
+              "type": "string",
+              "examples": ["low number suppression", "rounding", "top-coding", "noise addition", "differential privacy"]
+            }
+          }
+        }
+      },
+      "algorithms": {
+        "type": "array",
+        "description": "Different algorithmic approaches to compute this analysis",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["name", "decomposability", "trust_requirements", "communication", "computation"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of this algorithmic approach"
+            },
+            "description": {
+              "type": "string",
+              "description": "How this algorithm works"
+            },
+            "mathjax": {
+              "type": "string",
+              "description": "Mathematical formulation (LaTeX format)"
+            },
+            "decomposability": {
+              "type": "string",
+              "enum": [
+                "fully-decomposable",
+                "approximately-decomposable",
+                "non-decomposable",
+                "iteratively-decomposable"
+              ],
+              "description": "Whether the computation can be split into independent local calculations"
+            },
+            "trust_requirements": {
+              "type": "object",
+              "required": ["aggregator", "other_clients"],
+              "properties": {
+                "aggregator": {
+                  "type": "array",
+                  "description": "What data the central aggregator must see",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "other_clients": {
+                  "type": "array",
+                  "description": "What data other TREs in the network must see",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "communication": {
+              "type": "object",
+              "required": ["rounds", "direction"],
+              "properties": {
+                "rounds": {
+                  "oneOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1,
+                      "description": "Fixed number of communication rounds"
+                    },
+                    {
+                      "type": "string",
+                      "enum": ["adaptive"],
+                      "description": "Variable number of rounds determined during execution"
+                    }
+                  ]
+                },
+                "direction": {
+                  "type": "string",
+                  "enum": ["client-to-server", "bidirectional"],
+                  "description": "Direction of data flow"
+                }
+              }
+            },
+            "computation": {
+              "type": "object",
+              "required": ["execution_model", "persistent_executors"],
+              "properties": {
+                "execution_model": {
+                  "type": "string",
+                  "enum": ["linear", "branching"],
+                  "description": "Whether execution follows a fixed path or requires conditional logic"
+                },
+                "persistent_executors": {
+                  "type": "boolean",
+                  "description": "Whether executors must remain active across communication rounds"
+                }
+              }
+            },
+            "privacy_methods": {
+              "type": "object",
+              "properties": {
+                "differential_privacy": {
+                  "type": "string",
+                  "description": "When and how differential privacy can be applied",
+                  "examples": ["optional on output", "required on gradients", "not applicable"]
+                },
+                "encryption": {
+                  "type": "array",
+                  "description": "Which encryption methods are compatible",
+                  "items": {
+                    "type": "string",
+                    "enum": ["HE-compatible", "MPC-compatible", "MPC-required", "HE-required", "none"]
+                  }
+                }
+              }
+            },
+            "performance": {
+              "type": "string",
+              "enum": ["very fast", "fast", "moderate", "slow", "very slow"],
+              "description": "Rough performance characterization"
+            },
+            "accuracy": {
+              "type": "string",
+              "description": "Accuracy characteristics, especially for approximate methods"
+            },
+            "practical_notes": {
+              "type": "array",
+              "description": "Implementation gotchas or important considerations",
+              "items": {
+                "type": "string"
+              }
+            },
+            "references": {
+              "type": "array",
+              "description": "Academic or technical references",
+              "items": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Title or description of reference"
+                  },
+                  "doi": {
+                    "type": "string",
+                    "description": "DOI identifier"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL to reference"
+                  },
+                  "authors": {
+                    "type": "string",
+                    "description": "Authors of the reference"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "description": "Publication year"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
