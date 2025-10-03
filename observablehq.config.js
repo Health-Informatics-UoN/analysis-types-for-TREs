@@ -17,7 +17,7 @@ export default {
   // ],
 
   // Content to add to the head of the page, e.g. for a favicon:
-  head: '<link rel="icon" href="favicon.png" type="image/png">',
+  head: '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
 
   // The path to the source root.
   root: "src",
