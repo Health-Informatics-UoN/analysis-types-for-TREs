@@ -1,0 +1,3 @@
+relationship_id,source_statistic_id,target_statistic_id,relationship_type,description
+rel_tdigest_median,stat_tdigest,stat_percentiles,approximates,t-digest approximates median and other percentiles
+rel_tdigest_percentiles,stat_tdigest,stat_percentiles,approximates,t-digest provides approximate percentile computation

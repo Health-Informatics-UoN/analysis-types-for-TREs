@@ -1,0 +1,33 @@
+statistic_id,alias_name,is_primary
+stat_count,Count,TRUE
+stat_mean,Mean,TRUE
+stat_mean,Average,FALSE
+stat_variance,Variance,TRUE
+stat_covariances,Covariances,TRUE
+stat_datetime_diff,Datetime difference,TRUE
+stat_sample_sizes,Sample sizes,TRUE
+stat_fisher_z,Fisher's Z,TRUE
+stat_fisher_z_var,Variance of Fisher's Z,TRUE
+stat_z_test,Z test,TRUE
+stat_histogram,Histogram,TRUE
+stat_boxplot,Box Plot,TRUE
+stat_chisq_test,Chi-squared test,TRUE
+stat_fisher_exact,Fisher's exact test,TRUE
+stat_linear_reg,Linear regression,TRUE
+stat_kaplan_meier,Kaplan-Meier estimator,TRUE
+stat_anova,Analysis of variance,TRUE
+stat_anova,ANOVA,FALSE
+stat_variant_calling,Variant calling,TRUE
+stat_minimum,Minimum,TRUE
+stat_maximum,Maximum,TRUE
+stat_hotelling_t2,Hotelling's T2 statistic,TRUE
+stat_proportions,Proportions,TRUE
+stat_t_test,t-test,TRUE
+stat_percentiles,Percentiles,TRUE
+stat_spearman,Spearman's rank correlation coefficient,TRUE
+stat_spearman,Spearman's rho,FALSE
+stat_mann_whitney,Mann-Whitney U test,TRUE
+stat_mann_whitney,Mann–Whitney–Wilcoxon,FALSE
+stat_mann_whitney,Wilcoxon rank-sum test,FALSE
+stat_mann_whitney,Wilcoxon–Mann–Whitney test,FALSE
+stat_tdigest,t-digest,TRUE

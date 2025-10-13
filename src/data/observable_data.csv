@@ -1,0 +1,16 @@
+observable_id,algorithm_id,node_type,item,description
+obs_count_ds_agg1,algo_count_datashare,aggregator,Row-level count data,
+obs_count_sum_agg1,algo_count_sum,aggregator,Count,Local count from each client
+obs_mean_ds_agg1,algo_mean_datashare,aggregator,Row-level value data,
+obs_mean_decomp_agg1,algo_mean_decomp,aggregator,Sum,Local sum from each client
+obs_mean_decomp_agg2,algo_mean_decomp,aggregator,Count,Local count from each client
+obs_var_ds_agg1,algo_var_datashare,aggregator,Row-level value data,
+obs_var_decomp_agg1,algo_var_decomp,aggregator,Count,Local count from each client
+obs_var_decomp_agg2,algo_var_decomp,aggregator,Mean,Local mean from each client
+obs_var_decomp_agg3,algo_var_decomp,aggregator,Sum,Local sum from each client
+obs_cov_tbd_agg1,algo_cov_tbd,aggregator,Sums of products means and counts,
+obs_sampsize_pool_agg1,algo_sampsize_pool,aggregator,Local sample sizes,
+obs_hist_pool_agg1,algo_hist_pool,aggregator,Bin counts per TRE,
+obs_min_pool_agg1,algo_min_pool,aggregator,Local minimum per TRE,
+obs_max_pool_agg1,algo_max_pool,aggregator,Local maximum per TRE,
+obs_prop_pool_agg1,algo_prop_pool,aggregator,Counts per category per TRE,

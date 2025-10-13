@@ -1,0 +1,27 @@
+statistic_id,description,output,statbarn_id,mathjax,created_at,updated_at,notes
+stat_count,Counting the subjects that meet some criterion,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,"Low disclosure risk for large counts, high for small cells"
+stat_mean,Calculating the mean of some value for a population,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_variance,Calculating the variance of some value for a population,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_covariances,Analysis: Covariances,matrix,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_datetime_diff,Computing differences between datetime values,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_sample_sizes,Counting samples in each group or dataset,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_fisher_z,Fisher Z transformation of correlation coefficient,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_fisher_z_var,Variance of Fisher's Z transformation,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_z_test,Statistical test using Z statistic,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_histogram,Frequency distribution across bins,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_boxplot,Five-number summary visualization,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_chisq_test,Test of independence in contingency tables,scalar,,\chi^2\ test,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_fisher_exact,Exact test for independence in 2x2 contingency tables,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_linear_reg,Fitting a linear model to data,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_kaplan_meier,Non-parametric estimator of survival function,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_anova,Testing differences between group means,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_variant_calling,Identifying genetic variants from sequence data,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,Output is table-like
+stat_minimum,Finding the minimum value,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,High disclosure risk - can identify individuals
+stat_maximum,Finding the maximum value,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,High disclosure risk - can identify individuals
+stat_hotelling_t2,Multivariate generalization of Student's t-statistic,scalar,,Hotelling's\ T^2 statistic,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_proportions,Calculating proportions or percentages,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_t_test,Testing difference between means,scalar,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_percentiles,Values below which a percentage of data falls,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_spearman,Non-parametric measure of rank correlation,scalar,,Spearman's\ \rho,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_mann_whitney,Non-parametric test for comparing two groups,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
+stat_tdigest,Probabilistic data structure for approximate percentile computation,distribution,,,2025-10-13 10:00:00,2025-10-13 10:00:00,Compact representation for streaming quantiles
