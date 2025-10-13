@@ -1,0 +1,99 @@
+erDiagram
+    statistics ||--o{ statistic_aliases : "has"
+    statistics ||--o{ statistic_relationships : "source"
+    statistics ||--o{ statistic_relationships : "target"
+    statistics ||--o{ algorithms : "implemented by"
+    
+    algorithms ||--o{ observable_data : "has"
+    algorithms ||--o{ algorithm_parameters : "has"
+    algorithms ||--o{ implementations : "has"
+    algorithms ||--o{ reference_docs : "cited by"
+    
+    statistics {
+        VARCHAR statistic_id PK
+        TEXT description
+        output_type output
+        VARCHAR statbarn_id
+        TEXT mathjax
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TEXT notes
+    }
+    
+    statistic_aliases {
+        VARCHAR statistic_id FK
+        VARCHAR alias_name
+        BOOLEAN is_primary
+    }
+    
+    statistic_relationships {
+        VARCHAR relationship_id PK
+        VARCHAR source_statistic_id FK
+        VARCHAR target_statistic_id FK
+        relationship_type relationship_type
+        TEXT description
+    }
+    
+    algorithms {
+        VARCHAR algorithm_id PK
+        VARCHAR statistic_id FK
+        VARCHAR name
+        TEXT description
+        separability_type separability
+        TEXT mathjax
+        INTEGER communication_rounds
+        BOOLEAN adaptive_rounds
+        communication_direction communication_direction
+        BOOLEAN requires_branching
+        BOOLEAN requires_persistence
+        BOOLEAN differential_privacy
+        privacy_encryption_level homomorphic_encryption
+        privacy_encryption_level multiparty_computation
+        VARCHAR computational_complexity
+        VARCHAR communication_complexity
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TEXT notes
+    }
+    
+    observable_data {
+        VARCHAR observable_id PK
+        VARCHAR algorithm_id FK
+        node_type node_type
+        TEXT item
+        TEXT description
+    }
+    
+    algorithm_parameters {
+        VARCHAR parameter_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR parameter_name
+        VARCHAR parameter_type
+        BOOLEAN required
+        VARCHAR default_value
+        TEXT description
+    }
+    
+    implementations {
+        VARCHAR implementation_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR language
+        VARCHAR library_name
+        VARCHAR repository_url
+        VARCHAR version
+        implementation_status status
+        TEXT notes
+        TIMESTAMP created_at
+    }
+    
+    reference_docs {
+        VARCHAR reference_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR name
+        INTEGER year
+        VARCHAR doi
+        VARCHAR url
+        TEXT bibtex
+        TEXT abstract
+        TIMESTAMP created_at
+    }
