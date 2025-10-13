@@ -2,6 +2,8 @@
 theme: [dashboard, air]
 title: Get analyses by requirements
 toc: false
+sql:
+    fed_types: ./data/federated-types.db
 ---
 ```js
 import tex from "npm:@observablehq/tex";
@@ -38,20 +40,18 @@ const filters = view(Inputs.form({
   ),
   
   // Execution model
-  execution_models: Inputs.checkbox(
-    ["linear", "branching"],
+  branching_capable: Inputs.toggle(
     {
-      label: "Execution models supported",
-      value: ["linear"]
+      label: "Capable of branching execution",
+      value: true
     }
   ),
   
   // Persistent executors
-  persistent_executors: Inputs.radio(
-    ["Any", "Not required", "Supported"],
+  persistence_capable: Inputs.toggle(
     {
-      label: "Persistent executors",
-      value: "Not required"
+      label: "Capable of persistent execution",
+      value: false
     }
   ),
   
@@ -84,7 +84,13 @@ const filters = view(Inputs.form({
 }));
 ```
 
-<!-- Filter function -->
+```sql
+SELECT *
+FROM fed_types.algorithms a
+WHERE a.requires_persistence = ${filters.persistence_capable} OR a.requires_persistence = false;
+```
+
+<!-- Filter function
 ```js
 function filterAnalyses(analyses, filters) {
   return analyses
@@ -149,7 +155,7 @@ function filterAnalyses(analyses, filters) {
 }
 ```
 
-<!-- Apply filters -->
+<!-- Apply filters
 ```js
 const filteredAnalyses = filterAnalyses(analyses, filters);
 ```
@@ -160,7 +166,7 @@ const filteredAnalyses = filterAnalyses(analyses, filters);
   <p><strong>${filteredAnalyses.reduce((sum, a) => sum + a.algorithmCount, 0)}</strong> total compatible algorithms</p>
 </div>
 
-<!-- Display results table -->
+<!-- Display results table
 ```js
 Inputs.table(filteredAnalyses, {
   columns: [
