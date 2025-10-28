@@ -25,3 +25,5 @@ stat_percentiles,Values below which a percentage of data falls,vector,,,2025-10-
 stat_spearman,Non-parametric measure of rank correlation,scalar,,Spearman's\ \rho,2025-10-13 10:00:00,2025-10-13 10:00:00,
 stat_mann_whitney,Non-parametric test for comparing two groups,vector,,,2025-10-13 10:00:00,2025-10-13 10:00:00,
 stat_tdigest,Probabilistic data structure for approximate percentile computation,distribution,,,2025-10-13 10:00:00,2025-10-13 10:00:00,Compact representation for streaming quantiles
+stat_cox_proportional_hazards,Fits a model to associate survival times of subjects with some predictor variables,matrix,Survival tables,"",28-10-2025 16:15:10,28-10-2025 16:15:10,"Though this fits a model, the usual desired output is a table of hazards. Usually calculated with confidence intervals etc."
+stat_log_rank,Statistical test to determine whether there's a significant difference in survival times between groups,scalar,Statistical hypothesis tests,"",28-10-2025 16:23:34,28-10-2025 16:23:34,""

@@ -14,3 +14,4 @@ obs_hist_pool_agg1,algo_hist_pool,aggregator,Bin counts per TRE,
 obs_min_pool_agg1,algo_min_pool,aggregator,Local minimum per TRE,
 obs_max_pool_agg1,algo_max_pool,aggregator,Local maximum per TRE,
 obs_prop_pool_agg1,algo_prop_pool,aggregator,Counts per category per TRE,
+obs_km_ds_times,algo_km_datashare,aggregator,Row-level time to event,Survival times for each subject in the cohort

@@ -7,6 +7,7 @@ sql:
 ---
 ```js
 import tex from "npm:@observablehq/tex";
+import {sql} from "npm:@observablehq/duckdb";
 ```
 
 # Available analyses
@@ -43,7 +44,7 @@ const filters = view(Inputs.form({
   branching_capable: Inputs.toggle(
     {
       label: "Capable of branching execution",
-      value: true
+      value: false
     }
   ),
   
@@ -64,12 +65,12 @@ const filters = view(Inputs.form({
     }
   ),
   
-  // Decomposability preference
-  decomposability: Inputs.checkbox(
-    ["fully-decomposable", "approximately-decomposable", "iteratively-decomposable", "non-decomposable"],
+  // Separability preference
+  separability: Inputs.checkbox(
+    ["none", "fully", "iterative"],
     {
       label: "Acceptable decomposability",
-      value: ["fully-decomposable", "approximately-decomposable"]
+      value: ["fully", "iterative"]
     }
   ),
   
@@ -85,10 +86,14 @@ const filters = view(Inputs.form({
 ```
 
 ```sql
+-- I've tried filtering by separability but duckdb and observable don't do arrays well
+-- I'll just have to do it in js
 SELECT *
 FROM fed_types.algorithms a
-WHERE a.requires_persistence = ${filters.persistence_capable} OR a.requires_persistence = false;
+WHERE (a.requires_persistence = ${filters.persistence_capable} OR a.requires_persistence = false)
+AND (a.requires_branching = ${filters.branching_capable} OR a.requires_branching = false);
 ```
+
 
 <!-- Filter function
 ```js
