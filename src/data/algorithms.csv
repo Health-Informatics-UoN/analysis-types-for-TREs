@@ -1,30 +1,28 @@
 algorithm_id,statistic_id,name,description,separability,mathjax,communication_rounds,adaptive_rounds,communication_direction,requires_branching,requires_persistence,differential_privacy,homomorphic_encryption,multiparty_computation,computational_complexity,communication_complexity,created_at,updated_at,notes
-algo_count_datashare,stat_count,Data sharing,Sending all the data required to count subjects in one place.,none,Total = \sum{rows},1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_count_sum,stat_count,Sum of counts,Sending the counts from each node to be added together.,fully,Total = \sum{counts},1,false,client_to_aggregator,false,false,false,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_mean_datashare,stat_mean,Data sharing,Sending all the data required to calculate the mean of subjects in one place.,none,Mean = \frac{\sum{values}}{n},1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_mean_decomp,stat_mean,Basic decomposition,Sending the local sums of the value and the counts to an aggregator to calculate the aggregate mean,fully,Mean = \frac{\sum{sum \times count}}{\sum{counts}},1,false,client_to_aggregator,false,false,false,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_var_datashare,stat_variance,Data sharing,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_var_decomp,stat_variance,Basic decomposition,"Using sufficient statistics to compute variance: sum\, sum of squares\, and count",fully,,1,false,client_to_aggregator,false,false,false,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_cov_tbd,stat_covariances,To be defined,,fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_datetime_tbd,stat_datetime_diff,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_sampsize_pool,stat_sample_sizes,Basic pooling,,fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_fisherz_tbd,stat_fisher_z,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_fisherzvar_tbd,stat_fisher_z_var,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_ztest_tbd,stat_z_test,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_hist_pool,stat_histogram,Basic pooling,"Each TRE bins data locally\,  aggregator sums frequencies per bin",fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,Requires agreement on bin boundaries across TREs
-algo_boxplot_tbd,stat_boxplot,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_chisq_tbd,stat_chisq_test,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_fisherexact_tbd,stat_fisher_exact,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_linreg_tbd,stat_linear_reg,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_km_datashare,stat_kaplan_meier,Data sharing,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_anova_tbd,stat_anova,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_variant_tbd,stat_variant_calling,To be defined,,none,,1,false,client_to_aggregator,true,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_min_pool,stat_minimum,Basic pooling,"Each TRE finds local minimum\, aggregator takes minimum of minima",fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_max_pool,stat_maximum,Basic pooling,"Each TRE finds local maximum\, aggregator takes maximum of maxima",fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_hotelling_tbd,stat_hotelling_t2,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_prop_pool,stat_proportions,Basic pooling,"Each TRE sends counts\,  aggregator calculates proportions",fully,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_ttest_tbd,stat_t_test,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_pct_tbd,stat_percentiles,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_spearman_tbd,stat_spearman,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_mannwhitney_tbd,stat_mann_whitney,To be defined,,none,,1,false,client_to_aggregator,false,false,false,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
-algo_cov_datashare,stat_covariances,Data pooling,Pool the row-level data for the fields required to calculate covariances,none,"",1,false,client_to_aggregator,false,false,false,none,none,"","",28-10-2025 14:06:13,28-10-2025 14:06:13,""
+algo_count_datashare,stat_count,Data sharing,Sending all the data required to count subjects in one place.,none,Total = \sum{rows},1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_count_sum,stat_count,Sum of counts,Sending the counts from each node to be added together.,fully,Total = \sum{counts},1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_mean_datashare,stat_mean,Data sharing,Sending all the data required to calculate the mean of subjects in one place.,none,Mean = \frac{\sum{values}}{n},1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_mean_decomp,stat_mean,Basic decomposition,Sending the local sums of the value and the counts to an aggregator to calculate the aggregate mean,fully,Mean = \frac{\sum{sum \times count}}{\sum{counts}},1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_var_datashare,stat_variance,Data sharing,,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_var_decomp,stat_variance,Basic decomposition,"Using sufficient statistics to compute variance: sum\, sum of squares\, and count",fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,compatible,compatible,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_cov_decomp,stat_covariance,Basic decomposition,,fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_sampsize_pool,stat_sample_sizes,Basic pooling,,fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_hist_pool,stat_histogram,Basic pooling,"Each TRE bins data locally\,  aggregator sums frequencies per bin",fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,Requires agreement on bin boundaries across TREs
+algo_km_datashare,stat_kaplan_meier,Data sharing,,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_min_pool,stat_minimum,Basic pooling,"Each TRE finds local minimum\, aggregator takes minimum of minima",fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_max_pool,stat_maximum,Basic pooling,"Each TRE finds local maximum\, aggregator takes maximum of maxima",fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_prop_pool,stat_proportions,Basic pooling,"Each TRE sends counts\,  aggregator calculates proportions",fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,13/10/2025 10:00,13/10/2025 10:00,
+algo_cov_datashare,stat_covariance,Data pooling,Pool the row-level data for the fields required to calculate covariances,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,28/10/2025 14:06,28/10/2025 14:06,
+algo_cox_prop_datashare,stat_cox_proportional_hazards,Data pooling,"Share the row-level data for time-to-event and predictor variables, then fit the Cox proportional hazards model in the aggregator",none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 10:23,29/10/2025 10:23,
+algo_quantile_datashare,stat_quantile,Data pooling,"Clients send row-level data to the aggregator, which then calculates the quartiles",none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 14:07,29/10/2025 14:07,
+algo_pmcc_datashare,stat_pmcc,Data pooling,"Clients send the row-level data for the variables in question, which the aggregator uses to calculate the statistic.",none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 14:42,29/10/2025 14:42,
+algo_t_test_datashare,stat_students_t,Data pooling,Clients send row-level data for the response of each group for the aggregator to compare,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 14:46,29/10/2025 14:46,
+algo_one_sample_t_datashare,stat_one_sample_t,Data pooling,Clients send over the row-level data for the response variable for the cohort,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 14:52,29/10/2025 14:52,
+algo_one_sample_t_decomp,stat_one_sample_t,Basic decomposition,Clients send the summary statistics sufficient to calculate the statistic,fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 14:59,29/10/2025 14:59,"For one sample t-test
+$$t=\frac{\bar{x} - \mu_0}{s/\sqrt{n}}$$
+The sample mean, $\bar{x}$ can be calculated from the sum of the response variable and the count.
+The sample standard deviation can be calculated from the sum, sum of squares, and the count."
+algo_pmcc_decomp,stat_pmcc,Basic decomposition,Clients send sufficient summary statistics for calculating the statistic,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 15:16,29/10/2025 15:16,"$$\rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X \sigma_Y}$$
+$cov$ is the covariance
+$\sigma_X$ is the standard deviation of $X$
+$\sigma_Y$ is the standard deviation of $Y$"
