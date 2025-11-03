@@ -10,7 +10,7 @@ stat_fisher_z_var,Variance of Fisher's Z transformation,scalar,,,13/10/2025 10:0
 stat_z_test,Statistical test using Z statistic,scalar,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_histogram,Frequency distribution across bins,vector,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_boxplot,Five-number summary visualization,vector,,,13/10/2025 10:00,13/10/2025 10:00,
-stat_chisq_test,Test of independence in contingency tables,scalar,,\chi^2\ test,13/10/2025 10:00,13/10/2025 10:00,
+stat_chisq_test,Test of independence in contingency tables,scalar,,$\chi^{2}$ test,13/10/2025 10:00,13/10/2025 10:00,
 stat_fisher_exact,Exact test for independence in 2x2 contingency tables,scalar,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_linear_reg,Fitting a linear model to data,vector,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_kaplan_meier,Non-parametric estimator of survival function,vector,,,13/10/2025 10:00,13/10/2025 10:00,
@@ -18,10 +18,10 @@ stat_anova,Testing differences between group means,scalar,,,13/10/2025 10:00,13/
 stat_variant_calling,Identifying genetic variants from sequence data,vector,,,13/10/2025 10:00,13/10/2025 10:00,Output is table-like
 stat_minimum,Finding the minimum value,scalar,,,13/10/2025 10:00,13/10/2025 10:00,High disclosure risk - can identify individuals
 stat_maximum,Finding the maximum value,scalar,,,13/10/2025 10:00,13/10/2025 10:00,High disclosure risk - can identify individuals
-stat_hotelling_t2,Multivariate generalization of Student's t-statistic,scalar,,Hotelling's\ T^2 statistic,13/10/2025 10:00,13/10/2025 10:00,
+stat_hotelling_t2,Multivariate generalization of Student's t-statistic,scalar,,Hotelling's $T^2$ statistic,13/10/2025 10:00,13/10/2025 10:00,
 stat_proportions,Calculating proportions or percentages,vector,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_percentiles,Values below which a percentage of data falls,vector,,,13/10/2025 10:00,13/10/2025 10:00,
-stat_spearman,Non-parametric measure of rank correlation,scalar,,Spearman's\ \rho,13/10/2025 10:00,13/10/2025 10:00,
+stat_spearman,Non-parametric measure of rank correlation,scalar,,Spearman's $\rho$,13/10/2025 10:00,13/10/2025 10:00,
 stat_mann_whitney,Non-parametric test for comparing two groups,vector,,,13/10/2025 10:00,13/10/2025 10:00,
 stat_tdigest,Probabilistic data structure for approximate percentile computation,distribution,,,13/10/2025 10:00,13/10/2025 10:00,Compact representation for streaming quantiles
 stat_cox_proportional_hazards,Fits a model to associate survival times of subjects with some predictor variables,matrix,Survival tables,,28/10/2025 16:15,28/10/2025 16:15,"Though this fits a model, the usual desired output is a table of hazards. Usually calculated with confidence intervals etc."
@@ -29,7 +29,7 @@ stat_log_rank,Statistical test to determine whether there's a significant differ
 stat_quantile,Dividing the range of a probability distribution into continuous intervals with equal probabilities or dividing the observations in a sample in the same way.,scalar,Position,,29/10/2025 14:00,29/10/2025 14:00,"The output data type depends on whether you ask for a single quantile or all the quantiles for your intervals, e.g. Median is a scalar, but interquartile range is multiple values"
 stat_pmcc,Correlation coefficient for the linear correlation of two variables,scalar,Correlation coefficients,,29/10/2025 14:28,29/10/2025 14:28,
 stat_students_t,Statistical test to test whether the responses of two groups are significantly different,scalar,Statistical hypothesis tests,,29/10/2025 14:40,29/10/2025 14:40,
-stat_one_sample_t,Location test of whether the mean of a population has a value specified in a null hypothesis.,scalar,Statistical hypothesis tests,"",29-10-2025 14:48:27,29-10-2025 14:48:27,""
-stat_two_sample_t,"Location test of whether the means of two populations are equal, the null hypothesis.",scalar,Statistical hypothesis tests,"",29-10-2025 14:51:09,29-10-2025 14:51:09,""
-stat_indep_2t_eq_size,Statistical test to determine whether there's a significant difference in the response variable for two groups with equal sizes and variance.,scalar,Statistical hypothesis tests,"",29-10-2025 15:07:03,29-10-2025 15:07:03,""
-stat_indep_2t_sim_var,Statistical test to determine whether there's a significant difference in the response variable for two groups with similar variances.,scalar,Statistical hypothesis tests,"",29-10-2025 15:07:52,29-10-2025 15:07:52,""
+stat_one_sample_t,Location test of whether the mean of a population has a value specified in a null hypothesis.,scalar,Statistical hypothesis tests,,29/10/2025 14:48,29/10/2025 14:48,
+stat_two_sample_t,"Location test of whether the means of two populations are equal, the null hypothesis.",scalar,Statistical hypothesis tests,,29/10/2025 14:51,29/10/2025 14:51,
+stat_indep_2t_eq_size,Statistical test to determine whether there's a significant difference in the response variable for two groups with equal sizes and variance.,scalar,Statistical hypothesis tests,,29/10/2025 15:07,29/10/2025 15:07,
+stat_indep_2t_sim_var,Statistical test to determine whether there's a significant difference in the response variable for two groups with similar variances.,scalar,Statistical hypothesis tests,,29/10/2025 15:07,29/10/2025 15:07,
