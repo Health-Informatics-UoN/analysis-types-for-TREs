@@ -89,7 +89,29 @@ const filters = view(Inputs.form({
 ``` -->
 
 ```js
-const filters = Inputs.form()
+const algo_filters = view(Inputs.form({
+    
+    //branching_capable: Inputs.toggle(
+    //  {
+    //    label: "Capable of branching execution",
+    //    value: false
+    //  }
+    //),
+    acceptable_separability: Inputs.checkbox(
+        ["fully", "iterative", "none"],
+        {
+            label: "Acceptable separability",
+            value: ["fully"]
+        } 
+    ),
+    acceptableCommunicationDirection: Inputs.checkbox(
+        ["client to aggregator", "bidirectional"],
+        {
+            label: "Acceptable communication directions",
+            value: ["client to aggregator"]
+        }
+    ),
+}));
 ```
 
 ```js
@@ -98,6 +120,21 @@ const algorithmList = algorithms.map(
         const algo = new Algorithm(d);
         algo.addObservables(observableData);
         return algo
+    }
+).filter(
+    d => {
+        // Separability check
+        if (!algo_filters.acceptable_separability.includes(d.separability)){
+            return false;
+        };
+        // Branching execution - not relevant until I have examples
+        //if (d.requiresBranching && !algo_filters.branching_capable){
+        //    return false;
+        //};
+        if (!algo_filters.acceptableCommunicationDirection.includes(d.communicationDirection)){
+            return false;
+        };
+        return true;
     }
 );
 
@@ -110,8 +147,10 @@ const statisticsList = statistics.map(
             return stat
         }
     }
-);
+).filter(stat => stat != null);
 ```
+
+There are ${statisticsList.length} compatible statistics, implemented with ${algorithmList.length} total algorithms.
 
 ```js
 html`${statisticsList.map(stat => stat ? stat.display(): "")}`

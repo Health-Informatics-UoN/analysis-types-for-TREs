@@ -226,7 +226,7 @@ export class Algorithm {
     this.mathjax = algorithmField.mathjax;
     this.communicationRounds = algorithmField.communication_rounds;
     this.adaptiveRounds = algorithmField.adaptive_rounds === "true";
-    this.communicationDirection = algorithmField.communication_direction.replace("_", " ");
+    this.communicationDirection = algorithmField.communication_direction.replaceAll("_", " ");
     this.requiresBranching = algorithmField.requires_branching === "true";
     this.requiresPersistence = algorithmField.requires_persistence === "true";
     this.differentialPrivacy = algorithmField.differential_privacy;
@@ -357,8 +357,10 @@ export class Algorithm {
           ${getSeparabilityString(this.separability)}
         </span>
       </div>
-
+      
       <p style="color: #4b5563; margin: 0.5rem 0 1rem 0; font-size: 0.95rem;">${this.description}</p>
+
+      ${htmlUnsafe(marked.parse(this.mathjax))}
 
       <div style="
         display: flex;
