@@ -20,3 +20,7 @@ obs_cox_prop_ds_tte,algo_cox_prop_datashare,aggregator,Row-level time-to-event,T
 obs_cox_prop_ds_pred,algo_cox_prop_datashare,aggregator,Row-level predictor variables,Predictor variables for each subject
 obs_cov_ds_agg,algo_cov_datashare,aggregator,Row-level variable data,Data for each subject for each variable for calculating covariance
 obs_quantile_ds,algo_quantile_datashare,aggregator,Row-level variable,Row-level data for the variable for which the quartiles are calculated
+obs_var_iter_count,algo_var_iter,aggregator,Sum,Local sum from each client
+obs_var_iter_sum,algo_var_iter,aggregator,Count,Local count from each client
+obs_var_iter_mean,algo_var_iter,other_clients,Mean,The aggregate mean across all clients
+obs_var_iter_ss,algo_var_iter,aggregator,Squared sum of differences,The squared sum of differences from the aggregate mean.

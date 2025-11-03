@@ -24,7 +24,8 @@ $$t=\frac{\bar{x} - \mu_{0}}{s/\sqrt{n}}$$
 
 The sample mean, $\bar{x}$ can be calculated from the sum of the response variable and the count.
 The sample standard deviation can be calculated from the sum, sum of squares, and the count."
-algo_pmcc_decomp,stat_pmcc,Basic decomposition,Clients send sufficient summary statistics for calculating the statistic,none,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 15:16,29/10/2025 15:16,"$$\rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X \sigma_Y}$$
+algo_pmcc_decomp,stat_pmcc,Basic decomposition,Clients send sufficient summary statistics for calculating the statistic,fully,,1,FALSE,client_to_aggregator,FALSE,FALSE,FALSE,none,none,,,29/10/2025 15:16,29/10/2025 15:16,"$$\rho_{X,Y}=\frac{cov(X,Y)}{\sigma_X \sigma_Y}$$
 $cov$ is the covariance
 
 $\sigma_{X}$ is the standard deviation of $X$ and $\sigma_{Y}$ is the standard deviation of $Y$"
+algo_var_iter,stat_variance,Iterative calculation,Iteratively calculate the variance using an aggregated mean.,iterative,$S^{2} = \frac{\sum{(x_{i}-\bar{x})^{2}}}{n-1}$,2,FALSE,bidirectional,FALSE,FALSE,FALSE,none,none,,,03/11/2025 12:13,03/11/2025 12:13,"The mean across samples ( $\bar{x}$ ) can be calculated separably with a round of aggregation, then sent to each client, which can then subtract the values from the sample mean ( $\sum{(x_{i}-\bar{x})^{2}}$ ) and send this value back to the aggregator."
