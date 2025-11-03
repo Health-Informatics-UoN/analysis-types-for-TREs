@@ -1,0 +1,15 @@
+Barn,Example,Class,Status
+Frequencies,Frequency tables,Unsafe,Very well understood
+Statistical hypothesis tests,"t-stats, p-stats, f-stats",Safe,Provisional
+Correlation coefficients,Regression coefficients,Safe,Confirmed
+Position,"Median, quartiles",Unsafe,Provisional
+End points,"Maximum, minimum",Unsafe,Very well understood
+Shape,"s.d., skewness, kurtosis",Safe,Provisional
+Linear aggregations,"Means, totals",Unsafe,Very well understood
+Mode,Mode,Safe,Provisional
+Non-linear concentration ratios,Herfindahl index,Safe,Provisional
+Calculated ratios,Odds & risk ratios,Unsafe,Confirmed
+Survival tables,Hazard/survival tables,Unsafe,Provisional
+Gini coefficient,Gini coefficient,Safe,Provisional
+Linked/multi-level tables,Nested categorical data,?,Unknown
+Clusters,Cluster analysis,?,Unknown

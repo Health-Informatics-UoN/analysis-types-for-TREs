@@ -1,0 +1,26 @@
+observable_id,algorithm_id,node_type,item,description
+obs_count_ds_agg1,algo_count_datashare,aggregator,Row-level count data,
+obs_count_sum_agg1,algo_count_sum,aggregator,Count,Local count from each client
+obs_mean_ds_agg1,algo_mean_datashare,aggregator,Row-level value data,
+obs_mean_decomp_agg1,algo_mean_decomp,aggregator,Sum,Local sum from each client
+obs_mean_decomp_agg2,algo_mean_decomp,aggregator,Count,Local count from each client
+obs_var_ds_agg1,algo_var_datashare,aggregator,Row-level value data,
+obs_var_decomp_agg1,algo_var_decomp,aggregator,Count,Local count from each client
+obs_var_decomp_agg2,algo_var_decomp,aggregator,Sum,Local sum from each client
+obs_cov_decomp_counts,algo_cov_decomp,aggregator,Count,Local count from each client
+obs_cov_decomp_sum,algo_cov_decomp,aggregator,Sum,Local sum from each client
+obs_cov_decomp_sum_xy,algo_cov_decomp,aggregator,Sum,Local sum of multiplied variables
+obs_sampsize_pool_agg1,algo_sampsize_pool,aggregator,Count,Local sample sizes
+obs_hist_pool_agg1,algo_hist_pool,aggregator,Count,Bin counts per TRE
+obs_min_pool_agg1,algo_min_pool,aggregator,Minimum,Local minimum per TRE
+obs_max_pool_agg1,algo_max_pool,aggregator,Maximum,Local maximum per TRE
+obs_prop_pool_agg1,algo_prop_pool,aggregator,Count,Counts per category per TRE
+obs_km_ds_times,algo_km_datashare,aggregator,Row-level time to event,Survival times for each subject in the cohort
+obs_cox_prop_ds_tte,algo_cox_prop_datashare,aggregator,Row-level time-to-event,The time-to-event (survival time) for each subject
+obs_cox_prop_ds_pred,algo_cox_prop_datashare,aggregator,Row-level predictor variables,Predictor variables for each subject
+obs_cov_ds_agg,algo_cov_datashare,aggregator,Row-level variable data,Data for each subject for each variable for calculating covariance
+obs_quantile_ds,algo_quantile_datashare,aggregator,Row-level variable,Row-level data for the variable for which the quartiles are calculated
+obs_var_iter_count,algo_var_iter,aggregator,Sum,Local sum from each client
+obs_var_iter_sum,algo_var_iter,aggregator,Count,Local count from each client
+obs_var_iter_mean,algo_var_iter,other_clients,Mean,The aggregate mean across all clients
+obs_var_iter_ss,algo_var_iter,aggregator,Squared sum of differences,The squared sum of differences from the aggregate mean.
