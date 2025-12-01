@@ -12,22 +12,22 @@ There are three kinds of people this is aimed at, and ultimately we will aim to 
 3. **Researchers**: people who want to submit analyses to TREs within a Federation in which they are an approved member of a project. Their main concern is whether they can do the analysis they want.
 
 ## Analysis
-The first thing any of these people need to think about is whether the output of an analysis is acceptable to all parties.
-If not, nothing else matters and you should go home.
+Publishing the output of an analysis must be acceptable to all parties.
+If the output is unacceptable to any of the parties, no algorithm for calculating it will be acceptable.
 To help make these decisions, we report the [StatBarn](https://outputchecking.org/statbarn/) for each analysis, where possible.
 
-If you are lucky enough to want to do some research that everyone is happy with, you still need to make sure the way it is calculated is acceptable too, which is why we describe different federated *algorithms*.
+Assuming an analysis delivers an acceptable output, the algorithm used to compute it must do that in an acceptable way, which is why we describe different federated *algorithms*.
 
 ### Aliases
 Sometimes different fields will call the same statistic a different name.
-Federated research should be a broad church, so we have tried to keep a record of other names somebody might call your favourite method.
+Federated research should be a broad church, so we have tried to keep a record of alternative names, aliases, for analyses.
 
 ### Relationships
 Some analyses might be good approximations for another, or be a special case of a wider family.
 We have captured some of these types of relationships so you can find the right analysis for a given federation more easily.
 
 ## Algorithm
-All of these kinds of analysis could be done by sending all of everyone's data to one place, but nobody is going to let you do that, or you wouldn't be here.
+All of these kinds of analysis could be done by sending all of everyone's data to one place, but this is likely to be an unacceptable breach of confidentiality.
 Alternative algorithms for calculating these might be more acceptable for your federation, and the descriptions here are designed to make that decision easier.
 The basic idea for each algorithm is described, then some technical attributes are described so you can filter out unacceptable algorithms.
 
@@ -86,9 +86,9 @@ Some analyses require the aggregator to be able to send something (for example, 
 This may or may not be compatible with either the technical capabilities or governance of a TRE.
 
 ### Execution environment
-Some analysis requires complex branching of workflows, whereas others can be carried out in a linear fashion.
+Some analysis requires complex branching of workflows, whereas others can be carried out linearly.
 Some require an executor that can persist over multiple rounds, whereas others can be carried out by an executor that carries out a single task and then exits.
-These capabilities depend on the execution environment provided in each TRE.
+These capabilities depend on the execution environment provided by each TRE.
 
 ### Privacy-preserving measures
 Differential privacy and encryption techniques mean that some analyses and algorithms that previously represented an unacceptable disclosure risk become acceptable.
@@ -102,16 +102,14 @@ Here, we make it transparent *who* can see *what*.
 Running an algorithm may require some set-up, for example, sharing the initial model in federated learning.
 
 ### Implementations
-Luckily, we live in a world where people share code.
-If we can find an implementation of an algorithm that can be used in federated analysis, it can be reported.
+If we can find an implementation of an algorithm that can be used in federated analysis, a link can be provided.
 
 ### Reference documents
-Random code from the internet might not persuade responsible researchers that an algorithm is acceptable or useful for their purpose.
-Luckily, peer-reviewed literature should represent a higher standard of reliability, so academic sources may be included.
+Peer-reviewed literature can help domain experts to assess the trustworthiness and applicability of an algorithm, so academic sources may be included.
 
-## ERDs for nERDs
+## Entity relationship diagram
 
-If you like diagrams, here is an entity relationship diagram for the schema used to model analyses and algorithms.
+To allow the website to represent the information, and to allow filtering, the data are stored in a defined schema, as described by this diagram.
 
 ```mermaid
 erDiagram
