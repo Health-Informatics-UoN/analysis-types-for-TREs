@@ -1,5 +1,6 @@
 ---
 theme: air
+style: entrust-style.css
 title: Categorisation of Analysis methods
 ---
 # Categorising analysis types
