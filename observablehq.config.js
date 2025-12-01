@@ -27,7 +27,9 @@ export default {
   // Some additional configuration options and their defaults:
   // theme: "default", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
-  footer: "", // what to show in the footer (HTML)
+  footer: `
+  <img src="EOSC-ENTRUST LOGO_Horizontal.png" alt="EOSC-ENTRUST logo">
+  `, // what to show in the footer (HTML)
   // sidebar: true, // whether to show the sidebar
   // toc: true, // whether to show the table of contents
   // pager: true, // whether to show previous & next links in the footer
