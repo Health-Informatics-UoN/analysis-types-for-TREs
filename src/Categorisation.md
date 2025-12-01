@@ -37,7 +37,7 @@ We record three variants of decomposability:
 
 - **Fully decomposable**: Each TRE can compute some summary statistic that is sufficient to calculate the statistic for the whole population of the federation.
 - **Non-decomposable**: Using this algorithm, the only option is to share your data.
-- **Iteratively decomposable**: Algorithms that require multiple rounds of communication between TREs and an aggregator.
+- **Iterative**: Algorithms that require multiple rounds of communication between TREs and an aggregator.
 
 #### Examples
 You can calculate the mean across a federation by computing the local count and sum and sending those to an aggregator.
@@ -71,7 +71,7 @@ sequenceDiagram
 
 Here, the TREs train the model on their local data, then send these updates back to the aggregator, where they are combined.
 The updated model is sent back to TREs, and the process repeats until some criterion is reached.
-There are a couple of important points about iteratively decomposable analyses.
+There are a couple of important points about iterative analyses.
 First, some data might then be observed by other TREs, as they can see how the model has been updated each round.
 In this example, it's not much of a disclosure risk, but what this information is varies by analysis.
 Second, your federation needs to efficiently support multiple rounds of communication.
