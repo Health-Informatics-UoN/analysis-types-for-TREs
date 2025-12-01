@@ -1,6 +1,7 @@
 ---
 theme: air
 toc: false
+style: entrust-style.css
 ---
 
 <div class="hero">
@@ -32,10 +33,7 @@ First we justify how analyses are [categorised](Categorisation), then provide a 
   font-size: 14vw;
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #EE7326;
 }
 
 .hero h2 {
