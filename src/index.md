@@ -21,7 +21,8 @@ However, there are many cases where this presents an unacceptable breach of conf
 <div style="margin:1rem 0;">
 This is why an <b>analysis</b> is treated separately to the <b>algorithm(s)</b> used to compute it.
 The analysis covers what the final output is that is published.
-Algorithms are described by what data can be observed by which other parties in the federated analysis.
+Algorithms describe how the analysis is computed.
+This provides information like what data can be observed by which other parties in the federated analysis and technical requirements for TREs.
 </div>
 
 ---
