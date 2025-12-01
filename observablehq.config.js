@@ -28,7 +28,17 @@ export default {
   // theme: "default", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
   footer: `
-  <img src="EOSC-ENTRUST LOGO_Horizontal.png" alt="EOSC-ENTRUST logo">
+  <div style="display:grid; grid-template-columns: 30% 30% 30%">
+    <div>
+      <img src="EOSC-ENTRUST LOGO_Horizontal.png" alt="EOSC-ENTRUST logo">
+    </div>
+    <div>
+      <img src="Nottingham_Blue_single_colour_logo_SCREEN.png" alt="University of Nottingham logo">
+    </div>
+    <div>
+      <img src="primary.svg" alt="Federated research logo">
+    </div>
+  </div>
   `, // what to show in the footer (HTML)
   // sidebar: true, // whether to show the sidebar
   // toc: true, // whether to show the table of contents
