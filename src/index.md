@@ -10,8 +10,23 @@ toc: false
 
 ---
 
-First we justify how analyses are [categorised](Categorisation), then provide a [dashboard](analysis-breakdown) so you can enter your TRE requirements and see what analyses are compatible.
+<div style="margin:1rem 0;">
+Trusted research environments (TREs) can take part in federated analytics, where multiple partners in a network collaborate to compute some analysis, providing <em>data access</em> without <em>data sharing</em>.
+What analyses are feasible for TREs depends on technical possibility and the operational acceptability of different stages of analysis. 
+In theory, any of these analyses are made possible by moving data into one place and carrying out the analysis.
+That might be acceptable for some TREs.
+However, there are many cases where this presents an unacceptable breach of confidentiality, and the analysis should be performed by calculating a local result that can be combined with similar results for other TREs.
+</div>
 
+<div style="margin:1rem 0;">
+This is why an <b>analysis</b> is treated separately to the <b>algorithm(s)</b> used to compute it.
+The analysis covers what the final output is that is published.
+Algorithms are described by what data can be observed by which other parties in the federated analysis.
+</div>
+
+---
+
+You can read more details on how analyses are [categorised](Categorisation), or use the [dashboard](analysis-breakdown) to see whether your TRE requirements are compatible with different federated analyses.
 
 <style>
 
