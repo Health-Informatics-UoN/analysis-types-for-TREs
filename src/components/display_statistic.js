@@ -18,7 +18,7 @@ function htmlUnsafe(string) {
 function getSeparabilityColor(sep) {
   const colors = {
     "fully": "#10b981",
-    "iterative": "#f59e0b",
+    "iterative": "#EE7326",
     "none": "#ef4444"
   };
   return colors[sep] || "#6b7280";
@@ -84,7 +84,7 @@ export class Statistic {
       return html`
       <div style="
         background: #f9fafb;
-        border-left: 3px solid #3b82f6;
+        border-left: 3px solid #204f90;
         padding: 1rem;
         margin: 1rem 0;
         border-radius: 0.5rem;
@@ -99,7 +99,7 @@ export class Statistic {
               border-radius: 1rem;
               font-size: 0.875rem;
               color: #374151;
-              ${a.is_primary === "true" ? "font-weight: 600; border-color: #3b82f6; color: #3b82f6;" : ""}
+              ${a.is_primary === "true" ? "font-weight: 600; border-color: #204f90; color: #3b82f6;" : ""}
             ">${a.alias_name}</span>
           `)}
         </div>
@@ -119,10 +119,10 @@ export class Statistic {
         margin: 1rem 0;
       ">
         <div style="
-          background: #fef3c7;
+          background: #f2d6c2;
           padding: 0.75rem;
           border-radius: 0.5rem;
-          border-left: 3px solid #f59e0b;
+          border-left: 3px solid #EE7326;
         ">
           <div style="font-size: 0.75rem; color: #92400e; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Output Type</div>
           <div style="font-size: 1rem; color: #78350f; font-weight: 500; margin-top: 0.25rem;">${this.output}</div>
@@ -136,10 +136,10 @@ export class Statistic {
           background: #e0e7ff;
           padding: 0.75rem;
           border-radius: 0.5rem;
-          border-left: 3px solid #6366f1;
+          border-left: 3px solid #204F90;
         ">
-          <div style="font-size: 0.75rem; color: #3730a3; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Algorithms</div>
-          <div style="font-size: 1rem; color: #312e81; font-weight: 500; margin-top: 0.25rem;">${this.algorithms.length} available</div>
+          <div style="font-size: 0.75rem; color: ##3f5f8c; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Algorithms</div>
+          <div style="font-size: 1rem; color: ##22344d; font-weight: 500; margin-top: 0.25rem;">${this.algorithms.length} available</div>
         </div>
       </div>
     `;
@@ -197,7 +197,7 @@ export class Statistic {
       <details style="margin-top: 1.5rem;">
         <summary style="
           cursor: pointer;
-          color: #3b82f6;
+          color: #204f90;
           font-weight: 600;
           font-size: 1.1rem;
           padding: 0.75rem;
