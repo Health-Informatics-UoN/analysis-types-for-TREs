@@ -4,107 +4,212 @@ style: entrust-style.css
 title: Categorisation of Analysis methods
 ---
 # Categorising analysis types
-This is a slightly sensitive work in progress, so in lieu of a proper explanation, I'll describe the parts of the JSON schema used to describe federated analyses.
 
-## Name
-The top level name is the name or short description of the output of the analysis, e.g. Mean.
+The aim of representing possible federated analysis methods is to make it easier for people involved in federated research to reason and communicate about what methods are possible.
+There are three kinds of people this is aimed at, and ultimately we will aim to organise the information differently according to their concerns:
 
-## Description
-A slightly longer description of the output.
+1. **Federation administrators**: people responsible for coordinating a federation of TREs. Their main concern is whether how their federation is organised will allow an analysis.
+2. **TRE administrators**: people responsible for managing and operating a TRE. Their main concern is whether an analysis is (i) technically possible and (ii) permissible according to their capabilities and governance.
+3. **Researchers**: people who want to submit analyses to TREs within a Federation in which they are an approved member of a project. Their main concern is whether they can do the analysis they want.
 
-## Aliases
-Some statistics get a few names.
-The one we are most familiar with gets top billing, the runners up go here.
+## Analysis
+Publishing the output of an analysis must be acceptable to all parties.
+If the output is unacceptable to any of the parties, no algorithm for calculating it will be acceptable.
+To help make these decisions, we report the [StatBarn](https://outputchecking.org/statbarn/) for each analysis, where possible.
 
-## Tags
-The output might fall within some higher level categories, so we have them as tags here.
+Assuming an analysis delivers an acceptable output, the algorithm used to compute it must do that in an acceptable way, which is why we describe different federated *algorithms*.
 
-## Output
-The actual data that an analysis returns overall, and is what is output by the overall federated analysis needs a bit more description.
+### Aliases
+Sometimes different fields will call the same statistic a different name.
+Federated research should be a broad church, so we have tried to keep a record of alternative names, aliases, for analyses.
 
-### Data type
-Each analysis has a different disclosure risk, but the data type can give a shorthand.
-This is one of:
+### Relationships
+Some analyses might be good approximations for another, or be a special case of a wider family.
+We have captured some of these types of relationships so you can find the right analysis for a given federation more easily.
 
-- Scalar
-- Vector
-- Matrix
-- Higher-order
-- text
-- graphic
-- table
+## Algorithm
+All of these kinds of analysis could be done by sending all of everyone's data to one place, but this is likely to be an unacceptable breach of confidentiality.
+Alternative algorithms for calculating these might be more acceptable for your federation, and the descriptions here are designed to make that decision easier.
+The basic idea for each algorithm is described, then some technical attributes are described so you can filter out unacceptable algorithms.
 
-### Disclosure risk
-This is optional, but there's a place in here to put some assessment of the disclosure risk.
-Filling these in will require collaboration with statistical disclosure experts.
+### Decomposable analysis
+The primary description of an analysis, which defines many of the other parameters, is whether an algorithm is decomposable; that is whether the computation can be split so that each TRE processes only its local data, producing summary statistics that an aggregator combines to produce the final result.
+We record three variants of decomposability:
 
-### Disclosure mitigation
-There are methods that can be used to mitigate disclosure risk.
-There's a free-text space to describe applicable methods.
+- **Fully decomposable**: Each TRE can compute some summary statistic that is sufficient to calculate the statistic for the whole population of the federation.
+- **Non-decomposable**: Using this algorithm, the only option is to share your data.
+- **Iterative**: Algorithms that require multiple rounds of communication between TREs and an aggregator.
 
-## Algorithms
-The algorithm used to calculate the analysis is a separate concern to the final output.
-Different algorithms you can use to compute the analysis get their own entries.
+#### Examples
+You can calculate the mean across a federation by computing the local count and sum and sending those to an aggregator.
 
-### Decomposability
-Different analyses can be broken down into sub-tasks (decomposed) in different ways by different algorithms.
-The categories here are:
+```mermaid
+sequenceDiagram
+    TREs ->> Aggregator: sum(x), n
+    Aggregator ->> Researcher: Mean over population
+```
 
-- **Fully decomposable** Some summary statistic that can be calculated by each client that can be combined with others to calculate the final statistic exactly
-- **Iteratively decomposable** The computation can be decomposed, but not with a single aggregation operation, requiring multiple rounds of computation and communication.
-- **Approximately decomposable** An approximation of the desired statistic can be calculated by aggregating summary statistics
-- **Non-decomposable** The computation cannot be decomposed into independently computable parts
+This works because if you have the sum of a value, and the count of a population in each TRE, it does not matter whether you add all of them up in one place or separately.
 
-### Trust requirements
-Independent of the output's disclosure risk, TREs may be concerned about the level of trust required to perform some federated analysis and want to know what data need to be shared.
+There are lots of statistics you can't calculate this way though.
+For example, there's no summary statistic you can send to an aggregator to exactly calculate the median in one round of communication like this, so (without clever encryption methods), the median is not decomposable.
 
-#### Aggregator
-We recognise that the level of trust required of a central aggregator might be different to the level of trust required of nodes in the network generally, so the data shared with the aggregator is distinct.
+Federated learning requires iteration to be useful.
 
-#### Other clients
-Other clients in the network may see less data (often none) than the aggregator.
+```mermaid
+sequenceDiagram
+    Aggregator ->> TREs: initial model
+    loop Federated learning
+        loop Local training
+            TREs ->> TREs: train on local data
+        end
+        TREs ->> Aggregator: send model updates
+        Aggregator ->> Aggregator:  Combine model updates
+        Aggregator -->> Aggregator: Evaluate model (maybe)
+        Aggregator ->> TREs: Redistribute model
+    end
+```
 
-### Communication
-The capabilities of a TRE network to do different kinds of communication may limit the kinds of algorithm that can be performed.
+Here, the TREs train the model on their local data, then send these updates back to the aggregator, where they are combined.
+The updated model is sent back to TREs, and the process repeats until some criterion is reached.
+There are a couple of important points about iterative analyses.
+First, some data might then be observed by other TREs, as they can see how the model has been updated each round.
+In this example, it's not much of a disclosure risk, but what this information is varies by analysis.
+Second, your federation needs to efficiently support multiple rounds of communication.
 
-#### Rounds
-Some kinds of analysis may only require a single round of communication, sending summary stats to an aggregator.
-Others may iterate for a fixed, known number of rounds, while others will need to iterate for a number of rounds that cannot be known ahead of time.
-This does not describe what kind of computation is happening in the clients at each round, which could be repeating one operation, or doing something different each time.
+### Communication rounds
+For iterative analyses, the number of rounds that need to be carried out might be known ahead of time, or the number might depend on some metric that can't be known ahead of time.
+There will either be a number of rounds reported, or that the number is "adaptive".
 
-#### Direction
-Some networks might require federation only to have communication that goes from the client to the aggregator.
-Others might need communication to go both ways.
+### Communication directions
+Depending on the specifications of the federation, it may be that the only way information can travel is the TREs sending data to an aggregator.
+Some analyses require the aggregator to be able to send something (for example, model updates in federated learning) back to TREs.
+This may or may not be compatible with either the technical capabilities or governance of a TRE.
 
-### Computation
-The computations that a client has to do can define what analysis is possible, independent of how the network can communicate.
+### Execution environment
+Some analysis requires complex branching of workflows, whereas others can be carried out linearly.
+Some require an executor that can persist over multiple rounds, whereas others can be carried out by an executor that carries out a single task and then exits.
+These capabilities depend on the execution environment provided by each TRE.
 
-#### Execution model
-Some execution models do not allow branching computation dependent on some factor that is calculated during analysis.
-Others allow workflow-like execution which can branch.
+### Privacy-preserving measures
+Differential privacy and encryption techniques mean that some analyses and algorithms that previously represented an unacceptable disclosure risk become acceptable.
+This depends on the governance decisions of TREs and the federation.
 
-#### Persistent executors
-Some analyses require executors that remain active across communication rounds.
-For others, an executor can complete upon communication.
+### Observable data
+During an analysis, some data will be observable by some other party.
+Here, we make it transparent *who* can see *what*.
 
-### Privacy methods
-There are privacy methods that can be applied to different kinds of analysis to make them acceptable for different risk budgets.
+### Algorithm parameters
+Running an algorithm may require some set-up, for example, sharing the initial model in federated learning.
 
-#### [Differential Privacy](https://en.wikipedia.org/wiki/Differential_privacy)
-Differential privacy can be applied at different levels: applied on the input, required on the intermediate stages, or may not be applicable to an output.
+### Implementations
+If we can find an implementation of an algorithm that can be used in federated analysis, a link can be provided.
 
-#### Encryption
-Homomorphic encryption and secure multiparty computation are widely applied.
-These can be compatible with, or required for, an algorithm.
+### Reference documents
+Peer-reviewed literature can help domain experts to assess the trustworthiness and applicability of an algorithm, so academic sources may be included.
 
-### Performance
-An optional rough guess of how fast this is to compute with this algorithm.
+## Entity relationship diagram
 
-### Accuracy
-Some algorithms compute the exact statistic, some make some approximation.
+To allow the website to represent the information, and to allow filtering, the data are stored in a defined schema, as described by this diagram.
 
-### Practical notes
-This is where to put anything that isn't captured by the other parts of description.
-
-### References
-Academic references for the algorithm.
+```mermaid
+erDiagram
+    statistics ||--o{ statistic_aliases : "has"
+    statistics ||--o{ statistic_relationships : "source"
+    statistics ||--o{ statistic_relationships : "target"
+    statistics ||--o{ algorithms : "implemented by"
+    
+    algorithms ||--o{ observable_data : "has"
+    algorithms ||--o{ algorithm_parameters : "has"
+    algorithms ||--o{ implementations : "has"
+    algorithms ||--o{ reference_docs : "cited by"
+    
+    statistics {
+        VARCHAR statistic_id PK
+        TEXT description
+        output_type output
+        VARCHAR statbarn_id
+        TEXT mathjax
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TEXT notes
+    }
+    
+    statistic_aliases {
+        VARCHAR statistic_id FK
+        VARCHAR alias_name
+        BOOLEAN is_primary
+    }
+    
+    statistic_relationships {
+        VARCHAR relationship_id PK
+        VARCHAR source_statistic_id FK
+        VARCHAR target_statistic_id FK
+        relationship_type relationship_type
+        TEXT description
+    }
+    
+    algorithms {
+        VARCHAR algorithm_id PK
+        VARCHAR statistic_id FK
+        VARCHAR name
+        TEXT description
+        separability_type separability
+        TEXT mathjax
+        INTEGER communication_rounds
+        BOOLEAN adaptive_rounds
+        communication_direction communication_direction
+        BOOLEAN requires_branching
+        BOOLEAN requires_persistence
+        VARCHAR differential_privacy
+        privacy_encryption_level homomorphic_encryption
+        privacy_encryption_level multiparty_computation
+        VARCHAR computational_complexity
+        VARCHAR communication_complexity
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TEXT notes
+    }
+    
+    observable_data {
+        VARCHAR observable_id PK
+        VARCHAR algorithm_id FK
+        node_type node_type
+        TEXT item
+        TEXT description
+    }
+    
+    algorithm_parameters {
+        VARCHAR parameter_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR parameter_name
+        VARCHAR parameter_type
+        BOOLEAN required
+        VARCHAR default_value
+        TEXT description
+    }
+    
+    implementations {
+        VARCHAR implementation_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR language
+        VARCHAR library_name
+        VARCHAR repository_url
+        VARCHAR version
+        implementation_status status
+        TEXT notes
+        TIMESTAMP created_at
+    }
+    
+    reference_docs {
+        VARCHAR reference_id PK
+        VARCHAR algorithm_id FK
+        VARCHAR name
+        INTEGER year
+        VARCHAR doi
+        VARCHAR url
+        TEXT bibtex
+        TEXT abstract
+        TIMESTAMP created_at
+    }
+```
