@@ -49,36 +49,17 @@ export function computeAggregate<T, S, R>(
     return agg.outer.finalise(aggregateResult)
 }
 
-// Inner Functions
 
-export const countRows: InnerFunction<number, number> = {
-    apply: (_) => 1,
-    merge: (a, b) => a + b,
-    identity: 0
+export interface AnalysisDescription<T, S, R> {
+  label: String;
+  decomposableDescription: String;
+  inner: InnerFunction<T,S>;
+  outer: OuterFunction<S,R>;
+  innerDescription: FunctionDescription;
+  outerDescription: FunctionDescription;
 }
 
-export const sumRows: InnerFunction<number, number> = {
-  apply: (x) => x,
-  merge: (a, b) => a + b,
-  identity: 0
-}
-
-export const sumAndCountRows: InnerFunction<number, {sum: number, count: number}> = {
-  apply: (x) => ({sum: x, count: 1}),
-  merge: (a, b) => ({sum: a.sum + b.sum, count: a.count + b.count}),
-  identity: {sum: 0, count: 0}
-}
-
-// Outer Functions
-
-export const sumIntermediates: OuterFunction<number, number> = {
-    aggregate: (a, b) => a + b,
-    identity: 0,
-    finalise: (x) => x
-}
-
-export const gatherAvgIntermediates: OuterFunction<{sum: number, count: number}, number> = {
-  aggregate: (a, b) => ({sum: a.sum + b.sum, count: a.count + b.count}),
-  identity: {sum: 0, count: 0},
-  finalise: (x: {sum: number, count: number}) => x.sum/x.count
+export interface FunctionDescription {
+  label: String;
+  description: String;
 }
