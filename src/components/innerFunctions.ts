@@ -18,17 +18,37 @@ export const sumAndCountRows: InnerFunction<number, {sum: number, count: number}
   identity: {sum: 0, count: 0}
 }
 
+export const maxRows: InnerFunction<number, number> = {
+  apply: (x) => x,
+  merge: (a, b) => a > b ? a : b,
+  identity: -Infinity
+}
+
+export const minRows: InnerFunction<number, number> = {
+  apply: (x) => x,
+  merge: (a, b) => a < b ? a : b,
+  identity: Infinity
+}
+
 export const innerFunctionDescriptions = {
   countRows: {
     label: "Count Rows",
-    description: "Count the number of instances"
+    description: "counts the number of instances in the dataset."
   },
   sumRows: {
     label: "Sum Rows",
-    description: "Sum the instances"
+    description: "sums the instances in the dataset."
   },
   sumAndCountRows: {
     label: "Sum and Count Rows",
-    description: "Both count and sum the instances, returning both"
+    description: "both counts and sums the instances in the dataset, returning both."
+  },
+  maxRows: {
+    label: "Max of Rows",
+    description: "finds the maximum of the instances in the dataset."
+  },
+  minRows: {
+    label: "Min of Rows",
+    description: "finds the minimum of the instances in the dataset."
   }
 }
