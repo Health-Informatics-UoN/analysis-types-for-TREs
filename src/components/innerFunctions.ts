@@ -1,4 +1,4 @@
-import { InnerFunction } from "./aggregateFunctions"
+import type { InnerFunction } from "./aggregateFunctions.js";
 
 export const countRows: InnerFunction<number, number> = {
     apply: (_) => 1,

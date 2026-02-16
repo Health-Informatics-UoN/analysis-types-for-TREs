@@ -1,4 +1,4 @@
-import { OuterFunction } from "./aggregateFunctions";
+import type { OuterFunction } from "./aggregateFunctions.js";
 
 export const sumIntermediates: OuterFunction<number, number> = {
     aggregate: (a, b) => a + b,

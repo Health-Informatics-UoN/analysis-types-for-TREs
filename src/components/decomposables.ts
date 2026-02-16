@@ -1,6 +1,6 @@
-import { AnalysisDescription } from "./aggregateFunctions";
-import { countRows, sumRows, sumAndCountRows, innerFunctionDescriptions } from "./innerFunctions";
-import { sumIntermediates, gatherAvgIntermediates, outerFunctionDescriptions } from "./outerFunctions";
+import type { AnalysisDescription } from "./aggregateFunctions.js";
+import { countRows, sumRows, sumAndCountRows, innerFunctionDescriptions, maxRows, minRows } from "./innerFunctions.js";
+import { sumIntermediates, gatherAvgIntermediates, outerFunctionDescriptions, maxIntermediates, minIntermediates } from "./outerFunctions.js";
 
 
 export const analyses: AnalysisDescription<any, any, number>[]  = [
