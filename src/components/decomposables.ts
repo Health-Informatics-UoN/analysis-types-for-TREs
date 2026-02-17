@@ -1,6 +1,21 @@
 import type { AnalysisDescription } from "./aggregateFunctions.js";
-import { countRows, sumRows, sumAndCountRows, innerFunctionDescriptions, maxRows, minRows } from "./innerFunctions.js";
-import { sumIntermediates, gatherAvgIntermediates, outerFunctionDescriptions, maxIntermediates, minIntermediates } from "./outerFunctions.js";
+import {
+  countRows,
+  sumRows,
+  sumAndCountRows,
+  innerFunctionDescriptions,
+  maxRows,
+  minRows,
+  sumCountSumSqRows
+} from "./innerFunctions.js";
+import {
+  sumIntermediates,
+  gatherAvgIntermediates,
+  gatherVarIntermediates,
+  outerFunctionDescriptions,
+  maxIntermediates,
+  minIntermediates,
+} from "./outerFunctions.js";
 
 
 export const analyses: AnalysisDescription<any, any, number>[]  = [
@@ -27,6 +42,14 @@ export const analyses: AnalysisDescription<any, any, number>[]  = [
     outer: gatherAvgIntermediates,
     innerDescription: innerFunctionDescriptions.sumAndCountRows,
     outerDescription: outerFunctionDescriptions.gatherAvgIntermediates
+  },
+  {
+    label: "Variance across all",
+    decomposableDescription: "calculates the variance of all values across datasets.",
+    inner: sumCountSumSqRows,
+    outer: gatherVarIntermediates,
+    innerDescription: innerFunctionDescriptions.sumCountSumSqRows,
+    outerDescription: outerFunctionDescriptions.gatherVarIntermediates
   },
   {
     label: "Max across all",

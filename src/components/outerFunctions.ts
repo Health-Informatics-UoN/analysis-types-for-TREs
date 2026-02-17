@@ -12,6 +12,12 @@ export const gatherAvgIntermediates: OuterFunction<{sum: number, count: number},
   finalise: (x: {sum: number, count: number}) => x.sum/x.count
 }
 
+export const gatherVarIntermediates: OuterFunction<{sum: number, count: number, sumsq: number}, number> = {
+  aggregate: (a, b) => ({sum: a.sum + b.sum, count: a.count + b.count, sumsq: a.sumsq + b.sumsq}),
+  identity: {sum: 0, count: 0, sumsq: 0},
+  finalise: (x: {sum: number, count: number, sumsq: number}) => x.sumsq/x.count - (x.sum/x.count * x.sum/x.count)
+}
+
 export const maxIntermediates: OuterFunction<number, number> = {
   aggregate: (a, b) => a > b ? a : b,
   identity: -Infinity,
@@ -40,5 +46,9 @@ export const outerFunctionDescriptions = {
   minIntermediates: {
     label: "Min of intermediate values",
     description: "finds the minimum of intermediate values"
+  },
+  gatherVarIntermediates: {
+    label: "Gather variance intermediates",
+    description: "takes the count, sum, and sum of squares from each node and sums each. Then, calculates the population variance."
   }
 }
