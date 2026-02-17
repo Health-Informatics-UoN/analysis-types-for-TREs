@@ -3,7 +3,7 @@ import {html} from "npm:htl";
 export function displayIntermediates(intermediateResults: any[]) {
     const intermediateBoxes = intermediateResults.map((d, i) =>
         html`
-        <div style="background: #EE7326; margin: 10px; border-radius: 5px;">
+        <div style="background: #EE7326; margin-left: 10px; margin-right: 10px, border-radius: 5px;">
             <h4 style="color: #204F90">Node ${i+1}</h4>
             <p>${JSON.stringify(d)}</p>
         </div>
