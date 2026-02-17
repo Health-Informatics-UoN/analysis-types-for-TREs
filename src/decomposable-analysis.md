@@ -11,6 +11,8 @@ If you want to carry out basic statistics, you can get a lot by combining a few 
 ```js
 import { runInner, computeAggregate } from "./components/aggregateFunctions.js";
 import { analyses } from "./components/decomposables.js";
+import { displayIntermediates, displayNodes, displayArrows } from "./components/drawDiagrams.js";
+import { populateNodes } from "./components/renderNodes.js";
 ```
 
 ```js
@@ -32,66 +34,72 @@ Overall, this analysis ${analysisChoice.decomposableDescription}
 
 ### Running an example
 
-Here's a text box.
+Here are some text boxes.
 It has some example data in it that will work for the kinds of analysis that take a single number from each row of a dataset.
+You can put your own numbers in, just separate them with commas.
 
-This page will pretend that this is a dataset held across different nodes.
-You can put your own in here, just make sure it's an array surrounded by `[ ]`, which in turn contains arrays of numbers.
-The inner arrays of numbers (e.g. ${dummyData[0].join(', ')}) are pretend nodes.
 
 ```js
-const dummyDataInput = view(Inputs.textarea(
-  {
-    value:
-`[
-[1, 2, 3, 4, 5],
-[6, 7, 8, 9, 10],
-[11, 12, 13, 14, 15]
-]`,
-    submit: true
-  }
+const nodeN = view(Inputs.button(
+  [
+    ["Add Node", value => value + 1],
+    ["Remove Node", value => value >= 2 ? value - 1 : value]
+  ], {value: 3}
 ))
 ```
 
-This has ${dummyData.length} nodes.
-
 ```js
-const dummyData = JSON.parse(dummyDataInput);
+const dummyNodes = view(populateNodes(nodeN))
 ```
 
-### Functions
+This page will pretend that this is a dataset held across different nodes.
 
-#### Inner function
-The way it does this is by applying an inner function to each of the datasets.
-The inner function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
-The inner function, ${analysisChoice.innerDescription.label}, returns an array for this distributed dataset:
+
+```js
+const dummyData = dummyNodes.map(d => JSON.parse(`[${d}]`))
+```
+
 
 ```js
 const intermediates = runInner(analysisChoice.inner, dummyData)
 ```
 
-```js
-function displayIntermediates(intermediateResults) {
-    const boxes = intermediateResults.map((d, i) =>
-        html`
-        <div style="background: #EE7326; margin: 30px; border-radius: 5px;">
-            <h4 style="color: #204F90">Node ${i+1}</h4>
-            <p>${JSON.stringify(d)}</p>
-        </div>
-        `
-    )
-    return html`<div style="display: flex; align-items: center; justify-content: center;"> ${boxes} </div>`
-}
-```
 
 ```js
-html`${displayIntermediates(intermediates)}`
+const dataNodes = html`${displayNodes(dummyData.length)}`;
+const intermediatesRepr = html`${displayIntermediates(intermediates)}`;
+const arrows = html`${displayArrows(dummyData.length)}`;
+const arrows2 = html`${displayArrows(dummyData.length)}`;
 ```
 
-#### Outer function
+### Functions
+
+### Inner function
+The way it does this is by applying an inner function to each of the datasets.
+The inner function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
+
+### Outer function
 
 The analysis takes the output of ${analysisChoice.innerDescription.label} for each dataset and applies an outer function to these intermediate values.
 The outer function, "${analysisChoice.outerDescription.label}", ${analysisChoice.outerDescription.description}
 
-**Final Result:** ${computeAggregate(analysisChoice, dummyData)}
-
+<div class="card">
+  ${dataNodes}
+  <div style="display:flex; justify-content:center;">
+      ${analysisChoice.innerDescription.label}
+  </div>
+  ${arrows}
+  ${intermediatesRepr}
+  <div style="display:flex; justify-content:center;">
+      ${analysisChoice.outerDescription.label}
+  </div>
+  ${arrows2}
+  <div style="display: flex;
+              justify-content: center;
+              background: #EE7326;
+              margin-left: 30px;
+              margin-right: 30px;
+              border-radius: 5px;">
+    <span><b>Final Result:</b> ${computeAggregate(analysisChoice, dummyData)}</span>
+  </div>
+</div>
