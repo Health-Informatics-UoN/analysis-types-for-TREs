@@ -1,14 +1,14 @@
 ---
-title: Decomposable analysis
+title: Fully federated analysis
 style: entrust-style.css
 ---
 
-# Decomposable analysis
+# Fully federated analysis
 
-Generally, a decomposable analysis consists of two parts: some function on the data in each node, and a function used to aggregate the outputs from each node.
+Generally, a fully federated analysis consists of two parts: some function on the data in each node (a local function), and a function used to aggregate the outputs from each node (an aggregation function).
 If you want to carry out basic statistics, you can get a lot by combining a few of these functions.
 
-Below, there is a demonstrator to help you get a feel for how a decomposable analysis can work.
+Below, there is a demonstrator to help you get a feel for how a fully federated analysis can work.
 
 ```js
 import { runInner, computeAggregate } from "./components/aggregateFunctions.js";
@@ -76,14 +76,14 @@ const arrows2 = html`${displayArrows(dummyData.length)}`;
 
 ## Functions
 
-### Inner function
-The way it does this is by applying an inner function to each of the datasets.
-The inner function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
+### Local function
+The way it does this is by applying a local function to each of the datasets.
+The local function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
 
-### Outer function
+### Aggregation function
 
-The analysis takes the output of ${analysisChoice.innerDescription.label} for each dataset and applies an outer function to these intermediate values.
-The outer function, "${analysisChoice.outerDescription.label}", ${analysisChoice.outerDescription.description}
+The analysis takes the output of ${analysisChoice.innerDescription.label} for each dataset and applies an aggregation function to these intermediate values.
+The aggregation function, "${analysisChoice.outerDescription.label}", ${analysisChoice.outerDescription.description}
 
 <div class="card">
   ${dataNodes}
