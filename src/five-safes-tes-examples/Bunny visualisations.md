@@ -1,6 +1,6 @@
 ---
 theme: air
-style: entrust-style.css
+style: ../entrust-style.css
 title: Visualising Bunny Outputs
 ---
 # Visualising Bunny Outputs
@@ -139,7 +139,7 @@ codesets.plot_top_k_by_count(10)
 ```
 
 ```js
-const top10Plot = FileAttachment("./data/vega-plots/count-top-10.json").json();
+const top10Plot = FileAttachment("../data/vega-plots/count-top-10.json").json();
 ```
 
 ```js
@@ -162,7 +162,7 @@ codesets.plot_by_codes([28060, 3000905])
 ```
 
 ```js
-const countByCodes = FileAttachment("./data/vega-plots/count-by-codes.json").json()
+const countByCodes = FileAttachment("../data/vega-plots/count-by-codes.json").json()
 ```
 
 ```js
@@ -187,7 +187,7 @@ codesets.plot_by_codes(codesets.get_codes_by_membership("['100k TRE', '1k TRE']"
 
 
 ```js
-const countByIntersection = FileAttachment("./data/vega-plots/count-by-intersection.json").json()
+const countByIntersection = FileAttachment("../data/vega-plots/count-by-intersection.json").json()
 ```
 
 ```js
@@ -211,7 +211,7 @@ codesets.plot_by_codes(codesets.get_codes_by_substring_match("leuko")["OMOP"])
 ```
 
 ```js
-const countBySubstring = FileAttachment("./data/vega-plots/count-by-substring.json").json()
+const countBySubstring = FileAttachment("../data/vega-plots/count-by-substring.json").json()
 ```
 
 ```js
@@ -235,7 +235,7 @@ codesets.plot_count_heatmap().properties(width=600, height=600)
 ```
 
 ```js
-const heatmap = FileAttachment("./data/vega-plots/heatmap.json").json()
+const heatmap = FileAttachment("../data/vega-plots/heatmap.json").json()
 ```
 
 ```js
@@ -261,7 +261,7 @@ codesets.plot_upset()
 ```
 
 ```js
-const upset = FileAttachment("./data/vega-plots/upset.json").json()
+const upset = FileAttachment("../data/vega-plots/upset.json").json()
 ```
 
 ```js
