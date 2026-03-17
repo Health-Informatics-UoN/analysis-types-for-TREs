@@ -14,6 +14,22 @@ export default {
   //     ]
   //   }
   // ],
+  pages: [
+    {name: "Categorisation of analysis methods", path: "Categorisation"},
+    {name: "Get analyses by requirements", path: "analysis-breakdown"},
+    {
+      name: "Examples in Five Safes TES",
+      path: "/examples-in-five-safes-tes",
+      open: false,
+      pages: [
+        {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
+        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
+        {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
+        // {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
+        // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"}
+      ]
+    }
+  ],
 
   // Content to add to the head of the page, e.g. for a favicon:
   head: `
