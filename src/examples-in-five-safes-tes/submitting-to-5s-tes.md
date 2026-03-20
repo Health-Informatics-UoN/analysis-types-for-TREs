@@ -17,7 +17,7 @@ This means that you have to request, and be approved for, permission to make sub
 
 ### Submissions
 A submission means sending a [Five safes TES message](5s-tes-messages) to the submission layer.
-The submission layer then uses [tags](examples-in-five-safes-tes/5s-tes-messages#use-of-tags-in-5s-tes) to assign the task to a project and which TREs should run it.
+The submission layer then uses [tags](5s-tes-messages#use-of-tags-in-5s-tes) to assign the task to a project and which TREs should run it.
 
 ### Authentication
 If you are making submissions to 5s-TES using the web application, those interactions are authenticated when you log in.
@@ -75,4 +75,11 @@ In the projects view, you can then select a project you are assigned to.
 When you are in the project, you can select the Submissions view.
 ![A screenshot of a project, highlighting the link to the submissions](./view-of-project.png)
 
-![](./submissions-view.png)
+In the Submissions view, you will be shown a button to make a new submission.
+Clicking the Create Submission button will give you the options
+
+- TES wizard
+- GraphQL TES wizard
+![A screenshot of the Submissions view, hightlighting the button used for the wizards](./submissions-view.png)
+
+[The TES wizard](submission-layer-wizards) can help you make a submission
