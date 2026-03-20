@@ -23,10 +23,11 @@ export default {
       open: false,
       pages: [
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
         {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
+        {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
         // {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
-        // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"}
+        // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
+        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
       ]
     }
   ],
@@ -41,7 +42,7 @@ export default {
   root: "src",
 
   // Some additional configuration options and their defaults:
-  // theme: "default", // try "light", "dark", "slate", etc.
+  theme: "air", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
   footer: `
   <div style="display:grid; grid-template-columns: 30% 30% 30%">
@@ -58,7 +59,7 @@ export default {
   `, // what to show in the footer (HTML)
   // sidebar: true, // whether to show the sidebar
   // toc: true, // whether to show the table of contents
-  // pager: true, // whether to show previous & next links in the footer
+  pager: false, // whether to show previous & next links in the footer
   // output: "dist", // path to the output root for build
   // search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
