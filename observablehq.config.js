@@ -25,7 +25,7 @@ export default {
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
         {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
-        // {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
+        {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
         // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
       ]
