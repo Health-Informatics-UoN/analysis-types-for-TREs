@@ -7,7 +7,7 @@ title: Visualising Bunny Outputs
 This tutorial can be run as a Jupyter notebook in the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/tree/main/OMOP-metadata), which also contains the utilities used to visualise OMOP metadata.
 
 There are two examples of outputs from a Bunny distribution query included in the test data.
-This kind of data can be obtained from Five Safes TES (5STES) by submitting a TES message, which can be created by using the custom image wizard:
+This kind of data can be obtained from Five Safes TES (5STES) by submitting a TES message, which can be created by using the [custom image wizard](submission-layer-wizards#custom-image):
 ![Screenshot of the custom image wizard running a bunny query](./bunny-custom-image-wizard.png)
 
 The settings need to be:
