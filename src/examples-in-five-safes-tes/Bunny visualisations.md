@@ -3,9 +3,27 @@ theme: air
 style: ../entrust-style.css
 title: Visualising Bunny Outputs
 ---
-# Visualising Bunny Outputs
+# Visualising OMOP metadata
+This tutorial can be run as a Jupyter notebook in the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/tree/main/OMOP-metadata), which also contains the utilities used to visualise OMOP metadata.
+
 There are two examples of outputs from a Bunny distribution query included in the test data.
-This kind of data can be obtained from Five Safes TES (5STES) by submitting a TES message as follows:
+This kind of data can be obtained from Five Safes TES (5STES) by submitting a TES message, which can be created by using the custom image wizard:
+![Screenshot of the custom image wizard running a bunny query](./bunny-custom-image-wizard.png)
+
+The settings need to be:
+
+- **Docker Image**: ghcr.io/health-informatics-uon/five-safes-tes-analytics-bunny-cli:latest
+- **Commands**:
+```
+--body-json
+{"code":"GENERIC","analysis":"DISTRIBUTION","uuid":"123","collection":"test","owner":"me"}
+--output
+/outputs/output.json
+--no-encode
+```
+
+<details>
+    <summary>The wizard will generate a TES message (expand for an example).</summary>
 
 ```json
 {
@@ -51,12 +69,9 @@ This kind of data can be obtained from Five Safes TES (5STES) by submitting a TE
 }
 
 ```
-
-A message like this can be submitted using the submission layer's Raw JSON wizard, substituting your own parameters for `"id"`, `"tags"/"project"` and `"tags/tres"`.
-Alternatively, consult the documentation for the use of the Custom image wizard.
+</details>
 
 We have provided some utilities to help users interpret the outputs of these distribution queries, importable from `bunny_utils`.
-
 
 ```python
 from five_safes_tes_analytics.utils.parse_bunny import parse_bunny
@@ -131,7 +146,7 @@ codesets.code_intersections
 | \['Tingham'\] | 	921 |
 
 
-You can plot the $k$ codes with the highest counts using `.plot_top_k_by_count(k)`.
+You can plot the k codes with the highest counts using `.plot_top_k_by_count(k)`.
 If you run this notebook, you can hover over the bars to get the OMOP description of that code.
 
 ```python
