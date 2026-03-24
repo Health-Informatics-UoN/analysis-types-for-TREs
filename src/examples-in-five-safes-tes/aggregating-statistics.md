@@ -3,13 +3,16 @@ theme: air
 style: ../entrust-style.css
 title: Aggregating basic statistics
 ---
-# Aggregating basic statistics\n",
+# Aggregating basic statistics
+
+This tutorial can be run as a Jupyter notebook from the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/)
+
 The outputs from TES tasks can be easily used to calculate basic statistics.
    
    This example will use summary statistics from a dataset in the OMOP common data model.
 There is a container which, given a SQL query that filters an OMOP table by your criteria, will calculate the necessary summary statistics for your final analysis.
 
-This example data was collected using the Custom Image wizard in the submission layer with these settings changed from default:
+This example data was collected using the [Custom Image wizard](submission-layer-wizards#custom-image) in the submission layer with these settings changed from default:
 
 | Field   | value                                                                          |
 | ------- | ------------------------------------------------------------------------------ |
@@ -132,52 +135,20 @@ s = rng.normal(mu, sigma, 10)
 ```
 
 A `TTestIntermediate` uses the same three pieces of information as a `VarianceIntermediate`.
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 16,
-   "id": "4a845009-85b7-43e0-b8e3-e71a8110a1cf",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "TTestIntermediate(n=10, total=np.float64(476.9742997017046), sum_x2=np.float64(23459.825051161773))"
-      ]
-     },
-     "execution_count": 16,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "gaussian_t_test_intermediate = TTestIntermediate(\n",
-    "    n=len(s),\n",
-    "    total=np.sum(s),\n",
-    "    sum_x2=np.sum(s**2)\n",
-    ")\n",
-    "\n",
-    "gaussian_t_test_intermediate"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "9a8aad65-c523-4f96-8f8c-34b403d54b26",
-   "metadata": {},
-   "source": [
-    "You can also use this information to perform a one-sample t-test."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 19,
-   "id": "0bc2c417-7a98-406a-b992-a7f2ed885fca",
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
+
+```python
+gaussian_t_test_intermediate = TTestIntermediate(
+    n=len(s),
+    total=np.sum(s),
+    sum_x2=np.sum(s**2)
+)
+
+gaussian_t_test_intermediate
+```
+
+`TTestIntermediate(n=10, total=np.float64(476.9742997017046), sum_x2=np.float64(23459.825051161773))`
+
+You can also use this information to perform a one-sample t-test.
 
 ```python
 gaussian_t_test_intermediate.one_sample_t_test(52)
@@ -185,4 +156,4 @@ gaussian_t_test_intermediate.one_sample_t_test(52)
 
 `0.07033644170438572`
 
-There are many other analyses that can be performed with a few building blocks.
+There are many other analyses that can be performed with a few building blocks like this.
