@@ -4,6 +4,9 @@ style: ../entrust-style.css
 title: Aggregating contingency tables
 ---
 # Aggregating data for contingency tables
+
+This tutorial can be run as a Jupyter notebook from the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/)
+
 Federated analysis on contingency tables is relatively simple.
 Counts are easy to federate: each TRE calculates their local count for some group, then these are aggregated by adding the counts together.
 Each cell of a contingency table is a count, so the table can be federated by requesting these counts, and then statistical analyses can be performed on the aggregate.
@@ -23,7 +26,7 @@ graph TD
   agg -- Sum counts --> Result
 ```
 
-The example data were produced by running the Custom Image wizard using the following parameters:
+The example data were produced by running the [Custom Image wizard](submission-layer-wizards#custom-image) using the following parameters:
 
 | Field | value |
 | ----- | ----- |
