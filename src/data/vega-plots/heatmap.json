@@ -1,0 +1,97 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-66c0c809ab4b5af683a377e644596847"},
+  "mark": {"type": "rect", "cornerRadius": 20},
+  "encoding": {
+    "color": {
+      "field": "fraction",
+      "scale": {"scheme": "greens"},
+      "type": "quantitative"
+    },
+    "tooltip": {"field": "count", "type": "quantitative"},
+    "x": {"field": "tre1", "type": "nominal"},
+    "y": {"field": "tre2", "type": "nominal"}
+  },
+  "height": 600,
+  "width": 600,
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-66c0c809ab4b5af683a377e644596847": [
+      {"tre1": "1k TRE", "tre2": "1k TRE", "count": 368, "fraction": 1},
+      {
+        "tre1": "1k TRE",
+        "tre2": "100k TRE",
+        "count": 7,
+        "fraction": 0.019021739130434784
+      },
+      {
+        "tre1": "1k TRE",
+        "tre2": "Narnia",
+        "count": 2,
+        "fraction": 0.005434782608695652
+      },
+      {
+        "tre1": "1k TRE",
+        "tre2": "The Moon",
+        "count": 2,
+        "fraction": 0.005434782608695652
+      },
+      {
+        "tre1": "1k TRE",
+        "tre2": "Tingham",
+        "count": 2,
+        "fraction": 0.005434782608695652
+      },
+      {
+        "tre1": "100k TRE",
+        "tre2": "1k TRE",
+        "count": 7,
+        "fraction": 0.0007872244714349977
+      },
+      {"tre1": "100k TRE", "tre2": "100k TRE", "count": 8892, "fraction": 1},
+      {
+        "tre1": "100k TRE",
+        "tre2": "Narnia",
+        "count": 17,
+        "fraction": 0.0019118308591992803
+      },
+      {
+        "tre1": "100k TRE",
+        "tre2": "The Moon",
+        "count": 17,
+        "fraction": 0.0019118308591992803
+      },
+      {
+        "tre1": "100k TRE",
+        "tre2": "Tingham",
+        "count": 19,
+        "fraction": 0.002136752136752137
+      },
+      {"tre1": "Narnia", "tre2": "1k TRE", "count": 2, "fraction": 0.001},
+      {"tre1": "Narnia", "tre2": "100k TRE", "count": 17, "fraction": 0.0085},
+      {"tre1": "Narnia", "tre2": "Narnia", "count": 2000, "fraction": 1},
+      {"tre1": "Narnia", "tre2": "The Moon", "count": 2000, "fraction": 1},
+      {"tre1": "Narnia", "tre2": "Tingham", "count": 1075, "fraction": 0.5375},
+      {"tre1": "The Moon", "tre2": "1k TRE", "count": 2, "fraction": 0.001},
+      {"tre1": "The Moon", "tre2": "100k TRE", "count": 17, "fraction": 0.0085},
+      {"tre1": "The Moon", "tre2": "Narnia", "count": 2000, "fraction": 1},
+      {"tre1": "The Moon", "tre2": "The Moon", "count": 2000, "fraction": 1},
+      {
+        "tre1": "The Moon",
+        "tre2": "Tingham",
+        "count": 1075,
+        "fraction": 0.5375
+      },
+      {"tre1": "Tingham", "tre2": "1k TRE", "count": 2, "fraction": 0.001},
+      {"tre1": "Tingham", "tre2": "100k TRE", "count": 19, "fraction": 0.0095},
+      {"tre1": "Tingham", "tre2": "Narnia", "count": 1075, "fraction": 0.5375},
+      {
+        "tre1": "Tingham",
+        "tre2": "The Moon",
+        "count": 1075,
+        "fraction": 0.5375
+      },
+      {"tre1": "Tingham", "tre2": "Tingham", "count": 2000, "fraction": 1}
+    ]
+  }
+}

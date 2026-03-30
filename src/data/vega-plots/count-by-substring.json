@@ -1,0 +1,826 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-23db58bc3def801d6732df0a39f3852e"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {"field": "TRE", "type": "nominal"},
+    "tooltip": {"field": "OMOP_DESCR", "type": "nominal"},
+    "x": {"field": "Count", "type": "quantitative"},
+    "y": {"field": "OMOP", "sort": "-x", "type": "nominal"}
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-23db58bc3def801d6732df0a39f3852e": [
+      {
+        "OMOP": 604772,
+        "TRE": "100k TRE",
+        "Count": 4290,
+        "OMOP_DESCR": "Human leukocyte antigen DQB1*02:02 positive"
+      },
+      {
+        "OMOP": 604772,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen DQB1*02:02 positive"
+      },
+      {
+        "OMOP": 604772,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen DQB1*02:02 positive"
+      },
+      {
+        "OMOP": 604772,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen DQB1*02:02 positive"
+      },
+      {
+        "OMOP": 604772,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen DQB1*02:02 positive"
+      },
+      {
+        "OMOP": 619739,
+        "TRE": "100k TRE",
+        "Count": 4290,
+        "OMOP_DESCR": "No leukocytes seen in urine via microscopy"
+      },
+      {
+        "OMOP": 619739,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "No leukocytes seen in urine via microscopy"
+      },
+      {
+        "OMOP": 619739,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "No leukocytes seen in urine via microscopy"
+      },
+      {
+        "OMOP": 619739,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "No leukocytes seen in urine via microscopy"
+      },
+      {
+        "OMOP": 619739,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "No leukocytes seen in urine via microscopy"
+      },
+      {
+        "OMOP": 1988630,
+        "TRE": "100k TRE",
+        "Count": 4650,
+        "OMOP_DESCR": "Leukocyte clumps [Presence] in Body fluid by Automated"
+      },
+      {
+        "OMOP": 1988630,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte clumps [Presence] in Body fluid by Automated"
+      },
+      {
+        "OMOP": 1988630,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte clumps [Presence] in Body fluid by Automated"
+      },
+      {
+        "OMOP": 1988630,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte clumps [Presence] in Body fluid by Automated"
+      },
+      {
+        "OMOP": 1988630,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte clumps [Presence] in Body fluid by Automated"
+      },
+      {
+        "OMOP": 3000348,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte esterase [Presence] in Urine by Test strip"
+      },
+      {
+        "OMOP": 3000348,
+        "TRE": "1k TRE",
+        "Count": 30,
+        "OMOP_DESCR": "Leukocyte esterase [Presence] in Urine by Test strip"
+      },
+      {
+        "OMOP": 3000348,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte esterase [Presence] in Urine by Test strip"
+      },
+      {
+        "OMOP": 3000348,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte esterase [Presence] in Urine by Test strip"
+      },
+      {
+        "OMOP": 3000348,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte esterase [Presence] in Urine by Test strip"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "100k TRE",
+        "Count": 4470,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "1k TRE",
+        "Count": 1120,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3022407,
+        "TRE": "100k TRE",
+        "Count": 4470,
+        "OMOP_DESCR": "Monocytes/100 leukocytes in Blood by Manual count"
+      },
+      {
+        "OMOP": 3022407,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/100 leukocytes in Blood by Manual count"
+      },
+      {
+        "OMOP": 3022407,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/100 leukocytes in Blood by Manual count"
+      },
+      {
+        "OMOP": 3022407,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/100 leukocytes in Blood by Manual count"
+      },
+      {
+        "OMOP": 3022407,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/100 leukocytes in Blood by Manual count"
+      },
+      {
+        "OMOP": 3027549,
+        "TRE": "100k TRE",
+        "Count": 4600,
+        "OMOP_DESCR": "Eosinophils/100 leukocytes in Stool by Manual count"
+      },
+      {
+        "OMOP": 3027549,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Eosinophils/100 leukocytes in Stool by Manual count"
+      },
+      {
+        "OMOP": 3027549,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Eosinophils/100 leukocytes in Stool by Manual count"
+      },
+      {
+        "OMOP": 3027549,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Eosinophils/100 leukocytes in Stool by Manual count"
+      },
+      {
+        "OMOP": 3027549,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Eosinophils/100 leukocytes in Stool by Manual count"
+      },
+      {
+        "OMOP": 3030644,
+        "TRE": "100k TRE",
+        "Count": 4580,
+        "OMOP_DESCR": "Segmented neutrophils/100 leukocytes in Pericardial fluid"
+      },
+      {
+        "OMOP": 3030644,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Segmented neutrophils/100 leukocytes in Pericardial fluid"
+      },
+      {
+        "OMOP": 3030644,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Segmented neutrophils/100 leukocytes in Pericardial fluid"
+      },
+      {
+        "OMOP": 3030644,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Segmented neutrophils/100 leukocytes in Pericardial fluid"
+      },
+      {
+        "OMOP": 3030644,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Segmented neutrophils/100 leukocytes in Pericardial fluid"
+      },
+      {
+        "OMOP": 3032882,
+        "TRE": "100k TRE",
+        "Count": 4640,
+        "OMOP_DESCR": "Unidentified cells/100 leukocytes in Peritoneal fluid"
+      },
+      {
+        "OMOP": 3032882,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Unidentified cells/100 leukocytes in Peritoneal fluid"
+      },
+      {
+        "OMOP": 3032882,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Unidentified cells/100 leukocytes in Peritoneal fluid"
+      },
+      {
+        "OMOP": 3032882,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Unidentified cells/100 leukocytes in Peritoneal fluid"
+      },
+      {
+        "OMOP": 3032882,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Unidentified cells/100 leukocytes in Peritoneal fluid"
+      },
+      {
+        "OMOP": 3034854,
+        "TRE": "100k TRE",
+        "Count": 4530,
+        "OMOP_DESCR": "Basophils/100 leukocytes in Amniotic fluid by Manual count"
+      },
+      {
+        "OMOP": 3034854,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/100 leukocytes in Amniotic fluid by Manual count"
+      },
+      {
+        "OMOP": 3034854,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/100 leukocytes in Amniotic fluid by Manual count"
+      },
+      {
+        "OMOP": 3034854,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/100 leukocytes in Amniotic fluid by Manual count"
+      },
+      {
+        "OMOP": 3034854,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/100 leukocytes in Amniotic fluid by Manual count"
+      },
+      {
+        "OMOP": 3051052,
+        "TRE": "100k TRE",
+        "Count": 4570,
+        "OMOP_DESCR": "Adenosine deaminase [Entitic Catalytic Activity] in Leukocytes"
+      },
+      {
+        "OMOP": 3051052,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Adenosine deaminase [Entitic Catalytic Activity] in Leukocytes"
+      },
+      {
+        "OMOP": 3051052,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Adenosine deaminase [Entitic Catalytic Activity] in Leukocytes"
+      },
+      {
+        "OMOP": 3051052,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Adenosine deaminase [Entitic Catalytic Activity] in Leukocytes"
+      },
+      {
+        "OMOP": 3051052,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Adenosine deaminase [Entitic Catalytic Activity] in Leukocytes"
+      },
+      {
+        "OMOP": 3052377,
+        "TRE": "100k TRE",
+        "Count": 4520,
+        "OMOP_DESCR": "Pork triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052377,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Pork triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052377,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Pork triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052377,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Pork triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052377,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Pork triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052675,
+        "TRE": "100k TRE",
+        "Count": 4460,
+        "OMOP_DESCR": "Patent blue V triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052675,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Patent blue V triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052675,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Patent blue V triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052675,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Patent blue V triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 3052675,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Patent blue V triggered leukotriene release [Mass/volume] by Leukocytes"
+      },
+      {
+        "OMOP": 4010405,
+        "TRE": "100k TRE",
+        "Count": 4520,
+        "OMOP_DESCR": "Leukocyte antibody measurement"
+      },
+      {
+        "OMOP": 4010405,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte antibody measurement"
+      },
+      {
+        "OMOP": 4010405,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte antibody measurement"
+      },
+      {
+        "OMOP": 4010405,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte antibody measurement"
+      },
+      {
+        "OMOP": 4010405,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte antibody measurement"
+      },
+      {
+        "OMOP": 4124120,
+        "TRE": "100k TRE",
+        "Count": 4300,
+        "OMOP_DESCR": "Human leukocyte antigen class I type antigen A1 - B57"
+      },
+      {
+        "OMOP": 4124120,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen class I type antigen A1 - B57"
+      },
+      {
+        "OMOP": 4124120,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen class I type antigen A1 - B57"
+      },
+      {
+        "OMOP": 4124120,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen class I type antigen A1 - B57"
+      },
+      {
+        "OMOP": 4124120,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen class I type antigen A1 - B57"
+      },
+      {
+        "OMOP": 4124137,
+        "TRE": "100k TRE",
+        "Count": 4320,
+        "OMOP_DESCR": "Human leukocyte antigen A allele"
+      },
+      {
+        "OMOP": 4124137,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen A allele"
+      },
+      {
+        "OMOP": 4124137,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen A allele"
+      },
+      {
+        "OMOP": 4124137,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen A allele"
+      },
+      {
+        "OMOP": 4124137,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Human leukocyte antigen A allele"
+      },
+      {
+        "OMOP": 4147999,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukostasis"
+      },
+      {
+        "OMOP": 4147999,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukostasis"
+      },
+      {
+        "OMOP": 4147999,
+        "TRE": "Narnia",
+        "Count": 4482,
+        "OMOP_DESCR": "Leukostasis"
+      },
+      {
+        "OMOP": 4147999,
+        "TRE": "The Moon",
+        "Count": 232,
+        "OMOP_DESCR": "Leukostasis"
+      },
+      {
+        "OMOP": 4147999,
+        "TRE": "Tingham",
+        "Count": 7773,
+        "OMOP_DESCR": "Leukostasis"
+      },
+      {
+        "OMOP": 4175950,
+        "TRE": "100k TRE",
+        "Count": 4580,
+        "OMOP_DESCR": "alpha-L-Iduronidase measurement, leukocytes"
+      },
+      {
+        "OMOP": 4175950,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "alpha-L-Iduronidase measurement, leukocytes"
+      },
+      {
+        "OMOP": 4175950,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "alpha-L-Iduronidase measurement, leukocytes"
+      },
+      {
+        "OMOP": 4175950,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "alpha-L-Iduronidase measurement, leukocytes"
+      },
+      {
+        "OMOP": 4175950,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "alpha-L-Iduronidase measurement, leukocytes"
+      },
+      {
+        "OMOP": 4245137,
+        "TRE": "100k TRE",
+        "Count": 4210,
+        "OMOP_DESCR": "Leukocyte poor blood preparation, nylon filter"
+      },
+      {
+        "OMOP": 4245137,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte poor blood preparation, nylon filter"
+      },
+      {
+        "OMOP": 4245137,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte poor blood preparation, nylon filter"
+      },
+      {
+        "OMOP": 4245137,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte poor blood preparation, nylon filter"
+      },
+      {
+        "OMOP": 4245137,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte poor blood preparation, nylon filter"
+      },
+      {
+        "OMOP": 4275348,
+        "TRE": "100k TRE",
+        "Count": 4270,
+        "OMOP_DESCR": "Urine microscopy: leukocytes - lymphs present"
+      },
+      {
+        "OMOP": 4275348,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Urine microscopy: leukocytes - lymphs present"
+      },
+      {
+        "OMOP": 4275348,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Urine microscopy: leukocytes - lymphs present"
+      },
+      {
+        "OMOP": 4275348,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Urine microscopy: leukocytes - lymphs present"
+      },
+      {
+        "OMOP": 4275348,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Urine microscopy: leukocytes - lymphs present"
+      },
+      {
+        "OMOP": 21405694,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukomed dressing 8cm x 15cm (BSN medical Ltd) 50 dressing"
+      },
+      {
+        "OMOP": 21405694,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukomed dressing 8cm x 15cm (BSN medical Ltd) 50 dressing"
+      },
+      {
+        "OMOP": 21405694,
+        "TRE": "Narnia",
+        "Count": 8813,
+        "OMOP_DESCR": "Leukomed dressing 8cm x 15cm (BSN medical Ltd) 50 dressing"
+      },
+      {
+        "OMOP": 21405694,
+        "TRE": "The Moon",
+        "Count": 8549,
+        "OMOP_DESCR": "Leukomed dressing 8cm x 15cm (BSN medical Ltd) 50 dressing"
+      },
+      {
+        "OMOP": 21405694,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukomed dressing 8cm x 15cm (BSN medical Ltd) 50 dressing"
+      },
+      {
+        "OMOP": 40758925,
+        "TRE": "100k TRE",
+        "Count": 4560,
+        "OMOP_DESCR": "Leukocyte phosphatase [Presence] in Leukocytes"
+      },
+      {
+        "OMOP": 40758925,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte phosphatase [Presence] in Leukocytes"
+      },
+      {
+        "OMOP": 40758925,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte phosphatase [Presence] in Leukocytes"
+      },
+      {
+        "OMOP": 40758925,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte phosphatase [Presence] in Leukocytes"
+      },
+      {
+        "OMOP": 40758925,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocyte phosphatase [Presence] in Leukocytes"
+      },
+      {
+        "OMOP": 40762890,
+        "TRE": "100k TRE",
+        "Count": 4580,
+        "OMOP_DESCR": "Leukocytes in 3 hour Urine sediment by Light microscopy"
+      },
+      {
+        "OMOP": 40762890,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes in 3 hour Urine sediment by Light microscopy"
+      },
+      {
+        "OMOP": 40762890,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes in 3 hour Urine sediment by Light microscopy"
+      },
+      {
+        "OMOP": 40762890,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes in 3 hour Urine sediment by Light microscopy"
+      },
+      {
+        "OMOP": 40762890,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes in 3 hour Urine sediment by Light microscopy"
+      },
+      {
+        "OMOP": 40771542,
+        "TRE": "100k TRE",
+        "Count": 4500,
+        "OMOP_DESCR": "Immature granulocytes/100 leukocytes in Synovial fluid"
+      },
+      {
+        "OMOP": 40771542,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Immature granulocytes/100 leukocytes in Synovial fluid"
+      },
+      {
+        "OMOP": 40771542,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Immature granulocytes/100 leukocytes in Synovial fluid"
+      },
+      {
+        "OMOP": 40771542,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Immature granulocytes/100 leukocytes in Synovial fluid"
+      },
+      {
+        "OMOP": 40771542,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Immature granulocytes/100 leukocytes in Synovial fluid"
+      },
+      {
+        "OMOP": 43055314,
+        "TRE": "100k TRE",
+        "Count": 4530,
+        "OMOP_DESCR": "Basophils/Leukocytes [Pure number fraction] in Synovial fluid by Manual count"
+      },
+      {
+        "OMOP": 43055314,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/Leukocytes [Pure number fraction] in Synovial fluid by Manual count"
+      },
+      {
+        "OMOP": 43055314,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/Leukocytes [Pure number fraction] in Synovial fluid by Manual count"
+      },
+      {
+        "OMOP": 43055314,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/Leukocytes [Pure number fraction] in Synovial fluid by Manual count"
+      },
+      {
+        "OMOP": 43055314,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Basophils/Leukocytes [Pure number fraction] in Synovial fluid by Manual count"
+      },
+      {
+        "OMOP": 43055370,
+        "TRE": "100k TRE",
+        "Count": 4680,
+        "OMOP_DESCR": "Monocytes/Leukocytes [Pure number fraction] in Blood by Automated count"
+      },
+      {
+        "OMOP": 43055370,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/Leukocytes [Pure number fraction] in Blood by Automated count"
+      },
+      {
+        "OMOP": 43055370,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/Leukocytes [Pure number fraction] in Blood by Automated count"
+      },
+      {
+        "OMOP": 43055370,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/Leukocytes [Pure number fraction] in Blood by Automated count"
+      },
+      {
+        "OMOP": 43055370,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Monocytes/Leukocytes [Pure number fraction] in Blood by Automated count"
+      },
+      {
+        "OMOP": 43373630,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukoplast (1071) 2.5 Cm X 2.5 M Tape"
+      },
+      {
+        "OMOP": 43373630,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Leukoplast (1071) 2.5 Cm X 2.5 M Tape"
+      },
+      {
+        "OMOP": 43373630,
+        "TRE": "Narnia",
+        "Count": 886,
+        "OMOP_DESCR": "Leukoplast (1071) 2.5 Cm X 2.5 M Tape"
+      },
+      {
+        "OMOP": 43373630,
+        "TRE": "The Moon",
+        "Count": 1019,
+        "OMOP_DESCR": "Leukoplast (1071) 2.5 Cm X 2.5 M Tape"
+      },
+      {
+        "OMOP": 43373630,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukoplast (1071) 2.5 Cm X 2.5 M Tape"
+      }
+    ]
+  }
+}
