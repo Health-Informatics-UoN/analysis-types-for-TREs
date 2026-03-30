@@ -1,0 +1,76 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-e89cded756829d18dd1becc550a02ca3"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {"field": "TRE", "type": "nominal"},
+    "tooltip": {"field": "OMOP_DESCR", "type": "nominal"},
+    "x": {"field": "Count", "type": "quantitative"},
+    "y": {"field": "OMOP", "sort": "-x", "type": "nominal"}
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-e89cded756829d18dd1becc550a02ca3": [
+      {
+        "OMOP": 28060,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Streptococcal sore throat"
+      },
+      {
+        "OMOP": 28060,
+        "TRE": "1k TRE",
+        "Count": 150,
+        "OMOP_DESCR": "Streptococcal sore throat"
+      },
+      {
+        "OMOP": 28060,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Streptococcal sore throat"
+      },
+      {
+        "OMOP": 28060,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Streptococcal sore throat"
+      },
+      {
+        "OMOP": 28060,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Streptococcal sore throat"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "100k TRE",
+        "Count": 4470,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "1k TRE",
+        "Count": 1120,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      }
+    ]
+  }
+}
