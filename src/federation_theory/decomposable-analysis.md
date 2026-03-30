@@ -30,11 +30,11 @@ const analysisChoice = view(
 )
 ```
 
-# ${analysisChoice.label}
+## ${analysisChoice.label}
 
 Overall, this analysis ${analysisChoice.decomposableDescription}
 
-## Running an example
+### Running an example
 
 Here are some text boxes.
 It has some example data in it that will work for the kinds of analysis that take a single number from each row of a dataset.
@@ -74,13 +74,13 @@ const arrows = html`${displayArrows(dummyData.length)}`;
 const arrows2 = html`${displayArrows(dummyData.length)}`;
 ```
 
-## Functions
+### Functions
 
-### Local function
+#### Local function
 The way it does this is by applying a local function to each of the datasets.
 The local function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
 
-### Aggregation function
+#### Aggregation function
 
 The analysis takes the output of ${analysisChoice.innerDescription.label} for each dataset and applies an aggregation function to these intermediate values.
 The aggregation function, "${analysisChoice.outerDescription.label}", ${analysisChoice.outerDescription.description}
