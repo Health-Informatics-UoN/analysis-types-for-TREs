@@ -18,6 +18,14 @@ export default {
     {name: "Categorisation of analysis methods", path: "Categorisation"},
     {name: "Get analyses by requirements", path: "analysis-breakdown"},
     {
+      name: "An explanation of federated analysis",
+      path: "federation_theory",
+      open: false,
+      pages: [
+        {name: "Fully Federated analyis", path: "/federation_theory/decomposable-analysis"}
+      ]
+    },
+    {
       name: "Examples in Five Safes TES",
       path: "/examples-in-five-safes-tes",
       open: false,

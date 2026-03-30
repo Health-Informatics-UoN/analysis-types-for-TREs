@@ -1,6 +1,6 @@
 ---
 title: Fully federated analysis
-style: entrust-style.css
+style: ../entrust-style.css
 ---
 
 # Fully federated analysis
@@ -11,10 +11,10 @@ If you want to carry out basic statistics, you can get a lot by combining a few 
 Below, there is a demonstrator to help you get a feel for how a fully federated analysis can work.
 
 ```js
-import { runInner, computeAggregate } from "./components/aggregateFunctions.js";
-import { analyses } from "./components/decomposables.js";
-import { displayIntermediates, displayNodes, displayArrows } from "./components/drawDiagrams.js";
-import { populateNodes } from "./components/renderNodes.js";
+import { runInner, computeAggregate } from "../components/aggregateFunctions.js";
+import { analyses } from "../components/decomposables.js";
+import { displayIntermediates, displayNodes, displayArrows } from "../components/drawDiagrams.js";
+import { populateNodes } from "../components/renderNodes.js";
 ```
 
 ```js
