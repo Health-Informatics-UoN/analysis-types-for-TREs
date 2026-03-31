@@ -26,8 +26,8 @@ export default {
         {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
         {name: "Visualising OMOP metadata", path: "/examples-in-five-safes-tes/Bunny visualisations"},
-        // {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
-        // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
+        {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
+        {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
       ]
     }
