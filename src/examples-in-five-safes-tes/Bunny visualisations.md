@@ -12,7 +12,7 @@ This kind of data can be obtained from Five Safes TES (5STES) by submitting a TE
 
 The settings need to be:
 
-- **Docker Image**: ghcr.io/health-informatics-uon/five-safes-tes-analytics-bunny-cli:latest
+- **Docker Image**: ghcr.io/health-informatics-uon/five-safes-tes-analytics-bunny-cli:1.6.0
 - **Commands**:
 ```
 --body-json
