@@ -22,7 +22,7 @@ export default {
       path: "federation_theory",
       open: false,
       pages: [
-        {name: "Fully Federated analyis", path: "/federation_theory/decomposable-analysis"}
+        {name: "Fully Federated analysis", path: "/federation_theory/decomposable-analysis"}
       ]
     },
     {
