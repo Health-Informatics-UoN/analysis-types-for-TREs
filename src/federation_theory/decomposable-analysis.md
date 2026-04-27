@@ -159,34 +159,58 @@ They can then pass you their Total and Count and you can use this to calculate t
 This is the essence of isolated analysis.
 We have taken a basic statistic, the arithmetic mean, and defined:
 
-- An object that contains the information needed to calculate our final result
-- A function that takes the input and turns it into one of these objects
+- An object that contains the information needed to calculate our final result (an intermediate result)
+- A function that takes the input and turns it into one of these objects (referred to above as the inner function)
 - A function that takes one of the objects and calculates the final result
 - A function that combines these objects
 
+The way you build one of these objects doesn't have to work element-wise like the example above.
+In fact, it normally will not be the efficient way to do so.
+For example, if your data are in a database, just use `SUM` and `COUNT`.
+However, if you **can** make one and define the rules for combining them and getting your final result, then you can do it for arbitrary divisions of your data.
+
 There are different perspectives to take on how this works.
 
-<input type="radio" name="tab" id="maths" checked>
-<input type="radio" name="tab" id="typescript">
+### Perspectives
+
 <input type="radio" name="tab" id="python">
+<input type="radio" name="tab" id="typescript">
+<input type="radio" name="tab" id="maths" checked>
 
 <div class="tabs">
-  <label for="maths">Mathematical description</label>
-  <label for="typescript">Functional programming</label>
   <label for="python">Python example</label>
+  <label for="typescript">Functional programming</label>
+  <label for="maths">Mathematical description</label>
 </div>
 
 <div class="content">
   <div class="tab-content" id="maths-content">
 
     
+We started with the definition of the arithmetic mean:
 ```tex
 \bar{x} = \frac{\sum^n_{i=1}{x_i}}{n}
 ```
 
+But what are we calculating here?
+
+**HOW DO I ANNOTATE THIS?**
 ```tex
-\bar{x} = \frac{\sum^n_{i=1}{x_i}}{\sum^n_{i=1}{1}}
+\bar{x} = f(sub\ total, sub\ count) = \frac{\sum^n_{i=1}{x_i}}{\sum^n_{i=1}{1}}
 ```
+
+#### Monoids
+
+There is a mathematical structure called a [monoid](https://en.wikipedia.org/wiki/Monoid).
+A monoid is a set (${tex`S`}), with an operation (${tex`\cdot`}) that needs three properties.
+
+- Using ${tex`\cdot`} on two elements of ${tex`S`} has to make another ${tex`S`}
+- The operation has to be associative, so for ${tex`a,b`} and ${tex`c`} in ${tex`S`}, ${tex`(a \cdot b) \cdot c = a \cdot (b \cdot c)`}
+- There needs to be an identity element, ${tex`e`} where ${tex`a \cdot e = a`} and ${tex` e \cdot a = a`}
+
+This looks suspiciously like the function that combines the objects as described above.
+Luckily for us, a lot of statistics can be computed using building blocks that can be combined with associative operations: real numbers and addition form a monoid (with 0 as an identity element), and positive real numbers and multiplication (with 1 as an identity element).
+There are other ways to federate statistics, but if you can break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
   </div>
   <div class="tab-content" id="python-content">
 
@@ -196,7 +220,116 @@ protocols
   <div class="tab-content" id="typescript-content">
 
 
-fold
+#### Examples in Typescript
+Above, we vaguely refer to "inner functions" and "outer functions", but we have concrete examples, which definitely work because they are what drives the interactive examples.
+
+##### Inner function
+The inner function is what takes input and turns it into objects that can be combined or used to calculate the final result.
+This is actually two functions: the function that turns input values into the intermediate, and a function for combining the intermediates.
+
+Typescript provides some nice ways to wrap these up: interfaces and generics.
+This code defines code that works on the generic types `T` and `S`.
+
+```js echo run=false
+export interface InnerFunction<T, S> {
+  // apply is what happens to each row
+  apply: (item: T) => S;
+  // merge is how rows within a 
+  merge: (a: S, b: S) => S;
+  identity: S;
+}
+```
+
+The example for the mean is:
+
+```js echo run=false
+export const sumAndCountRows: InnerFunction<number, {sum: number, count: number}> = {
+  apply: (x) => ({sum: x, count: 1}),
+  merge: (a, b) => ({sum: a.sum + b.sum, count: a.count + b.count}),
+  identity: {sum: 0, count: 0}
+}
+```
+
+so `T` is number and `S` is a pair of sum and count.
+
+Once we have functions to go from `T` to `S` and two of `S` to another `S`, we can use them to aggregate locally by:
+
+```js echo run=false
+export function runInner<T, S>(
+  inner: InnerFunction<T, S>,
+  data: T[][]
+): S[] {
+  return data
+  .map(
+    ds => ds
+    .map(inner.apply)
+    .reduce(inner.merge, inner.identity)
+  )
+}
+```
+
+##### Outer function
+We don't want intermediate values, though; we want the final result.
+The nice thing about having the types `T` and `S` is that we can have a type, `R`, where
+
+```js echo run=false
+export interface Decomposable<T, S, R> {
+  inner: InnerFunction<T, S>;
+  outer: OuterFunction<S, R>;
+}
+```
+
+By lining up the output of `InnerFunction` and the input of `OuterFunction` by giving them the same type, we have a path to get from `T` to `R` via `S`.
+We then get to define the two functions of the `Outerfunction`, the part that combines `S`, and the part that turns `S` into `R`
+    
+```js echo run=false
+export interface OuterFunction<S, R> {
+  // the aggregate function is what takes the intermediate results and produces the final result
+  aggregate: (aggregate: S, intermediate: S) => S;
+  identity: S;
+  finalise: (aggregate: S) => R;
+}
+```
+
+For the mean example above, this is:
+
+```js echo run=false
+export const gatherAvgIntermediates: OuterFunction<{sum: number, count: number}, number> = {
+  aggregate: (a, b) => ({sum: a.sum + b.sum, count: a.count + b.count}),
+  identity: {sum: 0, count: 0},
+  finalise: (x: {sum: number, count: number}) => x.sum/x.count
+}
+```
+
+To tie the whole thing together, we can apply the parts with:
+
+```js echo run=false
+export function computeAggregate<T, S, R>(
+  agg: Decomposable<T, S, R>,
+  data: T[][],
+): R {
+    const intermediates: S[] = data
+    .map(
+      ds => ds
+      .map(agg.inner.apply)
+      .reduce(agg.inner.merge, agg.inner.identity)
+    );
+
+    const aggregateResult = intermediates.reduce(
+      agg.outer.aggregate,
+      agg.outer.identity
+    )
+
+    return agg.outer.finalise(aggregateResult)
+}
+```
+
+
+#### Higher-order functions
+You might be wondering what the point of this section is; there is already a python example, which is a more common language for statistics.
+
+
+
   </div>
 </div>
 
@@ -226,7 +359,6 @@ fold
   .tab-content {
     display: none;
     margin-top: 20px;
-    font-size: 2rem;
   }
 
   /* Show selected tab content */
