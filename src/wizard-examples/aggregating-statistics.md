@@ -12,7 +12,7 @@ The outputs from TES tasks can be easily used to calculate basic statistics.
    This example will use summary statistics from a dataset in the OMOP common data model.
 There is a container which, given a SQL query that filters an OMOP table by your criteria, will calculate the necessary summary statistics for your final analysis.
 
-This example data was collected using the [Custom Image wizard](submission-layer-wizards#custom-image) in the submission layer with these settings changed from default:
+This example data was collected using the [Custom Image wizard](/wizard-examples/submission-layer-wizards#custom-image) in the submission layer with these settings changed from default:
 
 | Field   | value                                                                          |
 | ------- | ------------------------------------------------------------------------------ |

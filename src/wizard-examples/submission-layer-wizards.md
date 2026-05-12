@@ -6,13 +6,13 @@ title: Submission layer wizards
 
 # Submission layer wizards
 
-When [making a submission](submitting-to-5s-tes) using the submission layer web application, you can use the TES wizard.
+When [making a submission](/examples-in-five-safes-tes/submitting-to-5s-tes) using the submission layer web application, you can use the TES wizard.
 
 There are three options:
 
 1. **<span style="color: #204F90">Simple SQL Query</span>**: Executes a default SQL container. Just provide a SQL Query.
 2. **<span style="color: #204F90">Custom Image</span>**: Provide details for another image to run, along with commands and environment variables.
-3. **<span style="color: #204F90">Raw JSON</span>**: Write [a TES message](5s-tes-messages) for more complex requirements.
+3. **<span style="color: #204F90">Raw JSON</span>**: Write [a TES message](/examples-in-five-safes-tes/5s-tes-messages) for more complex requirements.
 
 ## Raw JSON
 The Raw JSON wizard has the simplest interface: a single text box for writing a TES message.
@@ -87,9 +87,9 @@ becomes
 
 For all the wizards, there is a button at the bottom to submit your task.
 
-![A screenshot of the task submission button](./submit-tes-button.png)
+![A screenshot of the task submission button](../examples-in-five-safes-tes/submit-tes-button.png)
 
 Once this is pressed, the task is sent to the submission layer.
 This area will then display your task's progress as it is sent to the TRE agent, then to the TES engine, and when the outputs are being reviewed.
 
-When this is complete, you can [collect your results](collecting-results).
+When this is complete, you can [collect your results](/examples-in-five-safes-tes/collecting-results).

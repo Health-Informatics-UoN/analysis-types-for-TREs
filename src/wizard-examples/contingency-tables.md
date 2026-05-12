@@ -26,7 +26,7 @@ graph TD
   agg -- Sum counts --> Result
 ```
 
-The example data were produced by running the [Custom Image wizard](submission-layer-wizards#custom-image) using the following parameters:
+The example data were produced by running the [Custom Image wizard](/wizard-examples/submission-layer-wizards#custom-image) using the following parameters:
 
 | Field | value |
 | ----- | ----- |
@@ -35,7 +35,7 @@ The example data were produced by running the [Custom Image wizard](submission-l
 | Commands | --user-query=SELECT g.concept_name AS gender_name, r.concept_name AS race_name\\nFROM public.person p\\nJOIN public.concept g ON p.gender_concept_id = g.concept_id\\nJOIN public.concept r ON p.race_concept_id = r.concept_id\\nWHERE p.race_concept_id IN (8515, 8516, 8527)<br>--analysis=contingency_table<br>--output-filename=/outputs/output<br>--output-format=json |
 
 The UI should look like this:
-![A screenshot of the web application showing the custom image wizard](contingency-table-wizard.png)
+![A screenshot of the web application showing the custom image wizard](./contingency-table-wizard.png)
 
 <details>
     <summary>Expand for example JSON</summary>
