@@ -22,15 +22,28 @@ export default {
       path: "/examples-in-five-safes-tes",
       open: false,
       pages: [
+        
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
+        {name: "Running arbitrary containers", path: "/examples-in-five-safes-tes/Running arbitrary containers"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
-        {name: "Visualising OMOP metadata", path: "/examples-in-five-safes-tes/Bunny visualisations"},
-        {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
-        {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
+
+      ]
+    },
+    {
+      name: "Wizard examples",
+      path: "/wizard-examples",
+      open: false,
+      pages: [
+        {name: "Making a submission through the Web application", path: "/wizard-examples/making-a-submission-through-the-web-application"},
+        {name: "Submission layer wizards", path: "/wizard-examples/submission-layer-wizards"},
+        {name: "Visualising OMOP metadata", path: "/wizard-examples/Bunny visualisations"},
+        {name: "Aggregating statistics", path: "/wizard-examples/aggregating-statistics"},
+        {name: "Contingency tables", path: "/wizard-examples/contingency-tables"},
+
       ]
     }
+
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:

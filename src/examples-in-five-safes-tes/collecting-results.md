@@ -4,7 +4,7 @@ title: Collecting results
 ---
 # Collecting results
 
-These instructions assume you have [submitted a task](submitting-to-5s-tes) using one of [the wizards](submission-layer-wizards).
+These instructions assume you have [submitted a task](submitting-to-5s-tes).
 
 When you have submitted a task, you have to wait for your results to be ready to collect.
 If you navigate back to the view of the Submissions to a project from which you can start a wizard, you can view past submissions.
