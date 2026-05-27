@@ -28,7 +28,7 @@ graph TD
 
 The example data we will work with here is produced by the following SQL query:
 
-```SQL
+```python
 hypertension_neoplasm_query = """
 WITH hypertension AS (
   SELECT
