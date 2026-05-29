@@ -24,7 +24,7 @@ export default {
       pages: [
         
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Running arbitrary containers", path: "/examples-in-five-safes-tes/Running arbitrary containers"},
+        {name: "Running bespoke containers", path: "/examples-in-five-safes-tes/Running bespoke containers"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
         
@@ -64,17 +64,7 @@ export default {
         {name: "Descriptive Statistics", path: "/workbench-sql-examples/descriptive-statistics"},
       ]
     },
-    {
-      name: "Five Safes TES Workbench Python analysis examples",
-      path: "/workbench-python-examples",
-      open: true,
-      pages: [
-        {name: "Contingency Tables", path: "/workbench-python-examples/contingency-tables"},
-        {name: "Descriptive Statistics", path: "/workbench-python-examples/descriptive-statistics"},
-        {name: "Product Moment Correlation Coefficient", path: "/workbench-python-examples/PMCC"},
-        {name: "T-Digest", path: "/workbench-python-examples/T-Digest"},
-      ]
-    },
+
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:

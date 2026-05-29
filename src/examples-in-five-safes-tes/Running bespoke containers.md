@@ -4,8 +4,8 @@ style: ../entrust-style.css
 title: Submission layer wizards
 ---
 
-# Running arbitrary containers
-Five safes TES can run arbitrary containers, as long as the TRE can and will run them. This means that any analysis can be performed on a TRE. 
+# Running bespoke containers
+Five safes TES can run bespoke containers, as long as the TRE can and will run them. This means that any analysis can be performed on a TRE. 
 
 In order to do this, you have to prepare a containerised version of the software you want to run. Typically, this may be a script such as python or R code, but can be any language or any tool. We do not currently support languages or tools which require external connections, such as to licence servers.
 
