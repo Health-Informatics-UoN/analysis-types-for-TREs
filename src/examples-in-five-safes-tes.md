@@ -27,7 +27,7 @@ The [Global Alliance for Genomics and Health](https://www.ga4gh.org/) (GA4GH) [T
 TES works by sending a standard format of HTTP requests to a server, which interprets these requests to run some task in its environment.
 <div class="tip">
 
-You do not need to know how to write this format to use 5s-TES, which has [tools](/wizard-examples/submission-layer-wizards) to help you.
+You do not need to know how to write this format to use 5s-TES, which has [tools](examples-in-five-safes-tes/submitting-to-5s-tes#methods) to help you.
 
 </div>
 

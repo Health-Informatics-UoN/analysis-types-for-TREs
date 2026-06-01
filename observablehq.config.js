@@ -27,7 +27,6 @@ export default {
         {name: "Five Safes TES executors", path: "/examples-in-five-safes-tes/executors"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
-        {name: "Five Safes TES workbench", path: "/examples-in-five-safes-tes/workbench"},
         {name: "Discovery", path: "/examples-in-five-safes-tes/discovery"},
         {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
         {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"}
@@ -39,8 +38,6 @@ export default {
       path: "/wizard-examples",
       open: true,
       pages: [
-        {name: "Making a submission through the Web application", path: "/wizard-examples/making-a-submission-through-the-web-application"},
-        {name: "Submission layer wizards", path: "/wizard-examples/submission-layer-wizards"},
         {name: "Visualising OMOP metadata", path: "/wizard-examples/Bunny visualisations"},
         {name: "Aggregating statistics", path: "/wizard-examples/aggregating-statistics"},
         {name: "Contingency tables", path: "/wizard-examples/contingency-tables"},
