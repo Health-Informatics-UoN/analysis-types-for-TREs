@@ -9,12 +9,6 @@ In some circumstances, you might need to carry out some statistical analysis wit
 Most commonly, this will be because you are not allowed to see individual data points in your datasets.
 This website is designed for users of Trusted Research Environments (TREs) working in a federation, so the rest of this page will assume that perspective, but there are reasons of efficiency and computing power that could also necessitate federated analytics that helpfully tie federated analytics to the broader field of distributed computing.
 
-## Why federation?
-
-
-## Kinds of federation
-
-
 ## Kinds of federated analytics
 Broadly, the algorithms used to carry out analytics can be broken into three groups.
 
