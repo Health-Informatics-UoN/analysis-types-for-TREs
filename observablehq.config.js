@@ -24,9 +24,13 @@ export default {
       pages: [
         
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Running bespoke containers", path: "/examples-in-five-safes-tes/Running bespoke containers"},
+        {name: "Five Safes TES executors", path: "/examples-in-five-safes-tes/executors"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
         {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
+        {name: "Five Safes TES workbench", path: "/examples-in-five-safes-tes/workbench"},
+        {name: "Discovery", path: "/examples-in-five-safes-tes/discovery"},
+        {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
+        {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"}
         
       ]
     },
@@ -43,28 +47,6 @@ export default {
 
       ]
     },
-    {
-      name: "Five Safes TES Workbench",
-      path: "/workbench-description",
-    },
-    {
-      name: "Discovery",
-      path: "/discovery",
-      open: true,
-      pages: [
-        {name: "Discovery", path: "/discovery/discovery-description"},
-      ]
-    },
-    {
-      name: "Five Safes TES Workbench SQL examples",
-      path: "/workbench-sql-examples",
-      open: true,
-      pages: [
-        {name: "Contingency Tables", path: "/workbench-sql-examples/contingency-tables"},
-        {name: "Descriptive Statistics", path: "/workbench-sql-examples/descriptive-statistics"},
-      ]
-    },
-
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:
@@ -96,7 +78,7 @@ export default {
   // toc: true, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   // output: "dist", // path to the output root for build
-  // search: true, // activate search
+  search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
   // typographer: false, // smart quotes and other typographic improvements
   // preserveExtension: false, // drop .html from URLs

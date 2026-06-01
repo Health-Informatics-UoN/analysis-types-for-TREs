@@ -6,9 +6,9 @@ title: Examples in Five Safes TES
 # Examples in Five Safes TES
 
 Five Safes TES ([5s-TES](https://docs.federated-analytics.ac.uk/five_safes_tes)) provides a way to perform isolated analyses across TREs.
-This section provides examples of how to perform these kinds of analysis using 5S-TES.
+This section provides examples of how to perform these kinds of analysis using 5s-TES.
 
-### The Five Safes
+## The Five Safes
 > [The Five Safes framework](https://ukdataservice.ac.uk/help/secure-lab/what-is-the-five-safes-framework/) is a set of principles which enable data services to provide safe research access to data.
 
 5s-TES enables federated analytics which adhere to these principles.
@@ -21,7 +21,7 @@ This section provides examples of how to perform these kinds of analysis using 5
 | Safe settings | Execution happens within the TRE |
 | Safe outputs | Any outputs of execution have to go through disclosure control before they can be used |
 
-### TES
+## TES
 
 The [Global Alliance for Genomics and Health](https://www.ga4gh.org/) (GA4GH) [Task Execution Service](https://www.ga4gh.org/product/task-execution-service-tes/) is an open, standardised mechanism for running computational tasks remotely.
 TES works by sending a standard format of HTTP requests to a server, which interprets these requests to run some task in its environment.
@@ -33,7 +33,7 @@ You do not need to know how to write this format to use 5s-TES, which has [tools
 
 In 5s-TES, the TES server sits inside a TRE, so tasks are executed inside the TRE, and can access **<span style="color: #204F90">Safe data</span>** for an approved project.
 
-## How 5S-TES works
+## How 5s-TES works
 ```mermaid
 graph LR
     user(User)
@@ -57,11 +57,6 @@ graph LR
 Running unapproved TES tasks would not be safe, so the architecture of 5s-TES is set up to protect data in the TREs.
 Tasks have to be sent to a [Submission layer](#submission-layer) by an [authenticated](examples-in-five-safes-tes/submitting-to-5s-tes#authentication) user, which orchestrates how tasks are distributed to TREs.
 
-<div class="card" style="width:50%">
-    
-[Submitting to 5s-TES](examples-in-five-safes-tes/submitting-to-5s-tes)
-</div>
-
 When a task runs, its outputs are held for [disclosure control](#egress) in the TRE.
 
 ### Task overview
@@ -74,7 +69,7 @@ When a task runs, its outputs are held for [disclosure control](#egress) in the 
       <div class="step-line"></div>
     </div>
     <div class="step-body">
-      <p class="step-title">Send 5s-TES message to Submission layer</p>
+      <p class="step-title"><a href="examples-in-five-safes-tes/submitting-to-5s-tes">Send 5s-TES message to Submission layer</a></p>
       <p class="step-desc">Submission layer handles orchestration, etc.</p>
     </div>
   </div>
@@ -96,7 +91,7 @@ When a task runs, its outputs are held for [disclosure control](#egress) in the 
       <div class="step-line"></div>
     </div>
     <div class="step-body">
-      <p class="step-title">One or more executors run task</p>
+      <p class="step-title">One or more <a href="examples-in-five-safes-tes/executors">executors run the task</a></p>
     </div>
   </div>
 
@@ -119,7 +114,7 @@ When a task runs, its outputs are held for [disclosure control](#egress) in the 
       <div class="step-num">5</div>
     </div>
     <div class="step-body">
-      <p class="step-title">Researcher collects output</p>
+      <p class="step-title">Researcher <a href="examples-in-five-safes-tes/collecting-results">collects output</a></p>
       <p class="step-desc">
         The researcher can then log in to the outputs bucket and download the outputs.
         These files can then be used to aggregate the results of a federated analysis.
@@ -144,3 +139,11 @@ If you're interested in how these layers work, please [consult the 5s-TES docume
 ### Egress
 To ensure **<span style="color: #204F90">Safe outputs</span>**, the outputs created by a task are held before releasing them outside the TRE.
 TREs then have rules on the egress of outputs, usually requiring manual review.
+
+## Examples
+This site includes examples of how to use 5s-TES to carry out federated analytics
+
+- **[Discovery using OMOP metadata](./examples-in-five-safes-tes/discovery)**: When using 5s-TES, the user does not have access to view data prior to analysis, which makes it considerably more difficult to analyse the data. How does a researcher know what analysis to perform, or even if the data is appropriate for their work? The answer is to use summary data of the data set, a process known as cohort discovery.
+- **SQL examples**: One application of 5s-TES is to run queries that provide the right summary statistics for your analysis. These examples demonstrate the use of [SQL](https://en.wikipedia.org/wiki/SQL) to make requests to databases held in two, separate TREs.
+    - **[Contingency tables](./examples-in-five-safes-tes/contingency-tables)**:
+    - **[Descriptive statistics](./examples-in-five-safes-tes/descriptive-statistics)**:
