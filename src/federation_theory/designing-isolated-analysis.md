@@ -18,6 +18,7 @@ If you want to calculate the mean for a dataset you can see the whole of, the wa
 
 1. Count your number of instances (${tex`n`})
 2. Add up your values (${tex`\sum^n_{i=1}{x_i}`})
+3. Divide the sum by the count
 
 This doesn't work if you can't see all of your data at once, though.
 Ignoring federation for now, imagine you could only see one item of data at a time.
@@ -49,8 +50,8 @@ They can then pass you their Total and Count and you can use this to calculate t
 This is the essence of isolated analysis.
 We have taken a basic statistic, the arithmetic mean, and defined:
 
-- An object that contains the information needed to calculate our final result (an intermediate result)
-- A function that takes the input and turns it into one of these objects (referred to above as the inner function)
+- An object that contains the information needed to calculate our final result
+- A function that takes the input and turns it into one of these objects
 - A function that takes one of the objects and calculates the final result
 - A function that combines these objects
 
@@ -64,7 +65,6 @@ There are different perspectives to take on how this works.
 ## Perspectives
 
 <input type="radio" name="tab" id="python">
-<input type="radio" name="tab" id="typescript">
 <input type="radio" name="tab" id="maths" checked>
 
 <div class="tabs">
@@ -78,212 +78,156 @@ There are different perspectives to take on how this works.
     
 We started with the definition of the arithmetic mean:
 ```tex
-\bar{x} = \frac{\sum^n_{i=1}{x_i}}{n}
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
 ```
 
 But what are we calculating here?
+We don't have the sum, we instead have the sum of the sums and the sum of the counts.
+For ${tex`n`} TREs, each with ${tex`m`} data points:
 
-**HOW DO I ANNOTATE THIS?**
 ```tex
-\bar{x} = f(sub\ total, sub\ count) = \frac{\sum^n_{i=1}{x_i}}{\sum^n_{i=1}{1}}
+\bar{x} = f(\text{global-sum}, \text{global-count}) = \frac{\sum_{i=1}^{n} \sum_{j=1}^{n_i} x_{i,j}}{\sum_{i=1}^{n} n_i}
 ```
+
+For our purposes, we can see that both numerator and denominator have ${tex`\sum^n_{i=1}`}, which, as we have seen from our example, means we know we can separate out that part when calculating the federated mean.
 
 ### Monoids
 
 There is a mathematical structure called a [monoid](https://en.wikipedia.org/wiki/Monoid).
-A monoid is a set (${tex`S`}), with an operation (${tex`\cdot`}) that needs three properties.
+A monoid is a set (${tex`S`}), with an operation (${tex`\oplus`}) that needs three properties.
 
-- Using ${tex`\cdot`} on two elements of ${tex`S`} has to make another ${tex`S`}
-- The operation has to be associative, so for ${tex`a,b`} and ${tex`c`} in ${tex`S`}, ${tex`(a \cdot b) \cdot c = a \cdot (b \cdot c)`}
-- There needs to be an identity element, ${tex`e`} where ${tex`a \cdot e = a`} and ${tex` e \cdot a = a`}
+- Using ${tex`\oplus`} on two elements of ${tex`S`} has to make another ${tex`S`}
+- The operation has to be associative, so for ${tex`a,b`} and ${tex`c`} in ${tex`S`}, ${tex`(a \oplus b) \oplus c = a \oplus (b \oplus c)`}
+- There needs to be an identity element, ${tex`e`} where ${tex`a \oplus e = a`} and ${tex` e \oplus a = a`}
 
 This looks suspiciously like the function that combines the objects as described above.
 Luckily for us, a lot of statistics can be computed using building blocks that can be combined with associative operations: real numbers and addition form a monoid (with 0 as an identity element), and positive real numbers and multiplication (with 1 as an identity element).
-There are other ways to federate statistics, but if you can break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
+
+If we can express the partial results from nodes in a federation (pi​) and the operation used to combine them as a monoid, we can abstract the aggregation phase of a federated analysis as:
+
+<!--Function that takes a set of values and returns one-->
+```tex
+f(p_1, p_2, \dots, p_n) = \bigoplus_{i=1}^{n} p_i
+```
+
+Then using some other function (${tex `g`}) applied to that aggregated partial result to calculate a final result, the overall function is then
+
+```tex
+result = g(f({p_1, p_2,\dots, p_n}))
+```
+
+For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}. The monoid operation combines them element-wise:
+```tex
+(sum_a, count_a) \oplus (sum_b, count_b) = (sum_a + sum_b, count_a + count_b)
+```
+
+and our finalisation function is simply
+
+```tex
+g(sum, count) = \frac{sum}{count}
+```
+
+There are other ways to federate statistics, but if you *can* break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
+<!--
+
+PYTHON BIT
+
+-->
   </div>
   <div class="tab-content" id="python-content">
 
 
-Above, we vaguely refer to "inner functions" and "outer functions", but we have concrete examples, which definitely work because they are what drives the interactive examples.
-
-### Structures
-
-To recap - the way the example given above works is that there is an "inner" function that creates an intermediate which can be used by an "outer" function to generate your inner result.
-
-There are python features that let you generalise this solution.
-
-[Dataclasses](https://docs.python.org/3/library/dataclasses.html) automatically add python special methods which let you create objects more easily.
-
-[Generics](https://typing.python.org/en/latest/reference/generics.html) are data types (like `int` or `str`) which can "hold" other types.
-Don't worry about this too much, the examples should make this more clear.
-
-Combining dataclasses and generics lets us describe an overall isolated analysis like this:
-
+The example above mentions "A function that combines these objects".
+Providing python code for an example might make this more concrete.
+Python's standard library contains `functools` to make this kind of approach easier.
+`reduce` is a function from `functools` which applies a function to each item of some iterable and returns a single result.
+This is something like
 
 ```python
-from typing import Generic
-from dataclasses import dataclass
+result = {"count": 0, "sum": 0}
 
-@dataclass
-class AlgebraicAggregate(Generic[T, S, R]):
+for item in some_list:
+    result = {
+        "count": result.count + item.count,
+        "sum": result.sum + item.sum
+    }
 ```
 
-This overall dataclass works on three types:
-- `T`: The input rows
-- `S`: The intermediate values
-- `R`: The type of the output
+and using `result` afterwards.
+
+If we take partial results from nodes in a federation, we can use `reduce` to combine them like so:
 
 ```python
-    inner_function: InnerFunction[T, S]
-    outer_function: OuterFunction[S, R]
+from functools import reduce
+
+def aggregate(partial1, partial2):
+    return {
+        "count": partial1["count"] + partial2["count"],
+        "sum": partial1["sum"] + partial2["sum"]
+    }
+
+first, *rest = partials
+
+result = reduce(aggregate, rest, first)
 ```
 
-The overall analysis is then broken into an inner function and an outer function, each of which is parameterised by the overall analysis types: `T` and `S` for the inner function, and `S` and `R` for the outer function.
+`reduce` needs some initial value to combine the other values with, so the `first, *rest` like splits the partials into the first value and a list of the rest.
+`reduce` then uses aggregate to combine every value in partials.
+
+The nice part of this approach is that we can tie the functions used for combining partial results to the function used to calculate a final result, and even have the type checker in your IDE tell you if you're making a mistake.
 
 ```python
-    def run(self, data: list[list[T]]) -> R:
-        intermediates: list[S] = map(self.inner_function.run, data)
-        return self.outer_function.run(intermediates)
+from typing import TypeVar, Iterable, Callable
+
+S = TypeVar("S")
+R = TypeVar("R")
 ```
 
-The analysis works by running the inner function on the data to produce a list of intermediate values, then running the outer function on the intermediates.
-
-
-### Inner function
-The inner function is what takes input and turns it into objects that can be combined or used to calculate the final result.
-In reality, the code used to create this will be highly dependent on how calculations are carried out at the node. This just needs to create an object of type `S`.
-
-<details>
-<summary>If you want code for the toy example, expand for details</summary>
-
+This bit of set up says that we want to work with two, possibly different, data types, but we don't want to be restricted to any particular types yet.
 
 ```python
-from typing import Callable
-
-@dataclass
-class InnerFunction(Generic[T, S]):
-```
-
-This is actually two functions: the function that turns input values into the intermediate (`apply`), and a function for combining the intermediates (`merge`).
-Putting these into a class might seem a little odd, but makes tying these together easier, as you will see when we write the mean example this way.
-We also provide the identity element, which is something that you can merge with another instance of `S` and get the same result.
-
-```python
-    apply: Callable[[T], S]
-    merge: Callable[[S, S], S]
-    identity: S
-```
-
-Running the inner function uses [higher-order functions](https://en.wikipedia.org/wiki/Higher-order_function), functions which take another function as a parameter.
-
-```python
-    def run(self, rows: list[T]) -> S:
-        return reduce(
-            self.merge,
-            map(self.apply, rows),
-            self.identity
-            )
-```
-
-To understand this, it can help to look at it inside out:
-
-```python
-map(self.apply, rows)
-```
-
-Takes the rows, and runs `apply` on each element.
-You can think of this as creating a new list, with an intermediate result for each element of the input, like a `for` loop or a list comprehension.
-
-This is used as the input for
-
-```python
-reduce(
-    self.merge,
-    array_of_intermediates,
-    self.identity
-)
-```
-
-A `reduce` operation takes this array of intermediates and uses `merge` to combine each element of the array of intermediates with the `identity`.
-By wrapping the `apply` function in the `merge` function this way we can go from individual rows to an aggregate value in the intermediate format.
-</details>
-
-### Outer function
-We don't want intermediate values, though; we want the final result.
-By lining up the output of `InnerFunction` and the input of `OuterFunction` by giving them the same type, we have a path to get from `T` to `R` via `S`.
-
-```python
-@dataclass
-class OuterFunction(Generic[S, R]):
-```
-
-We then get to define the two functions of the `Outerfunction`
-- `aggregate` The part that combines `S`
-- `finalise` The part that turns `S` into `R`
-
-```python
-    aggregate: Callable[[S, S], S]
-    identity: S
+def build_combine_function(
+    aggregate: Callable[[S,S], S],
     finalise: Callable[[S], R]
+) -> Callable[[Iterable[S]], R]:
+    ...
 ```
 
-Running the whole function uses a `reduce` operation to combine all the intermediate values into a single value, then finalise
+You might be wondering what `Callable` is.
+This is python's way of doing type hints for a function.
+There are two parameters for a `Callable`: the types of the function's parameters, and the return type.
+`aggregate: Callable[[S,S], S]` says "`aggregate` has to be a function that takes two things of one type (`S`) and returns something of the same type", `finalise: Callable[[S], R]` says "`finalise` has to be a function that takes something of type `S` and returns something of type `R`".
+The return type `Callable[[Iterable[S]], R]` is a promise that `build_combine_function` will use these to make a function that takes a list or similar holding items of type `S` and use them to make something of type `R`.
 
 ```python
-    def run(self, intermediates: Iterable[S]) -> R:
-        return self.finalise(reduce(self.aggregate, intermediates))
-```
-
-### End-to-end example: Mean
-The example of the mean as described above serves to make this more concrete.
-We know that the types of data we need are a number, an intermediate holding the sum and count, and a final result that is a single number again.
-
-For python, we can define the intermediate:
-```python
-@dataclass
-class SumIntermediate:
-    sum: float
-    count: int
-```
-
-As we have all the data for a toy example, we can define the InnerFunction like this:
-```python
-sum_rows = InnerFunction[float, SumIntermediate](
-    apply=lambda x: SumIntermediate(sum=x, count=1),
-    merge=lambda a, b: SumIntermediate(sum=a.sum + b.sum, count=a.count + b.count),
-    identity=SumIntermediate(sum=0, count=0),
-)
-```
-
-This is not realistic, but you can see the syntax for creating an inner function includes `InnerFunction[float, SumIntermediate]`, which tells the type checker that `apply` should take a `float` and return a `SumIntermediate`, and that `merge` should take two `SumIntermediate` and return another.
-This should help you write functions that return the right values for aggregation.
-
-The outer function is more realistic; as long as it receives `SumIntermediate` values, it can calculate your mean:
-
-```python
-gather_avg_intermediates = OuterFunction[SumIntermediate, float](
-        aggregate=lambda a, b: SumIntermediate(sum=a.sum + b.sum, count=a.count + b.count),
-        identity=SumIntermediate(0,0),
-        finalise=lambda x: x.sum/x.count
+def build_combine_function(
+    aggregate: Callable[[S,S], S],
+    finalise: Callable[[S], R]
+) -> Callable[[Iterable[S]], R]:
+    def combine(partials: Iterable[S]):
+        first, *rest = partials
+        return finalise(
+            reduce(aggregate, rest, first)
         )
+    
+    return combine
 ```
 
-Creating an aggregate function is then simple:
+The function body defines a function that uses reduce to apply `aggregate` so we combine the partial results into one object, then apply finalise to the result.
+Since we have made sure aggregate and finalise have the behaviours we want, we know the function we get from `build_combine_function` will take a list of partial results and give us the final result we want.
+Without the type hinting, the function looks much simpler: `def build_combine_function(aggregate, finalise):...`, but by adding the other parts, your IDE will probably tell you off if you try to use functions that don't work with the data you have.
 
-```python
-federated_mean = AlgebraicAggregate(
-    inner_function=sum_rows,
-    outer_function=gather_avg_intermediates
-)
-``` 
-
-Then, all you need to do is call `run` from `federated_mean`.
-
-Hopefully, walking through an example in python helps make it clear how federated analytics can use simple data structures that can be combined and used to calculate a final result.
-Surprisingly few of these can be used to calculate a lot of statistics.
-For example, if you can create an intermediate value that describes the sum, sum of squares, and counts, you can calculate variance, as well as several other statistics.
+If we wanted, we could pull off a similar trick to go from our input data to the final result, but in the federated setting, the code executed in the nodes will be in a separate program, but this approach means all you need to know is that it should supply values you can shape into the partial results that your combiner function expects.
+The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
   </div>
 </div>
+
+## Further reading
+The approaches used here are not new; aggregation in distributed systems has to solve many of the same problems, so federated analytics can crib from their solutions
+
+- [Data Cube: A Relational Aggregation Operator Generalizing Group-By, Cross-Tab, and Sub-Totals](https://dx.doi.org/10.1023/A:1009726021843) a generalisation of particular aggregations.
+- [A Survey of Distributed Data Aggregation Algorithms](http://arxiv.org/abs/1110.0725)
+- [Monoidify! Monoids as a Design Principle for Efficient MapReduce Algorithms](http://arxiv.org/abs/1304.7544)
 
 <style>
   /* Hide radio buttons */
