@@ -143,7 +143,7 @@ Nottingham TRE 02:
 
 
 
-This is useful, but only gives informtation about the data in each TRE individually. In order to derive more value from the data, and perform statistical tests across both groups (the complete data set), the data must be aggregated.
+This is useful, but only gives information about the data in each TRE individually. In order to derive more value from the data, and perform statistical tests across both groups (the complete data set), the data must be aggregated.
 
 `aggregate_tables` checks that your tables have the same variables, and sums the counts if they do.
 
@@ -159,8 +159,6 @@ display(contingency_table)
 |---------------------|-------------------|----------------|
 |with                 |                20 |           1019 |
 |without              |               517 |          97967 |
-
-
 
 
 The `contingency_table` property organises this data into the format for statistical analyses.
