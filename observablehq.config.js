@@ -20,28 +20,16 @@ export default {
     {
       name: "Examples in Five Safes TES",
       path: "/examples-in-five-safes-tes",
-      open: true,
       pages: [
         
         {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
         {name: "Five Safes TES executors", path: "/examples-in-five-safes-tes/executors"},
         {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
-        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
         {name: "Discovery", path: "/examples-in-five-safes-tes/discovery"},
         {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
-        {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"}
+        {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"},
+        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"}
         
-      ]
-    },
-    {
-      name: "Wizard examples",
-      path: "/wizard-examples",
-      open: true,
-      pages: [
-        {name: "Visualising OMOP metadata", path: "/wizard-examples/Bunny visualisations"},
-        {name: "Aggregating statistics", path: "/wizard-examples/aggregating-statistics"},
-        {name: "Contingency tables", path: "/wizard-examples/contingency-tables"},
-
       ]
     },
   ],
