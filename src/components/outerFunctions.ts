@@ -37,7 +37,7 @@ export const outerFunctionDescriptions = {
   },
   gatherAvgIntermediates: {
     label: "Gather averaging intermediates",
-    description: "takes the count and sum from each node and sum each. Then, calculate the mean by dividing sum by count."
+    description: "takes the count and sum from each node. It gets a total sum and total count by adding across nodes, then calculates the mean by dividing sum by count."
   },
   maxIntermediates: {
     label: "Max of intermediate values",
@@ -49,6 +49,6 @@ export const outerFunctionDescriptions = {
   },
   gatherVarIntermediates: {
     label: "Gather variance intermediates",
-    description: "takes the count, sum, and sum of squares from each node and sums each. Then, calculates the population variance."
+    description: "takes the count, sum, and sum of squares from each node. It gets a total count, sum, and sum of squares by adding across nodes, then calculates the population variance."
   }
 }
