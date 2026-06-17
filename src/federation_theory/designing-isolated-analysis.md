@@ -222,6 +222,28 @@ The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) modul
   </div>
 </div>
 
+
+```js
+import { evaluate_aggregate } from "../components/evaluate_pyodide.js";
+```
+
+```js
+const node_function = view(Inputs.textarea(
+{
+  label: "Function to run at the node",
+  submit: true,
+  value: `def node_function(some_list):
+  return len(some_list)`
+}
+))
+```
+
+```js
+evaluate_aggregate(node_function)
+```
+
+
+
 ## Further reading
 The approaches used here are not new; aggregation in distributed systems has to solve many of the same problems, so federated analytics can crib from their solutions
 
