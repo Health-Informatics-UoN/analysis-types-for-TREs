@@ -5,30 +5,39 @@ style: entrust-style.css
 ---
 
 <div class="hero">
-  <h1>Analysis Types</h1>
-  <h2>Categorising different analyses by how they can be federated</h2>
+  <h1>Federated Analysis for researchers</h1>
+  <h2>Running analysis on private data in different places</h2>
 </div>
 
 ---
+<div class="grid grid-cols-4">
+  <div class="card">
 
-<div style="margin:1rem 0;">
-Trusted research environments (TREs) can take part in federated analytics, where multiple partners in a network collaborate to compute some analysis, providing <em>data access</em> without <em>data sharing</em>.
-What analyses are feasible for TREs depends on technical possibility and the operational acceptability of different stages of analysis. 
-In theory, any of these analyses are made possible by moving data into one place and carrying out the analysis.
-That might be acceptable for some TREs.
-However, there are many cases where this presents an unacceptable breach of confidentiality, and the analysis should be performed by calculating a local result that can be combined with similar results for other TREs.
-</div>
 
-<div style="margin:1rem 0;">
-This is why an <b>analysis</b> is treated separately to the <b>algorithm(s)</b> used to compute it.
-The analysis covers what the final output is that is published.
-Algorithms describe how the analysis is computed.
-This provides information like what data can be observed by which other parties in the federated analysis and technical requirements for TREs.
-</div>
+New to federation? Learn [why you might need to federate your analysis](concepts#why-federation).
+  </div>
+  <div class="card">
 
----
+
+Learn how [Five Safes TES](five-safes-tes) can be used [to submit analysis tasks](five-safes-tes/submitting-to-5s-tes).
+  </div>
+  <div class="card">
+
+
+Jump straight into [some examples](examples-in-five-safes-tes)
+- [Cohort discovery](examples-in-five-safes-tes/discovery)
+- [Federating descriptive statistics](examples-in-five-safes-tes/descriptive-statistics)
+- [Federating contingency tables](examples-in-five-safes-tes/contingency-tables)
+  </div>
+  <div class="card">
+
 
 You can read more details on how analyses are [categorised](Categorisation), or use the [dashboard](analysis-breakdown) to see whether your TRE requirements are compatible with different federated analyses.
+  </div>
+</div>
+
+---
+
 
 <style>
 
