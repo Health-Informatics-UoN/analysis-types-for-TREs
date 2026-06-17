@@ -44,6 +44,8 @@ export default {
       ],
       collapsible: true
     },
+    // {name: "RO-crates", path: "/ro-crates"},
+    // {name: "WfExS", path: "/wfexs"}
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:
