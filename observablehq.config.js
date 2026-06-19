@@ -15,56 +15,37 @@ export default {
   //   }
   // ],
   pages: [
-    {name: "Categorisation of analysis methods", path: "Categorisation"},
-    {name: "Get analyses by requirements", path: "analysis-breakdown"},
+    {
+      name: "Concepts",
+      path: "/concepts",
+      pages: [
+        {name: "Get analyses by requirements", path: "/concepts/analysis-breakdown"},
+        {name: "Categorisation of analysis methods", path: "/concepts/Categorisation"}
+      ]
+    },
+    {
+      name: "Five Safes TES",
+      path: "/five-safes-tes",
+      pages: [
+        {name: "Submitting to Five Safes TES", path: "/five-safes-tes/submitting-to-5s-tes"},
+        {name: "Five Safes TES executors", path: "/five-safes-tes/executors"},
+        {name: "Collecting results", path: "/five-safes-tes/collecting-results"},
+        {name: "Five Safes TES messages", path: "/five-safes-tes/5s-tes-messages"}
+      ],
+      collapsible: true
+    },
     {
       name: "Examples in Five Safes TES",
       path: "/examples-in-five-safes-tes",
-      open: true,
       pages: [
-        
-        {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Running bespoke containers", path: "/examples-in-five-safes-tes/Running bespoke containers"},
-        {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
-        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
-        
-      ]
+        {name: "Discovery", path: "/examples-in-five-safes-tes/discovery"},
+        {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
+        {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"},
+      ],
+      collapsible: true
     },
-    {
-      name: "Wizard examples",
-      path: "/wizard-examples",
-      open: true,
-      pages: [
-        {name: "Making a submission through the Web application", path: "/wizard-examples/making-a-submission-through-the-web-application"},
-        {name: "Submission layer wizards", path: "/wizard-examples/submission-layer-wizards"},
-        {name: "Visualising OMOP metadata", path: "/wizard-examples/Bunny visualisations"},
-        {name: "Aggregating statistics", path: "/wizard-examples/aggregating-statistics"},
-        {name: "Contingency tables", path: "/wizard-examples/contingency-tables"},
-
-      ]
-    },
-    {
-      name: "Five Safes TES Workbench",
-      path: "/workbench-description",
-    },
-    {
-      name: "Discovery",
-      path: "/discovery",
-      open: true,
-      pages: [
-        {name: "Discovery", path: "/discovery/discovery-description"},
-      ]
-    },
-    {
-      name: "Five Safes TES Workbench SQL examples",
-      path: "/workbench-sql-examples",
-      open: true,
-      pages: [
-        {name: "Contingency Tables", path: "/workbench-sql-examples/contingency-tables"},
-        {name: "Descriptive Statistics", path: "/workbench-sql-examples/descriptive-statistics"},
-      ]
-    },
-
+    // {name: "RO-crates", path: "/ro-crates"},
+    // {name: "WfExS", path: "/wfexs"}
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:
@@ -96,7 +77,7 @@ export default {
   // toc: true, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   // output: "dist", // path to the output root for build
-  // search: true, // activate search
+  search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
   // typographer: false, // smart quotes and other typographic improvements
   // preserveExtension: false, // drop .html from URLs

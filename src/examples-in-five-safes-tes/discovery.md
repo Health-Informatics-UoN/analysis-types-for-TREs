@@ -5,15 +5,19 @@ title: Discovery Workbench Example
 ---
 # Discovery Workbench Example
 
-As a researcher doesn't see the data, they will need some information in order to assess the data set for suitability for their research project. We have created an example of how to do this using a discovery tool provided for use on OMOP data. This tool retrieves metadata, which can be used for this purpose. 
+Researchers in federation have no direct access to the data, which can include the codes used to describe the data.
+Without some information about this metadata, it is hard to design an analysis, so TREs often make metadata available.
+We have created an example of how to do this using a discovery tool provided for use on OMOP data.
 
-This demo notebook will go through using the Five Safes TES workbench to submit a query, which requests discovery, or demographic information. This information is returned from the TREs and parsed using methods provided, allowing inspection of the metadata. Typically, this includes data on the OMOP concept codes and their frequency of occurrence at each TRE. Not only can this be used to check the overall ocurrence, but also how many codes occur in both TREs, and how many records share those codes.
+This demo notebook will go through using the [Workbench](./submitting-to-5s-tes#workbench) to submit a query, which requests discovery, or demographic information.
+This information is returned from the TREs and parsed using methods provided, allowing inspection of the metadata.
+Typically, this includes data on the OMOP concept codes and their frequency of occurrence at each TRE.
+Not only can this be used to check the overall occurrence, but also how many codes occur in both TREs, and how many records share those codes.
 
-This tutorial can be run as a Jupyter notebook in the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/tree/main/OMOP-metadata), which also contains the utilities used to visualise OMOP metadata, and a further [demo which uses the wizards.](../wizard-examples/Bunny%20visualisations)
+This tutorial can be run as a Jupyter notebook in the [5s-TES notebooks repository](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/tree/main/OMOP-metadata), which also contains the utilities used to visualise OMOP metadata, and a further [demo](https://github.com/Health-Informatics-UoN/5s-TES-notebooks/blob/main/OMOP-metadata/OMOP%20metadata%20visualisations.ipynb) which uses the [custom image wizard.](submitting-to-5s-tes#custom-image)
 
-This kind of data can be obtained from Five Safes TES (5STES) by submitting a TES message. In this example, we create the TES message using the [workbench](/workbench/).
-
-This section builds the TES message:
+The workbench is first configured to connect to a submission layer, as described in the [workbench documentation](https://github.com/federated-research/5S-TES-Workbench/).
+Once this is done, the workbench can generate TES messages:
 
 ```
 wb.build_tes.bunny(
@@ -33,13 +37,11 @@ We have provided some utilities to help users interpret the outputs of these dis
 
 The example uses the publicly available "delphi-100k" OMOP CDM dataset, held in University of Nottingham test TREs.
 
-The workbench will handle fetching the data, just by running the correct command once the data has been approved for egress.
+The workbench handles fetching the data, just by running the correct command once the data has been approved for egress.
 
 Initialising a `DistributionCodesets` object with a dictionary with names you recognise and the paths to the files means that visualisations etc. will keep those labels.
 
 We demonstrate several of the features available for visualisation
-
-
 
 ```python
 codesets = DistributionCodesets(metadata_paths)

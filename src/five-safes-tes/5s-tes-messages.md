@@ -8,7 +8,7 @@ title: Five Safes TES messages
 
 <div class="tip">
 
-The information included here is not essential, but can help you understand what's going under the hood of tools like [the wizards](/wizard-examples/submission-layer-wizards)
+The information included here is not essential, but can help you understand what's going under the hood of tools like [the wizards](submitting-to-5s-tes#web-application).
 
 </div>
 

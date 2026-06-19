@@ -1,12 +1,12 @@
 ---
 theme: [dashboard, air]
-style: entrust-style.css
+style: ../entrust-style.css
 title: Get analyses by requirements
 toc: false
 ---
 
 ```js
-import { Statistic, Algorithm } from "./components/display_statistic.js"
+import { Statistic, Algorithm } from "../components/display_statistic.js"
 ```
 
 # Available analyses
@@ -15,12 +15,12 @@ import { Statistic, Algorithm } from "./components/display_statistic.js"
 
 <!-- Load data -->
 ```js
-const statistics = FileAttachment("./data/statistics.csv").csv();
-const algorithms = FileAttachment("./data/algorithms.csv").csv();
-const aliases = FileAttachment("./data/statistic_aliases.csv").csv();
-const observableData = FileAttachment("./data/observable_data.csv").csv();
-const statisticRelationships = FileAttachment("./data/statistic_relationships.csv").csv();
-const statbarns = FileAttachment("./data/statbarns.csv").csv();
+const statistics = FileAttachment("../data/statistics.csv").csv();
+const algorithms = FileAttachment("../data/algorithms.csv").csv();
+const aliases = FileAttachment("../data/statistic_aliases.csv").csv();
+const observableData = FileAttachment("../data/observable_data.csv").csv();
+const statisticRelationships = FileAttachment("../data/statistic_relationships.csv").csv();
+const statbarns = FileAttachment("../data/statbarns.csv").csv();
 ```
 
 ```js
