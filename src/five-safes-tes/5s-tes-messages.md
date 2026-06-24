@@ -8,12 +8,12 @@ title: Five Safes TES messages
 
 <div class="tip">
 
-The information included here is not essential, but can help you understand what's going under the hood of tools like [the wizards](examples-in-five-safes-tes/submission-layer-wizards)
+The information included here is not essential, but can help you understand what's going under the hood of tools like [the wizards](submitting-to-5s-tes#web-application).
 
 </div>
 
 The reference documentation for TES messages specifies the standard for [creating a task](https://ga4gh.github.io/task-execution-schemas/docs/#tag/TaskService/operation/CreateTask).
-5s-TES accepts this format, but some fields are treated differently because of how the [submission layer](examples-in-five-safes-tes#submission-layer) processes messages before they're sent to a TES engine.
+5s-TES accepts this format, but some fields are treated differently because of how the [submission layer](/examples-in-five-safes-tes#submission-layer) processes messages before they're sent to a TES engine.
 
 ## TES fields
 

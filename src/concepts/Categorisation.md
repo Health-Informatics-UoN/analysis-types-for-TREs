@@ -1,9 +1,19 @@
 ---
 theme: air
-style: entrust-style.css
+style: ../entrust-style.css
 title: Categorisation of Analysis methods
 ---
 # Categorising analysis types
+Trusted research environments (TREs) can take part in federated analytics, where multiple partners in a network collaborate to compute some analysis, providing <em>data access</em> without <em>data sharing</em>.
+What analyses are feasible for TREs depends on technical possibility and the operational acceptability of different stages of analysis. 
+In theory, any of these analyses are made possible by moving data into one place and carrying out the analysis.
+That might be acceptable for some TREs.
+However, there are many cases where this presents an unacceptable breach of confidentiality, and the analysis should be performed by calculating a local result that can be combined with similar results for other TREs.
+
+This is why an <b>analysis</b> is treated separately to the <b>algorithm(s)</b> used to compute it.
+The analysis covers what the final output is that is published.
+Algorithms describe how the analysis is computed.
+This provides information like what data can be observed by which other parties in the federated analysis and technical requirements for TREs.
 
 The aim of representing possible federated analysis methods is to make it easier for people involved in federated research to reason and communicate about what methods are possible.
 There are three kinds of people this is aimed at, and ultimately we will aim to organise the information differently according to their concerns:

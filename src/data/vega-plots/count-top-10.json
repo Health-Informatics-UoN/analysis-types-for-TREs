@@ -1,0 +1,266 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-a728793463941ee04eb23777eacf1e87"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {"field": "TRE", "type": "nominal"},
+    "tooltip": {"field": "OMOP_DESCR", "type": "nominal"},
+    "x": {"field": "Count", "type": "quantitative"},
+    "y": {"field": "OMOP", "sort": "-x", "type": "nominal"}
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-a728793463941ee04eb23777eacf1e87": [
+      {"OMOP": 8532, "TRE": "100k TRE", "Count": 50260, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "1k TRE", "Count": 560, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8507, "TRE": "100k TRE", "Count": 49740, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "1k TRE", "Count": 570, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "MALE"},
+      {
+        "OMOP": 38003563,
+        "TRE": "100k TRE",
+        "Count": 49960,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "1k TRE",
+        "Count": 110,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003564,
+        "TRE": "100k TRE",
+        "Count": 50040,
+        "OMOP_DESCR": "Not Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003564,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Not Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003564,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Not Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003564,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Not Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003564,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Not Hispanic or Latino"
+      },
+      {
+        "OMOP": 1001962,
+        "TRE": "100k TRE",
+        "Count": 4290,
+        "OMOP_DESCR": "During the past 4 weeks, I have the feeling I am taken seriously by people in my working environment [Quality of Working Life Questionnaire for Cancer Survivors]"
+      },
+      {
+        "OMOP": 1001962,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "During the past 4 weeks, I have the feeling I am taken seriously by people in my working environment [Quality of Working Life Questionnaire for Cancer Survivors]"
+      },
+      {
+        "OMOP": 1001962,
+        "TRE": "Narnia",
+        "Count": 8841,
+        "OMOP_DESCR": "During the past 4 weeks, I have the feeling I am taken seriously by people in my working environment [Quality of Working Life Questionnaire for Cancer Survivors]"
+      },
+      {
+        "OMOP": 1001962,
+        "TRE": "The Moon",
+        "Count": 8498,
+        "OMOP_DESCR": "During the past 4 weeks, I have the feeling I am taken seriously by people in my working environment [Quality of Working Life Questionnaire for Cancer Survivors]"
+      },
+      {
+        "OMOP": 1001962,
+        "TRE": "Tingham",
+        "Count": 8295,
+        "OMOP_DESCR": "During the past 4 weeks, I have the feeling I am taken seriously by people in my working environment [Quality of Working Life Questionnaire for Cancer Survivors]"
+      },
+      {
+        "OMOP": 2730954,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Bypass Right Common Iliac Artery to Right Renal Artery with Nonautologous Tissue Substitute, Open Approach"
+      },
+      {
+        "OMOP": 2730954,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Bypass Right Common Iliac Artery to Right Renal Artery with Nonautologous Tissue Substitute, Open Approach"
+      },
+      {
+        "OMOP": 2730954,
+        "TRE": "Narnia",
+        "Count": 8978,
+        "OMOP_DESCR": "Bypass Right Common Iliac Artery to Right Renal Artery with Nonautologous Tissue Substitute, Open Approach"
+      },
+      {
+        "OMOP": 2730954,
+        "TRE": "The Moon",
+        "Count": 9756,
+        "OMOP_DESCR": "Bypass Right Common Iliac Artery to Right Renal Artery with Nonautologous Tissue Substitute, Open Approach"
+      },
+      {
+        "OMOP": 2730954,
+        "TRE": "Tingham",
+        "Count": 9665,
+        "OMOP_DESCR": "Bypass Right Common Iliac Artery to Right Renal Artery with Nonautologous Tissue Substitute, Open Approach"
+      },
+      {
+        "OMOP": 36518276,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Mullerian mixed tumor of connective, Subcutaneous and other soft tissues of thorax"
+      },
+      {
+        "OMOP": 36518276,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Mullerian mixed tumor of connective, Subcutaneous and other soft tissues of thorax"
+      },
+      {
+        "OMOP": 36518276,
+        "TRE": "Narnia",
+        "Count": 9495,
+        "OMOP_DESCR": "Mullerian mixed tumor of connective, Subcutaneous and other soft tissues of thorax"
+      },
+      {
+        "OMOP": 36518276,
+        "TRE": "The Moon",
+        "Count": 9532,
+        "OMOP_DESCR": "Mullerian mixed tumor of connective, Subcutaneous and other soft tissues of thorax"
+      },
+      {
+        "OMOP": 36518276,
+        "TRE": "Tingham",
+        "Count": 8811,
+        "OMOP_DESCR": "Mullerian mixed tumor of connective, Subcutaneous and other soft tissues of thorax"
+      },
+      {
+        "OMOP": 42936729,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Sulindac 200 MG [CLIDOL]"
+      },
+      {
+        "OMOP": 42936729,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Sulindac 200 MG [CLIDOL]"
+      },
+      {
+        "OMOP": 42936729,
+        "TRE": "Narnia",
+        "Count": 9821,
+        "OMOP_DESCR": "Sulindac 200 MG [CLIDOL]"
+      },
+      {
+        "OMOP": 42936729,
+        "TRE": "The Moon",
+        "Count": 8700,
+        "OMOP_DESCR": "Sulindac 200 MG [CLIDOL]"
+      },
+      {
+        "OMOP": 42936729,
+        "TRE": "Tingham",
+        "Count": 9265,
+        "OMOP_DESCR": "Sulindac 200 MG [CLIDOL]"
+      },
+      {
+        "OMOP": 41168568,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "celecoxib 100 MG Oral Capsule [Celecoxib Al] Box of 20 by Aliud"
+      },
+      {
+        "OMOP": 41168568,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "celecoxib 100 MG Oral Capsule [Celecoxib Al] Box of 20 by Aliud"
+      },
+      {
+        "OMOP": 41168568,
+        "TRE": "Narnia",
+        "Count": 7952,
+        "OMOP_DESCR": "celecoxib 100 MG Oral Capsule [Celecoxib Al] Box of 20 by Aliud"
+      },
+      {
+        "OMOP": 41168568,
+        "TRE": "The Moon",
+        "Count": 9917,
+        "OMOP_DESCR": "celecoxib 100 MG Oral Capsule [Celecoxib Al] Box of 20 by Aliud"
+      },
+      {
+        "OMOP": 41168568,
+        "TRE": "Tingham",
+        "Count": 9789,
+        "OMOP_DESCR": "celecoxib 100 MG Oral Capsule [Celecoxib Al] Box of 20 by Aliud"
+      },
+      {
+        "OMOP": 21359525,
+        "TRE": "100k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Sigvaris Coton (15-20mmHg) thigh length closed toe with grip top lymphoedema garment male long extra large"
+      },
+      {
+        "OMOP": 21359525,
+        "TRE": "1k TRE",
+        "Count": 0,
+        "OMOP_DESCR": "Sigvaris Coton (15-20mmHg) thigh length closed toe with grip top lymphoedema garment male long extra large"
+      },
+      {
+        "OMOP": 21359525,
+        "TRE": "Narnia",
+        "Count": 9510,
+        "OMOP_DESCR": "Sigvaris Coton (15-20mmHg) thigh length closed toe with grip top lymphoedema garment male long extra large"
+      },
+      {
+        "OMOP": 21359525,
+        "TRE": "The Moon",
+        "Count": 9303,
+        "OMOP_DESCR": "Sigvaris Coton (15-20mmHg) thigh length closed toe with grip top lymphoedema garment male long extra large"
+      },
+      {
+        "OMOP": 21359525,
+        "TRE": "Tingham",
+        "Count": 8556,
+        "OMOP_DESCR": "Sigvaris Coton (15-20mmHg) thigh length closed toe with grip top lymphoedema garment male long extra large"
+      }
+    ]
+  }
+}

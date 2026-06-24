@@ -15,8 +15,25 @@ export default {
   //   }
   // ],
   pages: [
-    {name: "Categorisation of analysis methods", path: "Categorisation"},
-    {name: "Get analyses by requirements", path: "analysis-breakdown"},
+    {
+      name: "Concepts",
+      path: "/concepts",
+      pages: [
+        {name: "Get analyses by requirements", path: "/concepts/analysis-breakdown"},
+        {name: "Categorisation of analysis methods", path: "/concepts/Categorisation"}
+      ]
+    },
+    {
+      name: "Five Safes TES",
+      path: "/five-safes-tes",
+      pages: [
+        {name: "Submitting to Five Safes TES", path: "/five-safes-tes/submitting-to-5s-tes"},
+        {name: "Five Safes TES executors", path: "/five-safes-tes/executors"},
+        {name: "Collecting results", path: "/five-safes-tes/collecting-results"},
+        {name: "Five Safes TES messages", path: "/five-safes-tes/5s-tes-messages"}
+      ],
+      collapsible: true
+    },
     {
       name: "An explanation of federated analysis",
       path: "federation_theory",
@@ -29,16 +46,15 @@ export default {
     {
       name: "Examples in Five Safes TES",
       path: "/examples-in-five-safes-tes",
-      open: false,
       pages: [
-        {name: "Submitting to Five Safes TES", path: "/examples-in-five-safes-tes/submitting-to-5s-tes"},
-        {name: "Submission layer wizards", path: "/examples-in-five-safes-tes/submission-layer-wizards"},
-        {name: "Collecting results", path: "/examples-in-five-safes-tes/collecting-results"},
-        // {name: "Aggregating statistics", path: "/examples-in-five-safes-tes/aggregating-statistics"},
-        // {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
-        {name: "Five Safes TES messages", path: "/examples-in-five-safes-tes/5s-tes-messages"},
-      ]
-    }
+        {name: "Discovery", path: "/examples-in-five-safes-tes/discovery"},
+        {name: "Contingency tables", path: "/examples-in-five-safes-tes/contingency-tables"},
+        {name: "Descriptive statistics", path: "/examples-in-five-safes-tes/descriptive-statistics"},
+      ],
+      collapsible: true
+    },
+    // {name: "RO-crates", path: "/ro-crates"},
+    // {name: "WfExS", path: "/wfexs"}
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:
@@ -70,7 +86,7 @@ export default {
   // toc: true, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   // output: "dist", // path to the output root for build
-  // search: true, // activate search
+  search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
   // typographer: false, // smart quotes and other typographic improvements
   // preserveExtension: false, // drop .html from URLs

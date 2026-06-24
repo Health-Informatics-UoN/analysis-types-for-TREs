@@ -1,0 +1,126 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-c04c945ec29ce9a29b27390dd3cde0d6"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {"field": "TRE", "type": "nominal"},
+    "tooltip": {"field": "OMOP_DESCR", "type": "nominal"},
+    "x": {"field": "Count", "type": "quantitative"},
+    "y": {"field": "OMOP", "sort": "-x", "type": "nominal"}
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-c04c945ec29ce9a29b27390dd3cde0d6": [
+      {"OMOP": 8507, "TRE": "100k TRE", "Count": 49740, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "1k TRE", "Count": 570, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8507, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "MALE"},
+      {"OMOP": 8515, "TRE": "100k TRE", "Count": 1920, "OMOP_DESCR": "Asian"},
+      {"OMOP": 8515, "TRE": "1k TRE", "Count": 70, "OMOP_DESCR": "Asian"},
+      {"OMOP": 8515, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "Asian"},
+      {"OMOP": 8515, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "Asian"},
+      {"OMOP": 8515, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "Asian"},
+      {
+        "OMOP": 8516,
+        "TRE": "100k TRE",
+        "Count": 2020,
+        "OMOP_DESCR": "Black or African American"
+      },
+      {
+        "OMOP": 8516,
+        "TRE": "1k TRE",
+        "Count": 80,
+        "OMOP_DESCR": "Black or African American"
+      },
+      {
+        "OMOP": 8516,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Black or African American"
+      },
+      {
+        "OMOP": 8516,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Black or African American"
+      },
+      {
+        "OMOP": 8516,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Black or African American"
+      },
+      {"OMOP": 8527, "TRE": "100k TRE", "Count": 2020, "OMOP_DESCR": "White"},
+      {"OMOP": 8527, "TRE": "1k TRE", "Count": 840, "OMOP_DESCR": "White"},
+      {"OMOP": 8527, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "White"},
+      {"OMOP": 8527, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "White"},
+      {"OMOP": 8527, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "White"},
+      {"OMOP": 8532, "TRE": "100k TRE", "Count": 50260, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "1k TRE", "Count": 560, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "Narnia", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "The Moon", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {"OMOP": 8532, "TRE": "Tingham", "Count": 0, "OMOP_DESCR": "FEMALE"},
+      {
+        "OMOP": 3000905,
+        "TRE": "100k TRE",
+        "Count": 4470,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "1k TRE",
+        "Count": 1120,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 3000905,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Leukocytes [#/volume] in Blood by Automated count"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "100k TRE",
+        "Count": 49960,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "1k TRE",
+        "Count": 110,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "Narnia",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "The Moon",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      },
+      {
+        "OMOP": 38003563,
+        "TRE": "Tingham",
+        "Count": 0,
+        "OMOP_DESCR": "Hispanic or Latino"
+      }
+    ]
+  }
+}
