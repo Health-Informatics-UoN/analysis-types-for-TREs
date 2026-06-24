@@ -19,9 +19,12 @@ export default {
       name: "Concepts",
       path: "/concepts",
       pages: [
+        {name: "Isolated analysis", path: "/federation_theory/decomposable-analysis"},
+        {name: "Designing Isolated analysis", path: "/federation_theory/designing-isolated-analysis"},
         {name: "Get analyses by requirements", path: "/concepts/analysis-breakdown"},
-        {name: "Categorisation of analysis methods", path: "/concepts/Categorisation"}
-      ]
+        {name: "Categorisation of analysis methods", path: "/concepts/Categorisation"},
+      ],
+      collapsible: true
     },
     {
       name: "Five Safes TES",
@@ -33,15 +36,6 @@ export default {
         {name: "Five Safes TES messages", path: "/five-safes-tes/5s-tes-messages"}
       ],
       collapsible: true
-    },
-    {
-      name: "An explanation of federated analysis",
-      path: "federation_theory",
-      open: false,
-      pages: [
-        {name: "Isolated analysis", path: "/federation_theory/decomposable-analysis"},
-        {name: "Designing Isolated analysis", path: "/federation_theory/designing-isolated-analysis"}
-      ]
     },
     {
       name: "Examples in Five Safes TES",
