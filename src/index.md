@@ -4,10 +4,8 @@ toc: false
 style: entrust-style.css
 ---
 
-<div class="hero">
-  <h1>Federated Analysis for researchers</h1>
-  <h2>Running analysis on private data in different places</h2>
-</div>
+<h1>Federated Analysis for researchers</h1>
+<h2>Running analysis on private data in different places</h2>
 
 ---
 <div class="grid grid-cols-4">
