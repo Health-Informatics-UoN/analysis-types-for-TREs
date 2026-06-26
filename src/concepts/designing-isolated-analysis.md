@@ -219,12 +219,22 @@ Without the type hinting, the function looks much simpler: `def build_combine_fu
 
 If we wanted, we could pull off a similar trick to go from our input data to the final result, but in the federated setting, the code executed in the nodes will be in a separate program, but this approach means all you need to know is that it should supply values you can shape into the partial results that your combiner function expects.
 The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
-  </div>
-</div>
 
+## Do it yourself!
+
+Here we provide three random arrays of ten integers.
+You can define three functions, `node_function`, `aggregate_function`, and `finalise_function` to do a federated analysis yourself.
 
 ```js
-import { evaluate_aggregate } from "../components/evaluate_pyodide.js";
+import { evaluateNode, evaluateAggregate, evaluateFinal } from "../components/evaluate_pyodide.js";
+```
+
+```js
+const test_integers = Array.from(
+  Array(3), () => Array.from(
+    Array(10), () => Math.floor(Math.random() * 100)
+  )
+)
 ```
 
 ```js
@@ -239,9 +249,59 @@ const node_function = view(Inputs.textarea(
 ```
 
 ```js
-evaluate_aggregate(node_function)
+const userNodeResult = evaluateNode(node_function, test_integers)
 ```
 
+The first node's data is ${test_integers[0].join(", ")}, and your function gives the result:
+
+```js
+userNodeResult
+```
+
+```js
+const aggregateFunction = view(Inputs.textarea(
+{
+  label: "Function to aggregate partial results",
+  submit: true,
+  value: `def aggregate_function(node_1, node_2):
+  return node_1 + node_2`
+}
+))
+```
+
+```js
+const userAggregateResult = evaluateAggregate(node_function, aggregateFunction, test_integers)
+```
+
+The aggregate result is:
+
+```js
+userAggregateResult
+```
+
+```js
+const finaliseFunction = view(Inputs.textarea(
+{
+  label: "Function to aggregate partial results",
+  submit: true,
+  value: `def finalise_function(aggregate_value):
+  return aggregate_value`
+}
+))
+```
+
+```js
+const userFinalResult = evaluateFinal(node_function, aggregateFunction, finaliseFunction, test_integers)
+```
+
+The final result is:
+
+```js
+userFinalResult
+```
+
+  </div>
+</div>
 
 
 ## Further reading

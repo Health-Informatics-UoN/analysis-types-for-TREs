@@ -8,12 +8,44 @@ export async function hello_python() {
   return pyodide.runPythonAsync("1+1");
 }
 
-export async function evaluate_aggregate(userFunction) {
+export async function evaluateNode(userFunction, data) {
+  let my_namespace = pyodide.toPy({ user_data: data[0] })
   return pyodide.runPythonAsync(
     `
-some_list = [1,2,3,4,5]
+from pyodide.ffi import to_js
 ${userFunction}
-node_function(some_list)
+to_js(node_function(user_data))
+    `, {globals: my_namespace}
+  )
+}
+
+export async function evaluateAggregate(userNodeFunction, userAggregateFunction, data) {
+  let my_namespace = pyodide.toPy({ user_data: data })
+  return pyodide.runPythonAsync(
     `
+from pyodide.ffi import to_js
+from functools import reduce
+${userNodeFunction}
+${userAggregateFunction}
+
+nodes = [node_function(node) for node in user_data]
+to_js(reduce(aggregate_function, nodes))
+    `, {globals: my_namespace}
+  )
+}
+
+export async function evaluateFinal(userNodeFunction, userAggregateFunction, userFinalFunction, data) {
+  let my_namespace = pyodide.toPy({ user_data: data })
+  return pyodide.runPythonAsync(
+    `
+from pyodide.ffi import to_js
+from functools import reduce
+${userNodeFunction}
+${userAggregateFunction}
+${userFinalFunction}
+
+nodes = [node_function(node) for node in user_data]
+to_js(finalise_function(reduce(aggregate_function, nodes)))
+    `, {globals: my_namespace}
   )
 }
