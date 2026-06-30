@@ -126,7 +126,7 @@ For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}
 and our finalisation function is simply
 
 ```tex
-g(sum, count) = \frac{sum}{count}
+g(\text{sum}, \text{count}) = \frac{\text{sum}}{\text{count}}
 ```
 
 There are other ways to federate statistics, but if you *can* break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
