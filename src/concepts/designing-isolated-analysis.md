@@ -43,7 +43,7 @@ Now if you imagine that you have a friend who is very helpful and volunteers to 
 
 4. You have calculated Total = 54, Count = 3
 5. They calculate Total = 23, Count = 1
-6. They calculate Total = 15, Count = 2
+6. They calculate Total = 38 (23 + 15), Count = 2
 
 They can then pass you their Total and Count and you can use this to calculate the mean.
 This is the essence of isolated analysis.
@@ -136,6 +136,7 @@ PYTHON BIT
   <div class="tab-content" id="python-content">
 
 
+### Do it yourself in Python
 The example above mentions "A function that combines these objects".
 Providing python code for an example might make this more concrete.
 Python's standard library contains `functools` to make this kind of approach easier.
