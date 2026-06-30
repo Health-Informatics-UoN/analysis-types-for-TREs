@@ -46,6 +46,9 @@ Now if you imagine that you have a friend who is very helpful and volunteers to 
 6. They calculate Total = 15, Count = 2
 
 They can then pass you their Total and Count and you can use this to calculate the mean.
+7. You calculate the aggregate Total = 92 (54 + 38), aggregate Count = 5 (3 + 2)
+8. You calculate the mean = 18.4 (92 / 5)
+
 This is the essence of isolated analysis.
 We have taken a basic statistic, the arithmetic mean, and defined:
 
