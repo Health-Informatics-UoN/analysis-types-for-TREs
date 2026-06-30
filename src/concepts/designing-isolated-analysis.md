@@ -115,7 +115,7 @@ f(p_1, p_2, \dots, p_n) = \bigoplus_{i=1}^{n} p_i
 Then using some other function (${tex `g`}) applied to that aggregated partial result to calculate a final result, the overall function is then
 
 ```tex
-result = g(f({p_1, p_2,\dots, p_n}))
+\text{result} = g(f({p_1, p_2,\dots, p_n}))
 ```
 
 For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}. The monoid operation combines them element-wise:
