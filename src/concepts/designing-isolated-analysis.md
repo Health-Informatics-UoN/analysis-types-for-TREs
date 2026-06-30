@@ -1,5 +1,5 @@
 ---
-title: Designing isolated analysis
+title: Isolated analysis
 style: ../entrust-style.css
 ---
 # Designing Isolated analysis
@@ -68,10 +68,12 @@ There are different perspectives to take on how this works.
 
 <input type="radio" name="tab" id="python" checked>
 <input type="radio" name="tab" id="maths">
+<input type="radio" name="tab" id="visual">
 
 <div class="tabs">
   <label for="python">Python example</label>
   <label for="maths">Mathematical description</label>
+  <label for="visual">Visual examples</label>
 </div>
 
 <div class="content">
@@ -355,6 +357,108 @@ The function body defines a function that uses reduce to apply `aggregate` so we
 
 The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
   </div>
+  <div class="tab-content" id="visual-content">
+
+
+Below, there is a demonstrator to help you get a feel for how an isolated analysis can work.
+
+```js
+import { runInner, computeAggregate } from "../components/aggregateFunctions.js";
+import { analyses } from "../components/decomposables.js";
+import { displayIntermediates, displayNodes, displayArrows } from "../components/drawDiagrams.js";
+import { populateNodes } from "../components/renderNodes.js";
+```
+
+```js
+const analysisChoice = view(
+  Inputs.select(
+    analyses,
+    {
+      label: "Choose an analysis",
+      format: (t) => t.label,
+      value: analyses.find((t) => t.label === "Count All")
+    }
+  )
+)
+```
+
+## ${analysisChoice.label}
+
+Overall, this analysis ${analysisChoice.decomposableDescription}
+
+### Running an example
+
+Here are some text boxes.
+It has some example data in it that will work for the kinds of analysis that take a single number from each row of a dataset.
+You can put your own numbers in, just separate them with commas.
+
+
+```js
+const nodeN = view(Inputs.button(
+  [
+    ["Add Node", value => value + 1],
+    ["Remove Node", value => value >= 2 ? value - 1 : value]
+  ], {value: 3}
+))
+```
+
+```js
+const dummyNodes = view(populateNodes(nodeN))
+```
+
+This page will pretend that this is a dataset held across different nodes.
+
+
+```js
+const dummyData = dummyNodes.map(d => JSON.parse(`[${d}]`))
+```
+
+
+```js
+const intermediates = runInner(analysisChoice.inner, dummyData)
+```
+
+
+```js
+const dataNodes = html`${displayNodes(dummyData.length)}`;
+const intermediatesRepr = html`${displayIntermediates(intermediates)}`;
+const arrows = html`${displayArrows(dummyData.length)}`;
+const arrows2 = html`${displayArrows(dummyData.length)}`;
+```
+
+### Functions
+
+#### Local function
+The way it does this is by applying a local function to each of the datasets.
+The local function, "${analysisChoice.innerDescription.label}", ${analysisChoice.innerDescription.description}
+
+#### Aggregation function
+
+The analysis takes the output of ${analysisChoice.innerDescription.label} for each dataset and applies an aggregation function to these intermediate values.
+The aggregation function, "${analysisChoice.outerDescription.label}", ${analysisChoice.outerDescription.description}
+
+<div class="card">
+  ${dataNodes}
+  <div style="display:flex; justify-content:center;">
+      ${analysisChoice.innerDescription.label}
+  </div>
+  ${arrows}
+  ${intermediatesRepr}
+  <div style="display:flex; justify-content:center;">
+      ${analysisChoice.outerDescription.label}
+  </div>
+  ${arrows2}
+  <div style="display: flex;
+              justify-content: center;
+              background: #EE7326;
+              margin-left: 30px;
+              margin-right: 30px;
+              border-radius: 5px;">
+    <span><b>Final Result:</b> ${computeAggregate(analysisChoice, dummyData)}</span>
+  </div>
+</div>
+
+  </div>
 </div>
 
 
@@ -381,6 +485,7 @@ The approaches used here are not new; aggregation in distributed systems has to 
 
   /* Highlight active tab */
   #maths:checked ~ .tabs label[for="maths"],
+  #visual:checked ~ .tabs label[for="visual"],
   #python:checked ~ .tabs label[for="python"] {
     background: #eee;
     font-weight: bold;
@@ -394,6 +499,7 @@ The approaches used here are not new; aggregation in distributed systems has to 
 
   /* Show selected tab content */
   #maths:checked ~ .content #maths-content,
+  #visual:checked ~ .content #visual-content,
   #python:checked ~ .content #python-content {
     display: block;
   }

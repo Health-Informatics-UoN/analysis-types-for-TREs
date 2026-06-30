@@ -19,8 +19,7 @@ export default {
       name: "Concepts",
       path: "/concepts",
       pages: [
-        {name: "Isolated analysis", path: "/concepts/decomposable-analysis"},
-        {name: "Designing Isolated analysis", path: "/concepts/designing-isolated-analysis"},
+        {name: "Isolated analysis", path: "/concepts/designing-isolated-analysis"},
         {name: "Get analyses by requirements", path: "/concepts/analysis-breakdown"},
         {name: "Categorisation of analysis methods", path: "/concepts/Categorisation"},
       ],
