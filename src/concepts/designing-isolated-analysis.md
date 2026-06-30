@@ -63,8 +63,8 @@ There are different perspectives to take on how this works.
 
 ## Perspectives
 
-<input type="radio" name="tab" id="python">
-<input type="radio" name="tab" id="maths" checked>
+<input type="radio" name="tab" id="python" checked>
+<input type="radio" name="tab" id="maths">
 
 <div class="tabs">
   <label for="python">Python example</label>
@@ -258,7 +258,6 @@ const test_integers = Array.from(
 const node_function = view(codearea(
 {
   submit: true,
-  width: 600,
   monospace: true,
   maxlength: 2000,
   value: `def node_function(some_list):
@@ -278,9 +277,11 @@ userNodeResult
 ```
 
 ```js
-const aggregateFunction = view(Inputs.textarea(
+const aggregateFunction = view(codearea(
 {
   submit: true,
+  monospace: true,
+  maxlength: 2000,
   value: `def aggregate_function(node_1, node_2):
   return node_1 + node_2`
 }
@@ -298,10 +299,11 @@ userAggregateResult
 ```
 
 ```js
-const finaliseFunction = view(Inputs.textarea(
+const finaliseFunction = view(codearea(
 {
   submit: true,
   monospace: true,
+  maxlength: 2000,
   value: `def finalise_function(aggregate_value):
   return aggregate_value`
 }
