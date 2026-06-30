@@ -122,7 +122,7 @@ Then using some other function (${tex `g`}) applied to that aggregated partial r
 
 For our mean example, the partial state is a tuple ${tex`p_i = (\text{sum}_i,\text{count}_i)`}. The monoid operation combines them element-wise:
 ```tex
-(sum_a, count_a) \oplus (sum_b, count_b) = (sum_a + sum_b, count_a + count_b)
+(\text{sum}_a, \text{count}_a) \oplus (\text{sum}_b, \text{count}_b) = (\text{sum}_a + \text{sum}_b, \text{count}_a + \text{count}_b)
 ```
 
 and our finalisation function is simply
