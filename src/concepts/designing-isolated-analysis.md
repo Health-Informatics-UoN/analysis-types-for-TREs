@@ -118,7 +118,7 @@ Then using some other function (${tex `g`}) applied to that aggregated partial r
 \text{result} = g(f({p_1, p_2,\dots, p_n}))
 ```
 
-For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}. The monoid operation combines them element-wise:
+For our mean example, the partial state is a tuple ${tex`p_i = (\text{sum}_i,\text{count}_i)`}. The monoid operation combines them element-wise:
 ```tex
 (sum_a, count_a) \oplus (sum_b, count_b) = (sum_a + sum_b, count_a + count_b)
 ```
