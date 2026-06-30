@@ -105,7 +105,7 @@ A monoid is a set (${tex`S`}), with an operation (${tex`\oplus`}) that needs thr
 This looks suspiciously like the function that combines the objects as described above.
 Luckily for us, a lot of statistics can be computed using building blocks that can be combined with associative operations: real numbers and addition form a monoid (with 0 as an identity element), and positive real numbers and multiplication (with 1 as an identity element).
 
-If we can express the partial results from nodes in a federation (pi​) and the operation used to combine them as a monoid, we can abstract the aggregation phase of a federated analysis as:
+If we can express the partial results from nodes in a federation (${tex `p_i`}) and the operation used to combine them as a monoid, we can abstract the aggregation phase of a federated analysis as:
 
 <!--Function that takes a set of values and returns one-->
 ```tex
