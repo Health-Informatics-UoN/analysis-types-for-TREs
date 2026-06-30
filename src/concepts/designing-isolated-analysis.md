@@ -46,6 +46,9 @@ Now if you imagine that you have a friend who is very helpful and volunteers to 
 6. They calculate Total = 38 (23 + 15), Count = 2
 
 They can then pass you their Total and Count and you can use this to calculate the mean.
+7. You calculate the aggregate Total = 92 (54 + 38), aggregate Count = 5 (3 + 2)
+8. You calculate the mean = 18.4 (92 / 5)
+
 This is the essence of isolated analysis.
 We have taken a basic statistic, the arithmetic mean, and defined:
 
@@ -112,7 +115,7 @@ f(p_1, p_2, \dots, p_n) = \bigoplus_{i=1}^{n} p_i
 Then using some other function (${tex `g`}) applied to that aggregated partial result to calculate a final result, the overall function is then
 
 ```tex
-result = g(f({p_1, p_2,\dots, p_n}))
+\text{result} = g(f({p_1, p_2,\dots, p_n}))
 ```
 
 For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}. The monoid operation combines them element-wise:
@@ -123,7 +126,7 @@ For our mean example, the partial state is a tuple ${tex`p_i = (sum_i,count_i)`}
 and our finalisation function is simply
 
 ```tex
-g(sum, count) = \frac{sum}{count}
+g(\text{sum}, \text{count}) = \frac{\text{sum}}{\text{count}}
 ```
 
 There are other ways to federate statistics, but if you *can* break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
