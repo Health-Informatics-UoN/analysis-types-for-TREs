@@ -2,7 +2,6 @@
 title: Designing isolated analysis
 style: ../entrust-style.css
 ---
-
 # Designing Isolated analysis
 
 This section describes the construction of an isolated analysis in detail.
@@ -225,9 +224,27 @@ The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) modul
 Here we provide three random arrays of ten integers.
 You can define three functions, `node_function`, `aggregate_function`, and `finalise_function` to do a federated analysis yourself.
 
+### Desired result
+
 ```js
 import { evaluateNode, evaluateAggregate, evaluateFinal } from "../components/evaluate_pyodide.js";
+import { codearea } from "../components/codearea.js";
 ```
+
+```js
+const desiredResult = Inputs.select(
+  [
+    "count",
+    "sum",
+    "mean",
+    "variance",
+    "minimum",
+    "maximum"
+  ]
+)
+view(desiredResult)
+```
+
 
 ```js
 const test_integers = Array.from(
@@ -238,10 +255,12 @@ const test_integers = Array.from(
 ```
 
 ```js
-const node_function = view(Inputs.textarea(
+const node_function = view(codearea(
 {
-  label: "Function to run at the node",
   submit: true,
+  width: 600,
+  monospace: true,
+  maxlength: 2000,
   value: `def node_function(some_list):
   return len(some_list)`
 }
@@ -261,7 +280,6 @@ userNodeResult
 ```js
 const aggregateFunction = view(Inputs.textarea(
 {
-  label: "Function to aggregate partial results",
   submit: true,
   value: `def aggregate_function(node_1, node_2):
   return node_1 + node_2`
@@ -282,8 +300,8 @@ userAggregateResult
 ```js
 const finaliseFunction = view(Inputs.textarea(
 {
-  label: "Function to aggregate partial results",
   submit: true,
+  monospace: true,
   value: `def finalise_function(aggregate_value):
   return aggregate_value`
 }
