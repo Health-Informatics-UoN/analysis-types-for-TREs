@@ -139,96 +139,14 @@ PYTHON BIT
   <div class="tab-content" id="python-content">
 
 
-### Do it yourself in Python
-The example above mentions "A function that combines these objects".
-Providing python code for an example might make this more concrete.
-Python's standard library contains `functools` to make this kind of approach easier.
-`reduce` is a function from `functools` which applies a function to each item of some iterable and returns a single result.
-This is something like
 
-```python
-result = {"count": 0, "sum": 0}
 
-for item in some_list:
-    result = {
-        "count": result.count + item.count,
-        "sum": result.sum + item.sum
-    }
-```
 
-and using `result` afterwards.
+## Do it yourself in Python
 
-If we take partial results from nodes in a federation, we can use `reduce` to combine them like so:
-
-```python
-from functools import reduce
-
-def aggregate(partial1, partial2):
-    return {
-        "count": partial1["count"] + partial2["count"],
-        "sum": partial1["sum"] + partial2["sum"]
-    }
-
-first, *rest = partials
-
-result = reduce(aggregate, rest, first)
-```
-
-`reduce` needs some initial value to combine the other values with, so the `first, *rest` like splits the partials into the first value and a list of the rest.
-`reduce` then uses aggregate to combine every value in partials.
-
-The nice part of this approach is that we can tie the functions used for combining partial results to the function used to calculate a final result, and even have the type checker in your IDE tell you if you're making a mistake.
-
-```python
-from typing import TypeVar, Iterable, Callable
-
-S = TypeVar("S")
-R = TypeVar("R")
-```
-
-This bit of set up says that we want to work with two, possibly different, data types, but we don't want to be restricted to any particular types yet.
-
-```python
-def build_combine_function(
-    aggregate: Callable[[S,S], S],
-    finalise: Callable[[S], R]
-) -> Callable[[Iterable[S]], R]:
-    ...
-```
-
-You might be wondering what `Callable` is.
-This is python's way of doing type hints for a function.
-There are two parameters for a `Callable`: the types of the function's parameters, and the return type.
-`aggregate: Callable[[S,S], S]` says "`aggregate` has to be a function that takes two things of one type (`S`) and returns something of the same type", `finalise: Callable[[S], R]` says "`finalise` has to be a function that takes something of type `S` and returns something of type `R`".
-The return type `Callable[[Iterable[S]], R]` is a promise that `build_combine_function` will use these to make a function that takes a list or similar holding items of type `S` and use them to make something of type `R`.
-
-```python
-def build_combine_function(
-    aggregate: Callable[[S,S], S],
-    finalise: Callable[[S], R]
-) -> Callable[[Iterable[S]], R]:
-    def combine(partials: Iterable[S]):
-        first, *rest = partials
-        return finalise(
-            reduce(aggregate, rest, first)
-        )
-    
-    return combine
-```
-
-The function body defines a function that uses reduce to apply `aggregate` so we combine the partial results into one object, then apply finalise to the result.
-Since we have made sure aggregate and finalise have the behaviours we want, we know the function we get from `build_combine_function` will take a list of partial results and give us the final result we want.
-Without the type hinting, the function looks much simpler: `def build_combine_function(aggregate, finalise):...`, but by adding the other parts, your IDE will probably tell you off if you try to use functions that don't work with the data you have.
-
-If we wanted, we could pull off a similar trick to go from our input data to the final result, but in the federated setting, the code executed in the nodes will be in a separate program, but this approach means all you need to know is that it should supply values you can shape into the partial results that your combiner function expects.
-The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
-
-## Do it yourself!
-
-Here we provide three random arrays of ten integers.
+To help you understand how basic statistics can be federated, you can run through these examples.
+For the examples, there are three lists of numbers; one you can see so you can test your code, two you cannot.
 You can define three functions, `node_function`, `aggregate_function`, and `finalise_function` to do a federated analysis yourself.
-
-### Desired result
 
 ```js
 import { evaluateNode, evaluateAggregate, evaluateFinal } from "../components/evaluate_pyodide.js";
@@ -236,26 +154,51 @@ import { codearea } from "../components/codearea.js";
 ```
 
 ```js
-const desiredResult = Inputs.select(
+const analysisMethod = view(Inputs.select(
   [
-    "count",
-    "sum",
-    "mean",
-    "variance",
-    "minimum",
-    "maximum"
-  ]
-)
-view(desiredResult)
+    "Count",
+    "Sum",
+    "Minimum",
+    "Maximum",
+    "Mean",
+    "Sample Variance"
+  ], {label:"Choose an example"}
+))
 ```
 
+### Computing partial results at the nodes
+The `node_function` is what runs in each node to get out the data necessary to calculate your final result.
+In reality, you're unlikely to be operating on a list of numbers; this is just so you can think about the partial results that needs to come out of each node.
+
+Write your definition of `node_function` in the box below.
+If you change the function names, the evaluation will not run properly.
+
+```js
+const nodeFuncHints = {
+  "Count": "For the count, you only need to return the length of the list",
+  "Sum": "For the sum, you only need to return the sum of the list",
+  "Mean": "For the mean, you need both the sum and the length of the list. The easiest way is in a dictionary.",
+  "Sample Variance": "For the sample variance, you need the length, sum, and sum of squares of the list. The easiest way is in a dictionary.",
+  "Minimum": "For the minimum, you only need the local minimum",
+  "Maximum": "For the maximum, you only need the local maximum"
+}
+```
+
+<details>
+  <summary>Give me a hint</summary>
+
+
+${nodeFuncHints[analysisMethod]}
+</details>
 
 ```js
 const test_integers = Array.from(
   Array(3), () => Array.from(
-    Array(10), () => Math.floor(Math.random() * 100)
+    Array(Math.floor(Math.random() * 5 + 5)), () => Math.floor(Math.random() * 100)
   )
-)
+);
+
+const flat_integers = test_integers.flat();
 ```
 
 ```js
@@ -274,11 +217,44 @@ const node_function = view(codearea(
 const userNodeResult = evaluateNode(node_function, test_integers)
 ```
 
-The first node's data is ${test_integers[0].join(", ")}, and your function gives the result:
+The first node's data is ${test_integers[0].join(", ")}, and your function gives the partial result:
 
 ```js
 userNodeResult
 ```
+
+### Aggregating partial results
+Next, you need to combine your partial results into something that describes the whole dataset across nodes.
+To do this, the aggregator has to have some function that combines two partial results, which can then be applied to all of the partial results like this:
+
+```python
+result = PartialResult()
+
+for partial in partial_results:
+    result = aggregate_function(result, partial)
+```
+
+Many programming languages, including python, provide a "reduce" function that performs the same operation.
+
+Define your `aggregate_function` below.
+
+```js
+const aggFuncHints = {
+  "Count": "For the count, you can add the partial results",
+  "Sum": "For the global sum, you can add the partial results",
+  "Mean": "For the mean, you need to add the count and sum separately.",
+  "Sample Variance": "For the sample variance, you need to add the count, sum, and sum of squares separately.",
+  "Minimum": "For the minimum, take the minimum partial result",
+  "Maximum": "For the maximum, take the maximum partial result"
+}
+```
+
+<details>
+  <summary>Give me a hint</summary>
+
+
+${aggFuncHints[analysisMethod]}
+</details>
 
 ```js
 const aggregateFunction = view(codearea(
@@ -302,6 +278,31 @@ The aggregate result is:
 userAggregateResult
 ```
 
+After the partial results from nodes have been aggregated, all but the simplest statistics need some further processing before they give their result.
+To do this, we need a function definition to apply to the aggregated result.
+For the simple statistics, returning the value is sufficient.
+
+
+```js
+const finalFuncHints = {
+  "Count": "For the count, simply return the value",
+  "Sum": "For the global sum, simply return the value",
+  "Mean": "The calculation for the mean is to divide the sum by the count",
+  "Sample Variance": html`The calculation for the sample variance, is to divide the sum of squared differences to the mean by the count - 1.
+This one is quite difficult, but a place to start is to expand (x - x̄)<sup>2</sup>. If you're still stuck, wikipedia includes
+<a href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance">alternative algorithms for variance<a> which describes a possible solution`,
+  "Minimum": "For the minimum, simply return the value",
+  "Maximum": "For the maximum, simply return the value"
+}
+```
+
+<details>
+  <summary>Give me a hint</summary>
+
+
+${finalFuncHints[analysisMethod]}
+</details>
+
 ```js
 const finaliseFunction = view(codearea(
 {
@@ -324,6 +325,35 @@ The final result is:
 userFinalResult
 ```
 
+```js
+const desiredResult = {
+  "Count": flat_integers.length,
+  "Sum": flat_integers.reduce((a, b) => a+b, 0),
+  "Mean": flat_integers.reduce((a, b) => a+b,0)/flat_integers.length,
+  "Sample Variance": d3.variance(flat_integers),
+  "Minimum": Math.min(...flat_integers),
+  "Maximum": Math.max(...flat_integers)
+}
+```
+
+${desiredResult[analysisMethod] === userFinalResult ? "which is correct" : `which should be ${desiredResult[analysisMethod]}`}.
+
+```python
+def build_combine_function(
+    aggregate,
+    finalise
+):
+    def combine(partials):
+        return finalise(
+            reduce(aggregate, partials)
+        )
+    
+    return combine
+```
+
+The function body defines a function that uses reduce to apply `aggregate` so we combine the partial results into one object, then apply `finalise` to the result.
+
+The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
   </div>
 </div>
 
