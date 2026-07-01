@@ -5,7 +5,7 @@ style: ../entrust-style.css
 # Designing Isolated analysis
 
 This section describes the construction of an isolated analysis in detail.
-To start, we will consider the calculation of the arithmetic mean:
+To start, we will work through the calculation of the arithmetic mean, then you can explore some interactive examples. 
 
 ## The arithmetic mean
 
@@ -66,14 +66,14 @@ There are different perspectives to take on how this works.
 
 ## Perspectives
 
-<input type="radio" name="tab" id="python" checked>
+<input type="radio" name="tab" id="visual" checked>
+<input type="radio" name="tab" id="python">
 <input type="radio" name="tab" id="maths">
-<input type="radio" name="tab" id="visual">
 
 <div class="tabs">
+  <label for="visual">Visual examples</label>
   <label for="python">Python example</label>
   <label for="maths">Mathematical description</label>
-  <label for="visual">Visual examples</label>
 </div>
 
 <div class="content">
@@ -82,18 +82,24 @@ There are different perspectives to take on how this works.
     
 We started with the definition of the arithmetic mean:
 ```tex
-\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
+\bar{x} = \frac{\sum_{i=1}^{N} x_i}{n}
 ```
 
-But what are we calculating here?
-We don't have the sum, we instead have the sum of the sums and the sum of the counts.
-For ${tex`n`} TREs, each with ${tex`m`} data points:
+In the description above, we calculated the mean in what looks like a different way, adding values and keeping a running total of the count.
+We can see that this is, in fact, the same thing if we reframe the count from ${tex `n`}:
+```tex
+\bar{x} = \frac{\sum_{i=1}^N x_i}{\sum_{i=1}^N 1}
+```
+
+As the count can be seen as a sum, we can make the jump from the case where all the values are together to when they are apart.
+As it doesn't matter what order you sum numbers, we can get local sums and then add them together to get a global value, as in the description above.
+This means that, for ${tex `K`} TREs:
 
 ```tex
-\bar{x} = f(\text{global-sum}, \text{global-count}) = \frac{\sum_{i=1}^{n} \sum_{j=1}^{n_i} x_{i,j}}{\sum_{i=1}^{n} n_i}
+\bar{x} = f(\text{global-sum}, \text{global-count}) = \frac{\sum_{j=1}^{K} \sum_{i=1}^{N} x_{j,i}}{\sum_{j=1}^{K} N_j}
 ```
 
-For our purposes, we can see that both numerator and denominator have ${tex`\sum^n_{i=1}`}, which, as we have seen from our example, means we know we can separate out that part when calculating the federated mean.
+For our purposes, we can see that both numerator and denominator have ${tex`\sum^K_{j=1}`}, so we can sum the local count and local sum from each TRE.
 
 ### Monoids
 
@@ -131,7 +137,7 @@ and our finalisation function is simply
 g(\text{sum}, \text{count}) = \frac{\text{sum}}{\text{count}}
 ```
 
-There are other ways to federate statistics, but if you *can* break the calculation down into something that can be calculated from monoids that can be aggregated means you can federate it.
+There are other ways to federate statistics, but if you *can* break the calculation down into something that can be calculated from monoids that can be aggregated, you can federate it.
 <!--
 
 PYTHON BIT
@@ -144,7 +150,7 @@ PYTHON BIT
 
 
 
-## Do it yourself in Python
+### Do it yourself in Python
 
 To help you understand how basic statistics can be federated, you can run through these examples.
 For the examples, there are three lists of numbers; one you can see so you can test your code, two you cannot.
@@ -168,7 +174,7 @@ const analysisMethod = view(Inputs.select(
 ))
 ```
 
-### Computing partial results at the nodes
+#### Computing partial results at the nodes
 The `node_function` is what runs in each node to get out the data necessary to calculate your final result.
 In reality, you're unlikely to be operating on a list of numbers; this is just so you can think about the partial results that needs to come out of each node.
 
@@ -225,7 +231,7 @@ The first node's data is ${test_integers[0].join(", ")}, and your function gives
 userNodeResult
 ```
 
-### Aggregating partial results
+#### Aggregating partial results
 Next, you need to combine your partial results into something that describes the whole dataset across nodes.
 To do this, the aggregator has to have some function that combines two partial results, which can then be applied to all of the partial results like this:
 
