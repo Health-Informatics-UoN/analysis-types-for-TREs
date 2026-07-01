@@ -1,6 +1,6 @@
 export default {
   // The app’s title; used in the sidebar and webpage titles.
-  title: "Analysis Types For TREs",
+  title: "Federated analysis for researchers",
 
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
