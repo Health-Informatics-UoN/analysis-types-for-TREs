@@ -7,7 +7,7 @@ function randString(len) {
 export function populateNodes(n) {
   const inputs = Array.from(
     {length: n},
-    (_, i) => Inputs.text({label: `Node ${i+1}`, value: randString(5)})
+    (_, i) => Inputs.text({label: `Node ${i+1}`, value: randString(5), submit: true})
   );
   return Inputs.form(inputs)
 }
