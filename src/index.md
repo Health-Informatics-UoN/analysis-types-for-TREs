@@ -30,7 +30,7 @@ Jump straight into [some examples](examples-in-five-safes-tes)
   <div class="card">
 
 
-You can read more details on how analyses are [categorised](Categorisation), or use the [dashboard](analysis-breakdown) to see whether your TRE requirements are compatible with different federated analyses.
+You can read more details on how analyses are [categorised](concepts/Categorisation), or use the [dashboard](concepts/analysis-breakdown) to see whether your TRE requirements are compatible with different federated analyses.
   </div>
 </div>
 

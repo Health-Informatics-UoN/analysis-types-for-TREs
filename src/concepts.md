@@ -21,7 +21,7 @@ This means the data that needs to stay secure stays secure but the valuable insi
 Broadly, the algorithms used to carry out analytics can be broken into three groups.
 
 ### Isolated
-In [isolated](./federation_theory/decomposable-analysis) analyses, the same function is replicated in each node, producing some summary statistic.
+In [isolated](./concepts/designing-isolated-analysis) analyses, the same function is replicated in each node, producing some summary statistic.
 This output from each node can be combined with the same kind of output from other nodes to calculate the final result.
 
 ### Connected
