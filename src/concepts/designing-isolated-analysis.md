@@ -155,9 +155,9 @@ PYTHON BIT
 To help you understand how basic statistics can be federated, you can run through these examples.
 You can define three functions to do a federated analysis yourself.
 
-1. `node_function` runs in each node and summarises a list into a partial result: a single value summarising the local data
-2. `aggregate_function` merges two partial results
-3. `finalise_function` uses a merged result to the final result of the desired analysis
+1. `node_function` runs in each node and summarises a list into a partial result: a summary of the local data
+2. `aggregate_function` merges two partial results into another partial result
+3. `finalise_function` uses a merged result to calculate the final result of the desired analysis
 
 These will be assembled into a simulation of a federated analytics pipeline.
 The examples run on three lists of numbers, one made visible to you so you can verify your `node_function` does what you intend, two hidden from you, representing datasets you can't access directly.
