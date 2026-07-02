@@ -153,8 +153,19 @@ PYTHON BIT
 ### Do it yourself in Python
 
 To help you understand how basic statistics can be federated, you can run through these examples.
-For the examples, there are three lists of numbers; one you can see so you can test your code, two you cannot.
-You can define three functions, `node_function`, `aggregate_function`, and `finalise_function` to do a federated analysis yourself.
+You can define three functions to do a federated analysis yourself.
+
+1. `node_function` runs in each node and summarises a list into a partial result: a single value summarising the local data
+2. `aggregate_function` merges two partial results
+3. `finalise_function` uses a merged result to the final result of the desired analysis
+
+These will be assembled into a simulation of a federated analytics pipeline.
+The examples run on three lists of numbers, one made visible to you so you can verify your `node_function` does what you intend, two hidden from you, representing datasets you can't access directly.
+
+The code currently in the cells will calculate the global count for you.
+If you change the `node_function`, the later stages might throw errors.
+Your job is to fix these errors and calculate the final result.
+Good luck!
 
 ```js
 import { evaluateNode, evaluateAggregate, evaluateFinal } from "../components/evaluate_pyodide.js";
@@ -346,22 +357,7 @@ const desiredResult = {
 
 ${desiredResult[analysisMethod] === userFinalResult ? "which is correct" : `which should be ${desiredResult[analysisMethod]}`}.
 
-```python
-def build_combine_function(
-    aggregate,
-    finalise
-):
-    def combine(partials):
-        return finalise(
-            reduce(aggregate, partials)
-        )
-    
-    return combine
-```
-
-The function body defines a function that uses reduce to apply `aggregate` so we combine the partial results into one object, then apply `finalise` to the result.
-
-The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide combiner functions for common statistics and a scaffold for making your own.
+The [partialstats](https://github.com/Health-Informatics-UoN/partialstats) module uses this approach to provide functions for aggregating common statistics and a scaffold for making your own functions.
   </div>
   <div class="tab-content" id="visual-content">
 
