@@ -12,16 +12,24 @@ style: entrust-style.css
   <div class="card">
 
 
-New to federation? Learn [why you might need to federate your analysis](concepts#why-federation).
+## Understanding federation
+- New to federation? Learn [why you might need to federate your analysis](concepts#why-federation).
+- Understand some of the ways [federated analysis can be designed](concepts/designing-isolated-analysis).
   </div>
   <div class="card">
 
 
-Learn how [Five Safes TES](five-safes-tes) can be used [to submit analysis tasks](five-safes-tes/submitting-to-5s-tes).
+## Five Safes TES
+Learn:
+- What is [Five Safes TES](five-safes-tes)?
+- How it can be used
+    - [to submit analysis tasks](five-safes-tes/submitting-to-5s-tes)
+    - [to collect results](five-safes-tes/collecting-results).
   </div>
   <div class="card">
 
 
+## Examples
 Jump straight into [some examples](examples-in-five-safes-tes)
 - [Cohort discovery](examples-in-five-safes-tes/discovery)
 - [Federating descriptive statistics](examples-in-five-safes-tes/descriptive-statistics)
@@ -30,6 +38,7 @@ Jump straight into [some examples](examples-in-five-safes-tes)
   <div class="card">
 
 
+## Compatible statistics
 You can read more details on how analyses are [categorised](concepts/Categorisation), or use the [dashboard](concepts/analysis-breakdown) to see whether your TRE requirements are compatible with different federated analyses.
   </div>
 </div>
