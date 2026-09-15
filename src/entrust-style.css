@@ -1,39 +1,96 @@
+/* Import both required font families */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 @import url("observablehq:default.css");
 @import url("observablehq:theme-air.css");
 
 :root {
-  --theme-foreground-focus: #EE7326;
-  --sans-serif: "Roboto", sans-serif;
+  /* Brand Identity - Strict Compliance */
+  --brand-black: #000000;
+  --brand-grey-bg: #f3f4f6; /* Light grey background for the doc */
+  --brand-accent-orange: #EE7326;
+  --brand-blue-sparing: #204F90;
+  
+  /* UI Language - Refined for Typographic Design */
+  --ui-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --ui-shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.1);
+  --ui-transition: 160ms ease;
+  --ui-radius: 12px;
+  --ui-line: #e5e7eb;
+  background-color: var(--brand-grey-bg);
 }
 
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: var(--sans-serif);
+/* --- Global Base Styles --- */
+body {
+  color: var(--brand-black);
+  font-family: "IBM Plex Sans", sans-serif;
+  line-height: 1.6;
+}
+
+
+
+/* Headings - All Black as Primary */
+h1, h2, h3 {
+  font-family: "Roboto", sans-serif;
+  color: var(--brand-black);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 h1 {
-  color:  #EE7326;
+  font-size: 2.6em;
+  color: var(--brand-accent-orange);
+}
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.4em; }
+
+/* H4 and Body use IBM Plex Sans */
+h4 {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--brand-black);
 }
 
-h2 {
-  color: #204F90;
+p, li {
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--brand-black);
 }
 
-h3 {
-  color: #EE7326;
+/* Highlight keyword using orange */
+.highlight, strong, b {
+  color: var(--brand-accent-orange);
+  font-weight: 500;
 }
 
-h4, h5, h6 {
-  color: grey;
+/* --- Component: Card --- */
+.card {
+  background: #ffffff; /* White cards to pop against grey body */
+  border: 1px solid var(--ui-line);
+  border-top: solid var(--brand-accent-orange);
+  border-radius: var(--ui-radius);
+  padding: 1.5rem;
+  box-shadow: var(--ui-shadow);
+  transition: transform var(--ui-transition), box-shadow var(--ui-transition), border-color var(--ui-transition);
 }
 
-details {
-  margin-bottom: 8px;
+.card:hover {
+  border-color: var(--brand-blue-sparing); /* Blue used sparingly */
+  box-shadow: var(--ui-shadow-hover);
+  transform: translateY(-2px);
 }
 
+/* --- Component: Steps Container --- */
 .steps-container {
   max-width: 560px;
-  padding: 1.5rem 0;
+  padding: 2rem;
+  background: var(--ui-paper);
+  border: 1px solid var(--ui-line);
+  border-radius: 18px;
+  box-shadow: var(--ui-shadow);
+  margin: 2rem 0;
 }
+
 
 .step {
   display: flex;
@@ -42,14 +99,15 @@ details {
   margin-bottom: 8px;
 }
 
-/* Vertical connector line between steps */
+/* Connector line using subtle blue */
 .step:not(:last-child) .step-line {
   position: absolute;
   left: 19px;
   top: 44px;
   width: 2px;
   bottom: -8px;
-  background-color: #d1d5db;
+  background-color: var(--brand-blue-sparing);
+  opacity: 0.3;
 }
 
 .step-indicator {
@@ -59,30 +117,27 @@ details {
   flex-shrink: 0;
 }
 
-/* Step number circle */
+/* Step number - Using Orange as an accent */
 .step-num {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #EE7326;
+  background-color: #ffffff;
+  border: 2px solid var(--brand-accent-orange);
+  color: var(--brand-accent-orange);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  font-weight: 500;
-  color: white;
+  font-weight: 700;
   z-index: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Completed state — green circle with checkmark */
 .step.complete .step-num {
   background-color: #f0fdf4;
   border-color: #86efac;
   color: #15803d;
-}
-
-.step.complete .step-line {
-  background-color: #86efac;
 }
 
 .step-body {
@@ -92,34 +147,31 @@ details {
 .step-title {
   font-size: 15px;
   font-weight: 500;
-  color: #111827;
+  color: var(--brand-black);
   margin: 0 0 4px;
-  line-height: 40px; /* vertically aligns with the circle */
+  line-height: 40px;
 }
 
 .step-desc {
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 11px; /* Aligned to body size */
+  color: #4b5563;
   line-height: 1.6;
   margin: 0;
-  margin-top: -6px;
 }
 
-/* Optional tag badges */
+/* Badges */
 .step-tag {
   display: inline-block;
-  font-size: 12px;
-  padding: 2px 8px;
+  font-size: 10px;
+  padding: 2px 10px;
   border-radius: 999px;
   margin-top: 8px;
+  font-weight: 500;
 }
 
-.tag-tip {
-  background-color: #fffbeb;
-  color: #b45309;
-}
+.tag-tip { background-color: #fffbeb; color: #b45309; }
+.tag-required { background-color: #fef2f2; color: #b91c1c; }
 
-.tag-required {
-  background-color: #fef2f2;
-  color: #b91c1c;
-}
+/* Utilities */
+details { margin-bottom: 8px; }
+
