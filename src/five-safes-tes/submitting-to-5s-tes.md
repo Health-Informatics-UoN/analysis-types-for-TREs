@@ -71,6 +71,17 @@ The time and date at which your current token expires are shown above the token
 Once you have access to the submission layer, you can make submissions through the HTTP API.
 To make submissions easier, a python library (the Workbench) and a web application are provided.
 
+<input type="radio" name="tab" id="workbench" checked>
+<input type="radio" name="tab" id="webapp">
+
+<div class="tabs">
+  <label for="workbench">Workbench</label>
+  <label for="webapp">Web application</label>
+</div>
+
+<div class="content">
+  <div class="tab-content" id="workbench-content">
+
 ### Workbench
 
 Five Safes TES workbench is a python library of tools designed to make interacting with Five Safes TES simpler and easier, available on [Github](https://github.com/federated-research/5S-TES-Workbench) and [PyPi](https://pypi.org/project/five-safes-tes-workbench/). Its main functions are to assist with creation and submission of TES messages, as well as retrieval of results.
@@ -118,6 +129,8 @@ auth:
   password: "your-keycloak-password"
   keycloak_url: "http://localhost:your-keycloak-port/"
   ```
+  </div>
+  <div class="tab-content" id="webapp-content">
 
 ### Web application
 
@@ -219,3 +232,39 @@ Once this is pressed, the task is sent to the submission layer.
 This area will then display your task's progress as it is sent to the TRE agent, then to the TES engine, and when the outputs are being reviewed.
 
 When this is complete, you can [collect your results](collecting-results).
+  </div>
+</div>
+
+<style>
+  /* Hide radio buttons */
+  input[type="radio"] {
+    display: none;
+  }
+
+  /* Style tab labels */
+  label {
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
+  /* Highlight active tab */
+  #webapp:checked ~ .tabs label[for="webapp"],
+  #workbench:checked ~ .tabs label[for="workbench"] {
+    background: #eee;
+    font-weight: bold;
+  }
+
+  /* Hide all content sections */
+  .tab-content {
+    display: none;
+    margin-top: 20px;
+  }
+
+  /* Show selected tab content */
+  #webapp:checked ~ .content #webapp-content,
+  #workbench:checked ~ .content #workbench-content {
+    display: block;
+  }
+</style>
